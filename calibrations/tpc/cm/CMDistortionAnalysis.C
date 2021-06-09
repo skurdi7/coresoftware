@@ -112,6 +112,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
    
     //for forward only
 
+    /*
     //same range and bins for each coordinate, can use hR for all, binned in cm
     int nphi = shifter->hR->GetXaxis()->GetNbins();
     int nr = shifter->hR->GetYaxis()->GetNbins();
@@ -124,6 +125,21 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     double maxphi = shifter->hR->GetXaxis()->GetXmax();
     double maxr = shifter->hR->GetYaxis()->GetXmax();
     double maxz = shifter->hR->GetZaxis()->GetXmax();
+    */
+
+    //same range and bins for each coordinate, binned in cm
+    //hardcoded numbers from average distortion file's hIntDistortionPosX
+    int nphi = 82;
+    int nr = 54;
+    int nz = 82;
+    
+    double minphi = -0.078539819;
+    double minr = 18.884615;
+    double minz = -1.3187500;
+    
+    double maxphi = 6.3617253;
+    double maxr = 79.115387;
+    double maxz = 106.81875;
 
     double rshiftcart, phishiftcart;
 
