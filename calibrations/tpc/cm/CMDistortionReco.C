@@ -14,6 +14,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
   double low = -80.0;
   double high = 80.0;
   double deltaX, deltaY, deltaZ, deltaR, deltaPhi;
+  int nEvents;
 
   //int nEvents = 3; //change based on number of tree files available in source directory
     
