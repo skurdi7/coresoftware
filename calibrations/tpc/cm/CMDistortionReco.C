@@ -27,14 +27,15 @@ int CMDistortionReco(int nMaxEvents = -1) {
   TString sourcefilename;
   
   //how many events
+  /*
   if (nMaxEvents<0){
     nEvents=filelist->GetNFiles();
   } else if(nMaxEvents<filelist->GetNFiles()){
     nEvents=nMaxEvents;
   } else {
     nEvents= filelist->GetNFiles();
-    }
-  //nEvents = 2;
+    }*/
+  nEvents = 2;
   
   TCanvas *canvas1=new TCanvas("canvas1","CMDistortionReco1",1200,800);
   canvas1->Divide(3,2);
@@ -201,8 +202,8 @@ int CMDistortionReco(int nMaxEvents = -1) {
     
     double minphi = -0.078539819;
     double minr = 18.884615;
-    double minz = 5.0;
-    //double minz = -1.3187500;
+    //double minz = 5.0;
+    double minz = -1.3187500;
     
     double maxphi = 6.3617253;
     double maxr = 79.115387;
