@@ -305,14 +305,14 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     }
 
     //summary plots
-    hDifferenceMeanR->Fill(hCylindricalShiftDifference[2]->GetMean(1));
-    hDifferenceStdDevR->Fill(hCylindricalShiftDifference[2]->GetStdDev(1));
+    hDifferenceMeanR->Fill(hCylindricalShiftDifference[0]->GetMean(1));
+    hDifferenceStdDevR->Fill(hCylindricalShiftDifference[0]->GetStdDev(1));
 
     hTrueMeanR->Fill(hRShiftTrue->GetMean(1));
     hTrueStdDevR->Fill(hRShiftTrue->GetStdDev(1));
     
-    hDifferenceMeanPhi->Fill(hCylindricalShiftDifference[3]->GetMean(1));
-    hDifferenceStdDevPhi->Fill(hCylindricalShiftDifference[3]->GetStdDev(1));
+    hDifferenceMeanPhi->Fill(hCylindricalShiftDifference[1]->GetMean(1));
+    hDifferenceStdDevPhi->Fill(hCylindricalShiftDifference[1]->GetStdDev(1));
 
     hTrueMeanPhi->Fill(hPhiShiftTrue->GetMean(1));
     hTrueStdDevPhi->Fill(hPhiShiftTrue->GetStdDev(1));
