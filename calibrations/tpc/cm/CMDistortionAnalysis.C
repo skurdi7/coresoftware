@@ -239,7 +239,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
      TH2F *hCylindricalAveDiffPhiR[4];
     hCylindricalAveDiffPhiR[0] = new TH2F("hAveDiffXYR_PhiR", "R Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCylindricalAveDiffPhiR[1] = new TH2F("hAveDiffRZR_PhiR", "R Model - Truth Averaged Over phi, Phi,R binning (#mum); z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
-    hCylindricalAveDiffPhiR[2] = new TH2F("hAveDiffXYPhi_PhiR", "Phi Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,max);
+    hCylindricalAveDiffPhiR[2] = new TH2F("hAveDiffXYPhi_PhiR", "Phi Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCylindricalAveDiffPhiR[3] = new TH2F("hAveDiffRZPhi_PhiR", "Phi Model - Truth Averaged Over phi, Phi,R binning (#mum); z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
     
     TH2F *hSamplePerBinXY = new TH2F("hSamplePerBinXY", "Filling each xy bin; x (cm); y (cm)",nbins,low,high,nbins,low,high);
