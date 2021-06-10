@@ -442,10 +442,10 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //phi,r binning
     //average over z
     for (int m = 0; m < 6; m = m+2){
-      hCartesianAveDiffPhiR[m]->Divide(hCartesianDiffPhiR[m],hSamplePerBinXY);
+      hCartesianAveDiffPhiR[m]->Divide(hCartesianDiffPhiR[m],hSamplePerBinPhiR);
     }
     for (int m = 0; m < 4; m = m+2){
-      hCylindricalAveDiffPhiR[m]->Divide(hCylindricalDiffPhiR[m],hSamplePerBinXY);
+      hCylindricalAveDiffPhiR[m]->Divide(hCylindricalDiffPhiR[m],hSamplePerBinPhiR);
     }
     
     //average over phi
