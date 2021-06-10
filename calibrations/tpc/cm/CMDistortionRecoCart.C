@@ -14,7 +14,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
   double low = -80.0;
   double high = 80.0;
   double deltaX, deltaY, deltaZ, deltaR, deltaPhi;
-  int nEvents = 2;
+  int nEvents;
     
   //take in events
   const char * inputpattern="/sphenix/u/skurdi/CMCalibration/cmDistHitsTree_Event*.root"; 
@@ -23,7 +23,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
   TFileCollection *filelist=new TFileCollection();
   filelist->Add(inputpattern);
   TString sourcefilename;
-  /*
+  
   //how many events
   if (nMaxEvents<0){
     nEvents=filelist->GetNFiles();
@@ -31,7 +31,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     nEvents=nMaxEvents;
   } else {
     nEvents= filelist->GetNFiles();
-    }*/
+    }
   
   //canvas for checking data
   TCanvas *canvas1=new TCanvas("canvas1","CMDistortionRecoCart1",1200,800);

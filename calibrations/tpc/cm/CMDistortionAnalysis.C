@@ -79,7 +79,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
   TFileCollection *filelist=new TFileCollection();
   filelist->Add(inputpattern);
   TString sourcefilename;
-
+  /*
    //how many events
   if (nMaxEvents<0){
     nEvents=filelist->GetNFiles();
@@ -88,6 +88,8 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
   } else {
     nEvents= filelist->GetNFiles();
     }
+  */
+  nEvents = 2;
 
   for (int ifile=0;ifile < nEvents;ifile++){
     //for each file, find all histograms in that file.
@@ -108,7 +110,17 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     TH3F *hCylCMModel[2];
     hCylCMModel[0]=(TH3F*)plots->Get("hCMModelRCart");
     hCylCMModel[1]=(TH3F*)plots->Get("hCMModelPhiCart");
-   
+
+    //phi,r binning
+    TH3F *hCartCMModelPhiR[3];
+    hCartCMModelPhiR[0]=(TH3F*)plots->Get("hCMModelX_PhiR");
+    hCartCMModelPhiR[1]=(TH3F*)plots->Get("hCMModelY_PhiR");
+    hCartCMModelPhiR[2]=(TH3F*)plots->Get("hCMModelZ_PhiR");
+
+    TH3F *hCylCMModelPhiR[2];
+    hCylCMModelPhiR[0]=(TH3F*)plots->Get("hCMModelR_PhiR");
+    hCylCMModelPhiR[1]=(TH3F*)plots->Get("hCMModelPhi_PhiR");
+    
     //for forward only
 
     /*
