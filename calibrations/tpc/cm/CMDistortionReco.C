@@ -35,7 +35,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
     nEvents= filelist->GetNFiles();
   }
   
-  TCanvas *canvas1=new TCanvas("canvas","CMDistortionReco1",1200,800);
+  TCanvas *canvas1=new TCanvas("canvas1","CMDistortionReco1",1200,800);
     canvas1->Divide(3,2);
 
   //canvas for time plot
