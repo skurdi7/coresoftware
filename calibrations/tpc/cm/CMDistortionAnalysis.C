@@ -540,11 +540,11 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //x plots
     c1->Divide(4,1);
     c1->cd(1);
-    hCartesianAveDiff[0]->Draw("colz");
+    hCartesianAveDiffPhiR[0]->Draw("colz");
     c1->cd(2);
-    hCartesianAveDiff[1]->Draw("colz");
+    hCartesianAveDiffPhiR[1]->Draw("colz");
     c1->cd(3);
-    hCartesianShiftDifference[0]->Draw();
+    hCartesianShiftDifferencePhiR[0]->Draw();
     //c1->cd(4)->Clear();  
     c1->cd(4);
     //hCMmodelSliceRvTrue->Draw("colz");
@@ -553,11 +553,11 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //y plots
     c2->Divide(4,1);
     c2->cd(1);
-    hCartesianAveDiff[2]->Draw("colz");
+    hCartesianAveDiffPhiR[2]->Draw("colz");
     c2->cd(2);
-    hCartesianAveDiff[3]->Draw("colz");
+    hCartesianAveDiffPhiR[3]->Draw("colz");
     c2->cd(3);
-    hCartesianShiftDifference[1]->Draw();
+    hCartesianShiftDifferencePhiR[1]->Draw();
     //c2->cd(4)->Clear();
     c2->cd(4);
     //hStripesPerBin->Draw("colz");
@@ -566,46 +566,46 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //r cart
     c3->Divide(4,1);
     c3->cd(1);
-    hCylindricalAveDiff[0]->Draw("colz");
+    hCylindricalAveDiffPhiR[0]->Draw("colz");
     c3->cd(2);
-    hCylindricalAveDiff[1]->Draw("colz");
+    hCylindricalAveDiffPhiR[1]->Draw("colz");
     c3->cd(3);
-    hCylindricalShiftDifference[0]->Draw();
+    hCylindricalShiftDifferencePhiR[0]->Draw();
     c3->cd(4);
     hRShiftTrue->Draw();
     
     //phi cart
     c4->Divide(4,1);
     c4->cd(1);
-    hCylindricalAveDiff[2]->Draw("colz");
+    hCylindricalAveDiffPhiR[2]->Draw("colz");
     c4->cd(2);
-    hCylindricalAveDiff[3]->Draw("colz");
+    hCylindricalAveDiffPhiR[3]->Draw("colz");
     c4->cd(3);
-    hCylindricalShiftDifference[1]->Draw();
+    hCylindricalShiftDifferencePhiR[1]->Draw();
     c4->cd(4);
     hPhiShiftTrue->Draw();
 
     //r to true comparison
     c5->Divide(4,1);
     c5->cd(1);
-    hCompareRTrue->Draw("colz");
+    hCompareRTruePhiR->Draw("colz");
     c5->cd(2);
-    hRDiffvR->Draw("colz");
+    hRDiffvR_PhiR->Draw("colz");
     c5->cd(3);
-    hRDiffvZ->Draw("colz");
+    hRDiffvZ_PhiR->Draw("colz");
     c5->cd(4);
-    hRDiffvPhi->Draw("colz");
+    hRDiffvPhi_PhiR->Draw("colz");
 
     //phi to true comparison
     c6->Divide(4,1);
     c6->cd(1);
-    hComparePhiTrue->Draw("colz");
+    hComparePhiTruePhiR->Draw("colz");
     c6->cd(2);
-    hPhiDiffvR->Draw("colz");
+    hPhiDiffvR_PhiR->Draw("colz");
     c6->cd(3);
-    hPhiDiffvZ->Draw("colz");
+    hPhiDiffvZ_PhiR->Draw("colz");
     c6->cd(4);
-    hPhiDiffvPhi->Draw("colz");
+    hPhiDiffvPhi_PhiR->Draw("colz");
 
     titlepad->cd();
     titlepad->Clear();
