@@ -34,8 +34,8 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     }
   
   //canvas for checking data
-  TCanvas *canvas1=new TCanvas("canvas1","CMDistortionRecoCart1",1200,800);
-  canvas1->Divide(3,2);
+  //TCanvas *canvas1=new TCanvas("canvas1","CMDistortionRecoCart1",1200,800);
+  //canvas1->Divide(3,2);
 
   //canvas for time plot
   TCanvas *canvas=new TCanvas("canvas","CMDistortionRecoCart2",400,400);
@@ -211,7 +211,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     
     hTimePerEvent->Fill(after-before);
     
-    
+    /*
     //to check histograms
     for (int i = 0; i < 3; i++){
       hCartesianForward[i]->SetStats(0);
@@ -235,7 +235,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     } else {
       canvas1->Print("CMDistortionRecoCart1.pdf","pdf");
     }
-    
+    */
     
   }
 
