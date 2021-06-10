@@ -67,10 +67,10 @@ int CMDistortionReco(int nMaxEvents = -1) {
     inTree->SetBranchAddress("newposition",&newposition);
 
     // 0 to 2pi for phi, 0 to 90 for r
-    int nbinsphi = 30;
+    int nbinsphi = 30; //when using 35, blank spots at around r = 22 cm, phi just above n below pi
     double lowphi = 0.0;
     double highphi = 2.0*TMath::Pi();
-    int nbinsr = 30;
+    int nbinsr = 30; // when using 35, blank stripe around r = 58 cm
     double lowr = 0.0;
     double highr = 90.0;
     
@@ -125,6 +125,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
       hCartesianForward[1]->Fill(position->X(),position->Y(),deltaY);
       hCartesianForward[2]->Fill(position->X(),position->Y(),deltaZ);
 
+      //do i need these for cartesian coords setup?
       hCylindricalForward[0]->Fill(position->X(),position->Y(),deltaR);
       hCylindricalForward[1]->Fill(position->X(),position->Y(),deltaPhi);
 
@@ -161,14 +162,16 @@ int CMDistortionReco(int nMaxEvents = -1) {
       hCartesianAveShiftPhiR[i]->Divide(hCartesianForwardPhiR[i],hStripesPerBinPhiR);
     }
 
+    hCylindricalAveShiftPhiR[0]->Divide(hCylindricalForwardPhiR[0],hStripesPerBinPhiR);
+    hCylindricalAveShiftPhiR[1]->Divide(hCylindricalForwardPhiR[1],hStripesPerBinPhiR);
+    
+    //cyl models from cart coords
     for(int i = 0; i < nbins; i++){
       double x = low + ((high - low)/(1.0*nbins))*(i+0.5); //center of bin
-      double phi = lowphi + ((highphi - lowphi)/(1.0*nbins))*(i+0.5); //center of bin      
+      
       for(int j = 0; j < nbins; j++){
 	double y = low + ((high - low)/(1.0*nbins))*(j+0.5); //center of bin
-	double r = lowr + ((highr - lowr)/(1.0*nbins))*(j+0.5); //center of bin
-	//stopped here with phi,r coords
-	
+		
 	int xbin = hCartesianAveShift[0]->FindBin(x,y);
 	int ybin = hCartesianAveShift[1]->FindBin(x,y);
 	double xaveshift = (hCartesianAveShift[0]->GetBinContent(xbin))*(1e-4); // converts  microns to cm 
@@ -216,6 +219,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
     hCylindricalCMModel[1]=new TH3F("hCMModelPhiCart", "CM Model: Phi Shift Forward of Stripe Centers from Cartesian", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);  
       
     double xshift, yshift, zshift, rshiftcart, phishiftcart;
+    double xshiftPhiR, yshiftPhiR, zshiftPhiR, rshiftcartPhiR, phishiftcartPhiR;
   
     for(int i = 0; i < nphi; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
@@ -242,6 +246,21 @@ int CMDistortionReco(int nMaxEvents = -1) {
 
 	  hCylindricalCMModel[0]->Fill(phi,r,z,rshiftcart*(1-z/105.5));
 	  hCylindricalCMModel[1]->Fill(phi,r,z,phishiftcart*(1-z/105.5));
+
+	  //phi,r binning
+	  xshiftPhiR=(hCartesianAveShift[0]->Interpolate(phi,r))*(1e-4);//coordinate of your stripe
+	  yshiftPhiR=(hCartesianAveShift[1]->Interpolate(phi,r))*(1e-4);//convert micron to cm
+	  zshiftPhiR=(hCartesianAveShift[2]->Interpolate(phi,r))*(1e-4);
+
+	  rshiftcartPhiR=(hCylindricalAveShift[0]->Interpolate(phi,r))*(1e-4);
+	  phishiftcartPhiR=hCylindricalAveShift[1]->Interpolate(phi,r);
+	  
+	  hCartesianCMModelPhiRPhiR[0]->Fill(phi,r,z,xshiftPhiR*(1-z/105.5));
+	  hCartesianCMModelPhiR[1]->Fill(phi,r,z,yshiftPhiR*(1-z/105.5));
+	  hCartesianCMModelPhiR[2]->Fill(phi,r,z,zshiftPhiR*(1-z/105.5));
+
+	  hCylindricalCMModelPhiR[0]->Fill(phi,r,z,rshiftcartPhiR*(1-z/105.5));
+	  hCylindricalCMModelPhiR[1]->Fill(phi,r,z,phishiftcartPhiR*(1-z/105.5));
 	}
       }
     }
