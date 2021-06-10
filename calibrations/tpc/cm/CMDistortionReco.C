@@ -154,8 +154,8 @@ int CMDistortionReco(int nMaxEvents = -1) {
     hCartesianAveShiftPhiR[2] = new TH2F("AveShiftZ_PhiR","Average of CM Model Z over Stripes per Bin, Phi,R binning (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
 
     TH2F *hCylindricalAveShiftPhiR[2];
-     hCylindricalAveShiftPhiR[0] = new TH2F("AveShiftRCart_PhiR","Average of CM Model R over Stripes per Bin from Cartesian, Phi,R binning (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
-    hCylindricalAveShiftPhiR[1] = new TH2F("AveShiftPhiCart_PhiR","Average of CM Model Phi over Stripes per Bin from Cartesian, Phi,R binning (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+     hCylindricalAveShiftPhiR[0] = new TH2F("AveShiftR_PhiR","Average of CM Model R over Stripes per Bin, Phi,R binning (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCylindricalAveShiftPhiR[1] = new TH2F("AveShiftPhi_PhiR","Average of CM Model Phi over Stripes per Bin, Phi,R binning (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
     
     for (int i = 0; i < 3; i ++){
       hCartesianAveShift[i]->Divide(hCartesianForward[i],hStripesPerBin);
@@ -216,7 +216,17 @@ int CMDistortionReco(int nMaxEvents = -1) {
 
     TH3F *hCylindricalCMModel[2];
     hCylindricalCMModel[0]=new TH3F("hCMModelRCart", "CM Model: Radial Shift Forward of Stripe Centers from Cartesian", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);
-    hCylindricalCMModel[1]=new TH3F("hCMModelPhiCart", "CM Model: Phi Shift Forward of Stripe Centers from Cartesian", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);  
+    hCylindricalCMModel[1]=new TH3F("hCMModelPhiCart", "CM Model: Phi Shift Forward of Stripe Centers from Cartesian", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);
+
+    //phi,r binning
+    TH3F *hCartesianCMModelPhiR[3];
+    hCartesianCMModelPhiR[0]=new TH3F("hCMModelX_PhiR", "CM Model: X Shift Forward of Stripe Centers, Phi,R binning", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz); //rad, cm, cm
+    hCartesianCMModelPhiR[1]=new TH3F("hCMModelY_PhiR", "CM Model: Y Shift Forward of Stripe Centers, Phi,R binning", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);
+    hCartesianCMModelPhiR[2]=new TH3F("hCMModelZ_PhiR", "CM Model: Z Shift Forward of Stripe Centers, Phi,R binning", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);
+
+    TH3F *hCylindricalCMModelPhiR[2];
+    hCylindricalCMModelPhiR[0]=new TH3F("hCMModelR_PhiR", "CM Model: Radial Shift Forward of Stripe Centers, Phi,R binning", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);
+    hCylindricalCMModelPhiR[1]=new TH3F("hCMModelPhi_PhiR", "CM Model: Phi Shift Forward of Stripe Centers, Phi,R binning", nphi,minphi,maxphi, nr,minr,maxr, nz,minz,maxz);  
       
     double xshift, yshift, zshift, rshiftcart, phishiftcart;
     double xshiftPhiR, yshiftPhiR, zshiftPhiR, rshiftcartPhiR, phishiftcartPhiR;
