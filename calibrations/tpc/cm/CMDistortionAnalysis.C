@@ -411,7 +411,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
 	    hPhiDiffvPhi_PhiR->Fill(phi,differenceCylPhiR[1],1);
 	    hPhiDiffvZ_PhiR->Fill(z,differenceCylPhiR[1],1);
 
-	    hSamplePerBinRZ->Fill(phi,r,1);
+	    hSamplePerBinPhiR->Fill(phi,r,1);
 	  }
 	}
       }
