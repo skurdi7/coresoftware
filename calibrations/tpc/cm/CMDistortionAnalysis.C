@@ -373,13 +373,11 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
 
 	    //r
 	    shiftrecoCylPhiR[0] =  (hCylCMModelPhiR[0]->GetBinContent(binPhiR))*(1e4);
-	    
 	    differenceCylPhiR[0] = shiftrecoCylPhiR[0] - shifttrueCyl[0]; 
 	    hCylindricalShiftDifferencePhiR[0]->Fill(differenceCylPhiR[0]);
 	      
 	    //phi
-	    shiftrecoCylPhiR[1] = r*(1e4)*(hCylCMModelPhiR[1]->GetBinContent(bin));
-	    shifttrueCyl[1] = (shifter->hPhi->Interpolate(phi,r,z))*(1e4); 
+	    shiftrecoCylPhiR[1] = r*(1e4)*(hCylCMModelPhiR[1]->GetBinContent(binPhiR));
 	    differenceCylPhiR[1] = (shiftrecoCylPhiR[1] - shifttrueCyl[1]); 
 	    hCylindricalShiftDifferencePhiR[1]->Fill(differenceCylPhiR[1]);
 
@@ -393,10 +391,10 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
 	    hCartesianDiffPhiR[4]->Fill(phi,r, differenceCartPhiR[2]);
 	    hCartesianDiffPhiR[5]->Fill(z,r, differenceCartPhiR[2]);
 
-	    //r cart
+	    //r
 	    hCylindricalDiffPhiR[0]->Fill(phi,r, differenceCylPhiR[0]);
 	    hCylindricalDiffPhiR[1]->Fill(z,r, differenceCylPhiR[0]);
-	    //phi cart
+	    //phi 
 	    hCylindricalDiffPhiR[2]->Fill(phi,r, differenceCylPhiR[1]);
 	    hCylindricalDiffPhiR[3]->Fill(z,r, differenceCylPhiR[1]);
 	    
