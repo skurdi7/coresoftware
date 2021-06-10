@@ -34,7 +34,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
   } else {
     nEvents= filelist->GetNFiles();
     }*/
-  nEvents = 3;
+  nEvents = 2;
   
   TCanvas *canvas1=new TCanvas("canvas1","CMDistortionReco1",1200,800);
   canvas1->Divide(3,2);
@@ -107,6 +107,10 @@ int CMDistortionReco(int nMaxEvents = -1) {
       double r = position->Perp();
       double phi = position->Phi();
 
+      if(position->Phi() < 0.0){
+	phi = position->Phi() + 2.0*TMath::Pi(); 
+      }
+      
       hStripesPerBinPhiR->Fill(phi,r,1);
       
       deltaX = (newposition->X() - position->X())*(1e4); //convert from cm to micron 
