@@ -23,7 +23,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
   TFileCollection *filelist=new TFileCollection();
   filelist->Add(inputpattern);
   TString sourcefilename;
-  /*
+  
   //how many events
   if (nMaxEvents<0){
     nEvents=filelist->GetNFiles();
@@ -31,13 +31,11 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     nEvents=nMaxEvents;
   } else {
     nEvents= filelist->GetNFiles();
-    }*/
-
-  nEvents = 2;
+  }
   
   //canvas for checking data
-  TCanvas *canvas1=new TCanvas("canvas1","CMDistortionRecoCart1",1200,800);
-  canvas1->Divide(3,2);
+  //TCanvas *canvas1=new TCanvas("canvas1","CMDistortionRecoCart1",1200,800);
+  //canvas1->Divide(3,2);
 
   //canvas for time plot
   TCanvas *canvas=new TCanvas("canvas","CMDistortionRecoCart2",400,400);
@@ -47,7 +45,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
   newposition = new TVector3(1.,1.,1.);
 
   //histogram to compare times
-  TH1F *hTimePerEvent = new TH1F("hTimePerEvent","Time Per Event; time (ms)",20,0,2000);
+  TH1F *hTimePerEvent = new TH1F("hTimePerEvent","Time Per Event; time (ms)",20,0,10000);
     
   for (int ifile=0;ifile < nEvents;ifile++){
     //call to TTime before opening ttree
@@ -213,7 +211,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     
     hTimePerEvent->Fill(after-before);
     
-    
+    /*
     //to check histograms
     for (int i = 0; i < 3; i++){
       hCartesianForward[i]->SetStats(0);
@@ -236,7 +234,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
       canvas1->Print("CMDistortionRecoCart1.pdf)","pdf");
     } else {
       canvas1->Print("CMDistortionRecoCart1.pdf","pdf");
-    }
+    }*/
     
     
   }
