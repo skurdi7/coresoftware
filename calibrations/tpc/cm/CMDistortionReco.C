@@ -292,7 +292,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
       canvas1->Print("CMDistortionReco1.pdf(","pdf");
     } else if (ifile == nEvents - 1){
       canvas1->Print("CMDistortionReco1.pdf)","pdf");
-    } else if {
+    } else {
       canvas1->Print("CMDistortionReco1.pdf","pdf");
     }
     
