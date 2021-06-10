@@ -52,7 +52,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
   double low = -80.0;
   double high = 80.0;
   double deltaX, deltaY, deltaZ, deltaR, deltaPhi;
-  int nEvents = 30;
+  int nEvents; 
   
   TCanvas *canvas=new TCanvas("canvas","CMDistortionAnalysis",2000,3000);
 
@@ -81,14 +81,13 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
   TString sourcefilename;
 
    //how many events
-  /*
   if (nMaxEvents<0){
     nEvents=filelist->GetNFiles();
   } else if(nMaxEvents<filelist->GetNFiles()){
     nEvents=nMaxEvents;
   } else {
     nEvents= filelist->GetNFiles();
-    }*/
+    }
 
   for (int ifile=0;ifile < nEvents;ifile++){
     //for each file, find all histograms in that file.
