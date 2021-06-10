@@ -280,10 +280,12 @@ int CMDistortionReco(int nMaxEvents = -1) {
     hCartesianForward[1]->Draw("colz");
     canvas1->cd(3);
     hCartesianForward[2]->Draw("colz");
-    canvas1->cd(4)->Clear();
-    canvas1->cd(5)->Clear();
-    canvas1->cd(6)->Clear();
-    
+    canvas1->cd(4);
+    hCartesianForwardPhiR[0]->Draw("colz");
+    canvas1->cd(5);
+    hCartesianForwardPhiR[1]->Draw("colz");
+    canvas1->cd(6);
+    hCartesianForwardPhiR[2]->Draw("colz");
   
     if(ifile == 0){ 
       canvas1->Print("CMDistortionReco1.pdf(","pdf");
