@@ -588,7 +588,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //r to true comparison
     c5->Divide(4,1);
     c5->cd(1);
-    hCompareRTruePhiR->Draw("colz");
+    hCompareRTrue_PhiR->Draw("colz");
     c5->cd(2);
     hRDiffvR_PhiR->Draw("colz");
     c5->cd(3);
@@ -599,7 +599,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //phi to true comparison
     c6->Divide(4,1);
     c6->cd(1);
-    hComparePhiTruePhiR->Draw("colz");
+    hComparePhiTrue_PhiR->Draw("colz");
     c6->cd(2);
     hPhiDiffvR_PhiR->Draw("colz");
     c6->cd(3);
