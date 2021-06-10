@@ -69,7 +69,9 @@ int CMDistortionReco(int nMaxEvents = -1) {
     
     //for forward only
    
-    TH2F *hStripesPerBin = new TH2F("hStripesPerBin","CM Stripes Per Bin (z in stripes); x (cm); y (cm)",nbins,low,high,nbins,low,high); 
+    TH2F *hStripesPerBin = new TH2F("hStripesPerBin","CM Stripes Per Bin (z in stripes); x (cm); y (cm)",nbins,low,high,nbins,low,high);
+
+     TH2F *hStripesPerBinRPhi = new TH2F("hStripesPerBinRPhi","CM Stripes Per Bin (z in stripes); phi (rad); r (cm)",nbins,lowphi,highphi,nbins,low,high); // min n max just beyond extent of CM so it's easier to see
 
     TH2F *hCartesianForward[3];
     hCartesianForward[0] = new TH2F("hForwardX","X Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
