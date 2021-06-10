@@ -68,7 +68,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
 
     // 0 to 2pi for phi, 0 to 90 for r
     double lowphi = 0.0;
-    double highphi = 2.0*TMath::Pi();
+    double highphi = 5.0*TMath::Pi();
 
     double lowr = 0.0;
     double highr = 90.0;
@@ -276,7 +276,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
     //to check histograms
     for (int i = 0; i < 3; i++){
       hCartesianForward[i]->SetStats(0);
-      hCartesianAveShift[i]->SetStats(0);
+      hCartesianForwardPhiR[i]->SetStats(0);
     }
 
     hStripesPerBin->SetStats(0);
