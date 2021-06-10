@@ -157,12 +157,6 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     int ndiff = 300;
     int mindiff = -20;
     int maxdiff = 20;
-
-    //for phi,r binning
-    double lowphi = 0.0;
-    double highphi = 2.0*TMath::Pi();
-    double lowr = 0.0;
-    double highr = 90.0;
     
   
     TH1F *hCartesianShiftDifference[3];
@@ -198,11 +192,11 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
 
     //phi,r binning
      TH2F *hCartesianDiffPhiR[6];
-    hCartesianDiffPhiR[0] = new TH2F("hDiffXYX_PhiR", "Difference in XY for CM Model X, Phi,R binning; phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCartesianDiffPhiR[0] = new TH2F("hDiffXYX_PhiR", "Difference in PhiR for CM Model X, Phi,R binning; phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCartesianDiffPhiR[1] = new TH2F("hDiffRZX_PhiR", "Difference in RZ for CM Model X, Phi,R binning; z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
-    hCartesianDiffPhiR[2] = new TH2F("hDiffXYY_PhiR", "Difference in XY for CM Model Y, Phi,R binning; phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCartesianDiffPhiR[2] = new TH2F("hDiffXYY_PhiR", "Difference in PhiR for CM Model Y, Phi,R binning; phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCartesianDiffPhiR[3] = new TH2F("hDiffRZY_PhiR", "Difference in RZ for CM Model Y, Phi,R binning; z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
-    hCartesianDiffPhiR[4] = new TH2F("hDiffXYZ_PhiR", "Difference in XY for CM Model Z, Phi,R binning; phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCartesianDiffPhiR[4] = new TH2F("hDiffXYZ_PhiR", "Difference in PhiR for CM Model Z, Phi,R binning; phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCartesianDiffPhiR[5] = new TH2F("hDiffRZZ_PhiR", "Difference in RZ for CM Model Z, Phi,R binning; z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
     
     TH2F *hCylindricalDiff[4];
@@ -213,9 +207,9 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
 
     //phi,r binning
     TH2F *hCylindricalDiffPhiR[4];
-    hCylindricalDiffPhiR[0] = new TH2F("hDiffXYR_PhiR", "Difference in XY for CM Model R, Phi,R binning; phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCylindricalDiffPhiR[0] = new TH2F("hDiffXYR_PhiR", "Difference in PhiR for CM Model R, Phi,R binning; phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCylindricalDiffPhiR[1] = new TH2F("hDiffRZR_PhiR", "Difference in RZ for CM Model R, Phi,R binning; z (cm); r (cm)",nz,minz,maxz,nr,minr,maxr);
-    hCylindricalDiffPhiR[2] = new TH2F("hDiffXYPhi_PhiR", "Difference in XY for CM Model Phi, Phi,R binning; phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCylindricalDiffPhiR[2] = new TH2F("hDiffXYPhi_PhiR", "Difference in PhiR for CM Model Phi, Phi,R binning; phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCylindricalDiffPhiR[3] = new TH2F("hDiffRZPhi_PhiR", "Difference in RZ for CM Model Phi, Phi,R binning; z (cm); r (cm)",nz,minz,maxz,nr,minr,maxr);
   
     TH2F *hCartesianAveDiff[6];
@@ -228,11 +222,11 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
 
     //phi,r binning
     TH2F *hCartesianAveDiffPhiR[6];
-    hCartesianAveDiffPhiR[0] = new TH2F("hAveDiffXYX_PhiR", "X Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCartesianAveDiffPhiR[0] = new TH2F("hAveDiffXYX_PhiR", "X Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCartesianAveDiffPhiR[1] = new TH2F("hAveDiffRZX_PhiR", "X Model - Truth Averaged Over phi, Phi,R binning (#mum); z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
-    hCartesianAveDiffPhiR[2] = new TH2F("hAveDiffXYY_PhiR", "Y Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCartesianAveDiffPhiR[2] = new TH2F("hAveDiffXYY_PhiR", "Y Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCartesianAveDiffPhiR[3] = new TH2F("hAveDiffRZY_PhiR", "Y Model - Truth Averaged Over phi, Phi,R binning (#mum); z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
-    hCartesianAveDiffPhiR[4] = new TH2F("hAveDiffXYZ_PhiR", "Z Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    hCartesianAveDiffPhiR[4] = new TH2F("hAveDiffXYZ_PhiR", "Z Model - Truth Averaged Over z, Phi,R binning (#mum); phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     hCartesianAveDiffPhiR[5] = new TH2F("hAveDiffRZZ_PhiR", "Z Model - Truth Averaged Over phi, Phi,R binning (#mum); z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
     
     TH2F *hCylindricalAveDiff[4];
@@ -252,7 +246,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     TH2F *hSamplePerBinRZ = new TH2F("hSamplePerBinRZ", "Filling each rz bin; z (cm); r (cm)", nz,minz,maxz,nr,minr,maxr);
 
     //phi,r binning
-    TH2F *hSamplePerBinPhiR = new TH2F("hSamplePerBinPhiR", "Filling each phir bin; phi (rad); r (cm)",nphi,lowphi,highphi,nr,lowr,highr);
+    TH2F *hSamplePerBinPhiR = new TH2F("hSamplePerBinPhiR", "Filling each PhiR bin; phi (rad); r (cm)",nphi,minphi,maxphi,nr,minr,maxr);
     
     TH2F *hCompareRTrue = new TH2F("hCompareRTrue", "Compare Difference from R Model and True (R > 30, 10 < z < 90); reco shift (#mum); true shift (#mum)",nbins,-550,550,nbins,-550,550);
     TH2F *hComparePhiTrue = new TH2F("hComparePhiTrue", "Compare Difference from Phi Model and True (R > 30, 10 < z < 90); reco shift (#mum); true shift (#mum)",nbins,-550,550,nbins,-550,550);
