@@ -35,8 +35,8 @@ int CMDistortionReco(int nMaxEvents = -1) {
     nEvents= filelist->GetNFiles();
   }
   
-  /*TCanvas *canvas=new TCanvas("canvas","CMDistortionReco1",1200,800);
-    canvas->Divide(3,2);*/
+  TCanvas *canvas1=new TCanvas("canvas","CMDistortionReco1",1200,800);
+    canvas1->Divide(3,2);
 
   //canvas for time plot
   TCanvas *canvas=new TCanvas("canvas","CMDistortionReco2",400,400);
@@ -66,12 +66,18 @@ int CMDistortionReco(int nMaxEvents = -1) {
     inTree->SetBranchAddress("newposition",&newposition);
 
     // 0 to 2pi for phi, 0 to 90 for r
+    double lowphi = 0.0;
+    double highphi = 2.0*TMath::Pi();
+
+    double lowr = 0.0;
+    double highr = 90.0;
     
     //for forward only
    
     TH2F *hStripesPerBin = new TH2F("hStripesPerBin","CM Stripes Per Bin (z in stripes); x (cm); y (cm)",nbins,low,high,nbins,low,high);
 
-     TH2F *hStripesPerBinRPhi = new TH2F("hStripesPerBinRPhi","CM Stripes Per Bin (z in stripes); phi (rad); r (cm)",nbins,lowphi,highphi,nbins,low,high); // min n max just beyond extent of CM so it's easier to see
+    //phi,r binning
+    TH2F *hStripesPerBinPhiR = new TH2F("hStripesPerBinPhiR","CM Stripes Per Bin (z in stripes); phi (rad); r (cm)",nbins,lowphi,highphi,nbins,lowr,highr);
 
     TH2F *hCartesianForward[3];
     hCartesianForward[0] = new TH2F("hForwardX","X Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
@@ -79,13 +85,27 @@ int CMDistortionReco(int nMaxEvents = -1) {
     hCartesianForward[2] = new TH2F("hForwardZ","Z Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
 
     TH2F *hCylindricalForward[2];
-    hCylindricalForward[0] = new TH2F("hForwardR","Radial Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
+    hCylindricalForward[0] = new TH2F("hForward","Radial Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
     hCylindricalForward[1] = new TH2F("hForwardPhi","Phi Shift Forward of Stripe Centers (rad); x (cm); y (cm)",nbins,low,high,nbins,low,high);
+
+    //r, phi binning
+    TH2F *hCartesianForwardPhiR[3];
+    hCartesianForwardPhiR[0] = new TH2F("hForwardX_PhiR","X Shift Forward of Stripe Centers, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr);
+    hCartesianForwardPhiR[1] = new TH2F("hForwardY_PhiR","Y Shift Forward of Stripe Centers, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr);
+    hCartesianForwardPhiR[2] = new TH2F("hForwardZ_PhiR","Z Shift Forward of Stripe Centers, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr);
+     TH2F *hCylindricalForwardPhiR[2];
+    hCylindricalForwardPhiR[0] = new TH2F("hForwardR_PhiR","Radial Shift Forward of Stripe Centers, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr);
+    hCylindricalForwardPhiR[1] = new TH2F("hForwardPhi_PhiR","Phi Shift Forward of Stripe Centers, Phi,R binning (rad); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr);
     
     for (int i=0;i<inTree->GetEntries();i++){
       inTree->GetEntry(i);
 
       hStripesPerBin->Fill(position->X(),position->Y(),1);
+
+      double r = position->Perp();
+      double phi = position->Phi();
+
+      hStripesPerBinPhiR->Fill(phi,r,1);
       
       deltaX = (newposition->X() - position->X())*(1e4); //convert from cm to micron 
       deltaY = (newposition->Y() - position->Y())*(1e4);
@@ -100,6 +120,14 @@ int CMDistortionReco(int nMaxEvents = -1) {
 
       hCylindricalForward[0]->Fill(position->X(),position->Y(),deltaR);
       hCylindricalForward[1]->Fill(position->X(),position->Y(),deltaPhi);
+
+      // phi,r binning
+      hCartesianForwardPhiR[0]->Fill(phi,r,deltaX);
+      hCartesianForwardPhiR[1]->Fill(phi,r,deltaY);
+      hCartesianForwardPhiR[2]->Fill(phi,r,deltaZ);
+
+      hCylindricalForwardPhiR[0]->Fill(phi,r,deltaR);
+      hCylindricalForwardPhiR[1]->Fill(phi,r,deltaPhi);
     }
 
     TH2F *hCartesianAveShift[3];
@@ -110,16 +138,30 @@ int CMDistortionReco(int nMaxEvents = -1) {
     TH2F *hCylindricalAveShift[2];
      hCylindricalAveShift[0] = new TH2F("AveShiftRCart","Average of CM Model R over Stripes per Bin from Cartesian (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high); 
     hCylindricalAveShift[1] = new TH2F("AveShiftPhiCart","Average of CM Model Phi over Stripes per Bin from Cartesian (rad); x (cm); y (cm)",nbins,low,high,nbins,low,high); 
+
+    // phi,r binning
+     TH2F *hCartesianAveShiftPhiR[3];
+    hCartesianAveShiftPhiR[0] = new TH2F("AveShiftX_PhiR","Average of CM Model X over Stripes per Bin, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr); 
+    hCartesianAveShiftPhiR[1] = new TH2F("AveShiftY_PhiR","Average of CM Model Y over Stripes per Bin, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr); 
+    hCartesianAveShiftPhiR[2] = new TH2F("AveShiftZ_PhiR","Average of CM Model Z over Stripes per Bin, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr); 
+
+    TH2F *hCylindricalAveShiftPhiR[2];
+     hCylindricalAveShiftPhiR[0] = new TH2F("AveShiftRCart_PhiR","Average of CM Model R over Stripes per Bin from Cartesian, Phi,R binning (#mum); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr); 
+    hCylindricalAveShiftPhiR[1] = new TH2F("AveShiftPhiCart_PhiR","Average of CM Model Phi over Stripes per Bin from Cartesian, Phi,R binning (rad); phi (rad), r (cm)",nbins,lowphi,highphi,nbins,lowr,highr);
     
     for (int i = 0; i < 3; i ++){
       hCartesianAveShift[i]->Divide(hCartesianForward[i],hStripesPerBin);
+      hCartesianAveShiftPhiR[i]->Divide(hCartesianForwardPhiR[i],hStripesPerBinPhiR);
     }
 
     for(int i = 0; i < nbins; i++){
       double x = low + ((high - low)/(1.0*nbins))*(i+0.5); //center of bin
+      double phi = lowphi + ((highphi - lowphi)/(1.0*nbins))*(i+0.5); //center of bin      
       for(int j = 0; j < nbins; j++){
 	double y = low + ((high - low)/(1.0*nbins))*(j+0.5); //center of bin
-      
+	double r = lowr + ((highr - lowr)/(1.0*nbins))*(j+0.5); //center of bin
+	//stopped here with phi,r coords
+	
 	int xbin = hCartesianAveShift[0]->FindBin(x,y);
 	int ybin = hCartesianAveShift[1]->FindBin(x,y);
 	double xaveshift = (hCartesianAveShift[0]->GetBinContent(xbin))*(1e-4); // converts  microns to cm 
@@ -216,6 +258,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
     
     plots->Close();
 
+    
     //call to TTime after outputting TH3Fs
     //TTime after;
     now=gSystem->Now();
@@ -224,33 +267,32 @@ int CMDistortionReco(int nMaxEvents = -1) {
     
     hTimePerEvent->Fill(after-before);
     
-    /*
-      //to check histograms
-      for (int i = 0; i < 3; i++){
+    //to check histograms
+    for (int i = 0; i < 3; i++){
       hCartesianForward[i]->SetStats(0);
       hCartesianAveShift[i]->SetStats(0);
-      }
+    }
 
-      hStripesPerBin->SetStats(0);
-      canvas->cd(1);
-      hCartesianForward[0]->Draw("colz");
-      canvas->cd(2);
-      hCartesianForward[1]->Draw("colz");
-      canvas->cd(3);
-      hCartesianForward[2]->Draw("colz");
-      canvas->cd(4)->Clear();
-      canvas->cd(5)->Clear();
-      canvas->cd(6)->Clear();
+    hStripesPerBin->SetStats(0);
+    canvas1->cd(1);
+    hCartesianForward[0]->Draw("colz");
+    canvas1->cd(2);
+    hCartesianForward[1]->Draw("colz");
+    canvas1->cd(3);
+    hCartesianForward[2]->Draw("colz");
+    canvas1->cd(4)->Clear();
+    canvas1->cd(5)->Clear();
+    canvas1->cd(6)->Clear();
     
   
-      if(ifile == 0){ 
-      canvas->Print("CMDistortionReco1.pdf(","pdf");
-      } else if (ifile == nEvents - 1){
-      canvas->Print("CMDistortionReco1.pdf)","pdf");
-      } else{
-      canvas->Print("CMDistortionReco1.pdf","pdf");
-      }
-    */
+    if(ifile == 0){ 
+      canvas1->Print("CMDistortionReco1.pdf(","pdf");
+    } else if (ifile == nEvents - 1){
+      canvas1->Print("CMDistortionReco1.pdf)","pdf");
+    } else{
+      canvas1->Print("CMDistortionReco1.pdf","pdf");
+    }
+    
   }
 
   canvas->cd();
