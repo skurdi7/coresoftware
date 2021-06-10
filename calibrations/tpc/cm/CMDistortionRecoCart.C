@@ -198,7 +198,6 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     }
 
     for(int i = 0; i < 2; i++){
-      hCylindricalForward[i]->Write();
       hCylindricalAveShift[i]->Write();
       hCylindricalCMModel[i]->Write();
     }
@@ -220,7 +219,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
 
     hStripesPerBin->SetStats(0);
     canvas1->cd(1);
-    hStripesPerBinPhiR->Draw("colz");
+    hCartesianForward[0]->Draw("colz");
     canvas1->cd(2);
     hCartesianForward[1]->Draw("colz");
     canvas1->cd(3);
