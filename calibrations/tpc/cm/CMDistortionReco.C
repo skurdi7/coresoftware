@@ -27,14 +27,14 @@ int CMDistortionReco(int nMaxEvents = -1) {
   TString sourcefilename;
   
   //how many events
-  /*if (nMaxEvents<0){
+  if (nMaxEvents<0){
     nEvents=filelist->GetNFiles();
   } else if(nMaxEvents<filelist->GetNFiles()){
     nEvents=nMaxEvents;
   } else {
     nEvents= filelist->GetNFiles();
-    }*/
-  nEvents = 2;
+    }
+  //nEvents = 2;
   
   TCanvas *canvas1=new TCanvas("canvas1","CMDistortionReco1",1200,800);
   canvas1->Divide(3,2);
@@ -53,7 +53,6 @@ int CMDistortionReco(int nMaxEvents = -1) {
     //call to TTime before opening ttree
     TTime now;
     now=gSystem->Now();
-    //printf("the time is %lu\n",(unsigned long)before);
     unsigned long before = now;
     
     //get data from ttree
@@ -304,9 +303,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
 
     
     //call to TTime after outputting TH3Fs
-    //TTime after;
     now=gSystem->Now();
-    //printf("the time is %lu\n",(unsigned long)after);
     unsigned long after = now;
     
     hTimePerEvent->Fill(after-before);
