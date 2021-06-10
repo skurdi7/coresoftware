@@ -265,7 +265,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
 	  rshiftcartPhiR=(hCylindricalAveShift[0]->Interpolate(phi,r))*(1e-4);
 	  phishiftcartPhiR=hCylindricalAveShift[1]->Interpolate(phi,r);
 	  
-	  hCartesianCMModelPhiRPhiR[0]->Fill(phi,r,z,xshiftPhiR*(1-z/105.5));
+	  hCartesianCMModelPhiR[0]->Fill(phi,r,z,xshiftPhiR*(1-z/105.5));
 	  hCartesianCMModelPhiR[1]->Fill(phi,r,z,yshiftPhiR*(1-z/105.5));
 	  hCartesianCMModelPhiR[2]->Fill(phi,r,z,zshiftPhiR*(1-z/105.5));
 
