@@ -180,7 +180,6 @@ int CMDistortionRecoPhiR(int nMaxEvents = -1) {
     TFile *plots;
 
     plots=TFile::Open(Form("CMModelsPhiR_Event%d.root",ifile),"RECREATE");
-    hStripesPerBin->Write(); 
 
     for(int i = 0; i < 3; i++){
       hCartesianForwardPhiR[i]->Write();
