@@ -63,7 +63,6 @@ int CMDistortionReco(int nMaxEvents = -1) {
     inTree->SetBranchAddress("position",&position);
     inTree->SetBranchAddress("newposition",&newposition);
 
-    //hardcoded numbers from average distortion file's hIntDistortionPosX
     int nbinsphi = 30; //when using 35, blank spots at around r = 22 cm, phi just above n below pi
     double lowphi = -0.078539819;
     double highphi = 6.3617253;
