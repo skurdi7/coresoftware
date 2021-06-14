@@ -29,12 +29,12 @@ Shifter::Shifter(TString sourcefilename){
   //average distortion file
   average=TFile::Open("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root","READ"); 
   
-  hXave=(TH3F*)average->Get("hIntDistortionX");
-  hYave=(TH3F*)average->Get("hIntDistortionY");
-  hZave=(TH3F*)average->Get("hIntDistortionZ");
+  hXave=(TH3F*)average->Get("hIntDistortionPosX");
+  hYave=(TH3F*)average->Get("hIntDistortionPosY");
+  hZave=(TH3F*)average->Get("hIntDistortionPosZ");
   
-  hRave=(TH3F*)average->Get("hIntDistortionR");
-  hPhiave=(TH3F*)average->Get("hIntDistortionP");
+  hRave=(TH3F*)average->Get("hIntDistortionPosR");
+  hPhiave=(TH3F*)average->Get("hIntDistortionPosP");
  
   //subtract average from total distortions to study fluctuations
   hX->Add(hXave,-1);
@@ -123,21 +123,6 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     
     //for forward only
 
-    /*
-    //same range and bins for each coordinate, can use hR for all, binned in cm
-    int nphi = shifter->hR->GetXaxis()->GetNbins();
-    int nr = shifter->hR->GetYaxis()->GetNbins();
-    int nz = (shifter->hR->GetZaxis()->GetNbins())/2;
-    
-    double minphi = shifter->hR->GetXaxis()->GetXmin();
-    double minr = shifter->hR->GetYaxis()->GetXmin();
-    double minz = 5.0;
-    
-    double maxphi = shifter->hR->GetXaxis()->GetXmax();
-    double maxr = shifter->hR->GetYaxis()->GetXmax();
-    double maxz = shifter->hR->GetZaxis()->GetXmax();
-    */
-
     //same range and bins for each coordinate, binned in cm
     //hardcoded numbers from average distortion file's hIntDistortionPosX
     int nphi = 82;
@@ -146,7 +131,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     
     double minphi = -0.078539819;
     double minr = 18.884615;
-    double minz = 5.0;
+    double minz = -1.3187500;
     
     double maxphi = 6.3617253;
     double maxr = 79.115387;
@@ -449,23 +434,25 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     }
 
     //summary plots
-    hDifferenceMeanR->Fill(hCylindricalShiftDifference[0]->GetMean(1));
-    hDifferenceStdDevR->Fill(hCylindricalShiftDifference[0]->GetStdDev(1));
+    hDifferenceMeanR->Fill(hCylindricalShiftDifferencePhiR[0]->GetMean(1));
+    hDifferenceStdDevR->Fill(hCylindricalShiftDifferencePhiR[0]->GetStdDev(1));
 
     hTrueMeanR->Fill(hRShiftTrue->GetMean(1));
     hTrueStdDevR->Fill(hRShiftTrue->GetStdDev(1));
     
-    hDifferenceMeanPhi->Fill(hCylindricalShiftDifference[1]->GetMean(1));
-    hDifferenceStdDevPhi->Fill(hCylindricalShiftDifference[1]->GetStdDev(1));
+    hDifferenceMeanPhi->Fill(hCylindricalShiftDifferencePhiR[1]->GetMean(1));
+    hDifferenceStdDevPhi->Fill(hCylindricalShiftDifferencePhiR[1]->GetStdDev(1));
 
     hTrueMeanPhi->Fill(hPhiShiftTrue->GetMean(1));
     hTrueStdDevPhi->Fill(hPhiShiftTrue->GetStdDev(1));
 
     for (int m = 0; m < 6; m++){
       hCartesianAveDiff[m]->SetStats(0);
+      hCartesianAveDiffPhiR[m]->SetStats(0);
     }
     for (int m = 0; m < 4; m++){
       hCylindricalAveDiff[m]->SetStats(0);
+      hCylindricalAveDiffPhiR[m]->SetStats(0);
     }
   
     hCompareRTrue->SetStats(0);
@@ -478,6 +465,17 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     hPhiDiffvR->SetStats(0);
     hPhiDiffvZ->SetStats(0);
     hPhiDiffvPhi->SetStats(0);
+
+    hCompareRTrue_PhiR->SetStats(0);
+    hComparePhiTrue_PhiR->SetStats(0);
+
+    hRDiffvR_PhiR->SetStats(0);
+    hRDiffvZ_PhiR->SetStats(0);
+    hRDiffvPhi_PhiR->SetStats(0);
+  
+    hPhiDiffvR_PhiR->SetStats(0);
+    hPhiDiffvZ_PhiR->SetStats(0);
+    hPhiDiffvPhi_PhiR->SetStats(0);
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //can i do an array of pads?
     TPad *c2=new TPad("c2","",0.0,0.64,1.0,0.77);
@@ -559,7 +557,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //c2->cd(4)->Clear();
     c2->cd(4);
     //hStripesPerBin->Draw("colz");
-    hSamplePerBinXY->Draw("colz");
+    hSamplePerBinPhiR->Draw("colz");
     
     //r cart
     c3->Divide(4,1);

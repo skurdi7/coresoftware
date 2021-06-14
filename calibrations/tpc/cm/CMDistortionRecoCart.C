@@ -31,7 +31,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     nEvents=nMaxEvents;
   } else {
     nEvents= filelist->GetNFiles();
-    }
+  }
   
   //canvas for checking data
   //TCanvas *canvas1=new TCanvas("canvas1","CMDistortionRecoCart1",1200,800);
@@ -45,7 +45,7 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
   newposition = new TVector3(1.,1.,1.);
 
   //histogram to compare times
-  TH1F *hTimePerEvent = new TH1F("hTimePerEvent","Time Per Event; time (ms)",20,0,2000);
+  TH1F *hTimePerEvent = new TH1F("hTimePerEvent","Time Per Event; time (ms)",20,0,10000);
     
   for (int ifile=0;ifile < nEvents;ifile++){
     //call to TTime before opening ttree
@@ -139,8 +139,8 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
     
     double minphi = -0.078539819;
     double minr = 18.884615;
-    double minz = 5.0;
-    //double minz = -1.3187500;
+    //double minz = 5.0;
+    double minz = -1.3187500;
     
     double maxphi = 6.3617253;
     double maxr = 79.115387;
@@ -234,8 +234,8 @@ int CMDistortionRecoCart(int nMaxEvents = -1) {
       canvas1->Print("CMDistortionRecoCart1.pdf)","pdf");
     } else {
       canvas1->Print("CMDistortionRecoCart1.pdf","pdf");
-    }
-    */
+    }*/
+    
     
   }
 
