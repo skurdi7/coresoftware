@@ -131,7 +131,7 @@ int CMDistortionAnalysisCart(int nMaxEvents = -1) {
     
     double minphi = -0.078539819;
     double minr = 18.884615;
-    double minz = 5.0;
+    double minz = -1.3187500;
     
     double maxphi = 6.3617253;
     double maxr = 79.115387;

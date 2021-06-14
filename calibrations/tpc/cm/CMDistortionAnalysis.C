@@ -123,21 +123,6 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     
     //for forward only
 
-    /*
-    //same range and bins for each coordinate, can use hR for all, binned in cm
-    int nphi = shifter->hR->GetXaxis()->GetNbins();
-    int nr = shifter->hR->GetYaxis()->GetNbins();
-    int nz = (shifter->hR->GetZaxis()->GetNbins())/2;
-    
-    double minphi = shifter->hR->GetXaxis()->GetXmin();
-    double minr = shifter->hR->GetYaxis()->GetXmin();
-    double minz = 5.0;
-    
-    double maxphi = shifter->hR->GetXaxis()->GetXmax();
-    double maxr = shifter->hR->GetYaxis()->GetXmax();
-    double maxz = shifter->hR->GetZaxis()->GetXmax();
-    */
-
     //same range and bins for each coordinate, binned in cm
     //hardcoded numbers from average distortion file's hIntDistortionPosX
     int nphi = 82;

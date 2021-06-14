@@ -1,4 +1,4 @@
-// step 2
+// step 2 with phi,r coords
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -15,8 +15,6 @@ int CMDistortionReco(int nMaxEvents = -1) {
   double high = 80.0;
   double deltaX, deltaY, deltaZ, deltaR, deltaPhi;
   int nEvents;
-
-  //int nEvents = 3; //change based on number of tree files available in source directory
     
   //take in events
   const char * inputpattern="/sphenix/u/skurdi/CMCalibration/cmDistHitsTree_Event*.root"; 
@@ -27,15 +25,14 @@ int CMDistortionReco(int nMaxEvents = -1) {
   TString sourcefilename;
   
   //how many events
-  /*
   if (nMaxEvents<0){
     nEvents=filelist->GetNFiles();
   } else if(nMaxEvents<filelist->GetNFiles()){
     nEvents=nMaxEvents;
   } else {
     nEvents= filelist->GetNFiles();
-    }*/
-  nEvents = 2;
+    }
+  //  nEvents = 2;
   
   TCanvas *canvas1=new TCanvas("canvas1","CMDistortionReco1",1200,800);
   canvas1->Divide(3,2);
@@ -48,7 +45,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
   newposition = new TVector3(1.,1.,1.);
 
   //histogram to compare times
-  TH1F *hTimePerEvent = new TH1F("hTimePerEvent","Time Per Event; time (ms)",20,0,2000);
+  TH1F *hTimePerEvent = new TH1F("hTimePerEvent","Time Per Event; time (ms)",20,0,10000);
     
   for (int ifile=0;ifile < nEvents;ifile++){
     //call to TTime before opening ttree
@@ -66,7 +63,6 @@ int CMDistortionReco(int nMaxEvents = -1) {
     inTree->SetBranchAddress("position",&position);
     inTree->SetBranchAddress("newposition",&newposition);
 
-    // 0 to 2pi for phi, 0 to 90 for r
     int nbinsphi = 30; //when using 35, blank spots at around r = 22 cm, phi just above n below pi
     double lowphi = 0.0;
     double highphi = 2.0*TMath::Pi();
@@ -86,11 +82,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
     hCartesianForward[1] = new TH2F("hForwardY","Y Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
     hCartesianForward[2] = new TH2F("hForwardZ","Z Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
 
-    TH2F *hCylindricalForward[2];
-    hCylindricalForward[0] = new TH2F("hForward","Radial Shift Forward of Stripe Centers (#mum); x (cm); y (cm)",nbins,low,high,nbins,low,high);
-    hCylindricalForward[1] = new TH2F("hForwardPhi","Phi Shift Forward of Stripe Centers (rad); x (cm); y (cm)",nbins,low,high,nbins,low,high);
-
-    //r, phi binning
+    //phi,r binning
     TH2F *hCartesianForwardPhiR[3];
     hCartesianForwardPhiR[0] = new TH2F("hForwardX_PhiR","X Shift Forward of Stripe Centers, Phi,R binning (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
     hCartesianForwardPhiR[1] = new TH2F("hForwardY_PhiR","Y Shift Forward of Stripe Centers, Phi,R binning (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
@@ -105,6 +97,7 @@ int CMDistortionReco(int nMaxEvents = -1) {
 
       hStripesPerBin->Fill(position->X(),position->Y(),1);
 
+      //for phi,r binning
       double r = position->Perp();
       double phi = position->Phi();
 
@@ -124,10 +117,6 @@ int CMDistortionReco(int nMaxEvents = -1) {
       hCartesianForward[0]->Fill(position->X(),position->Y(),deltaX);
       hCartesianForward[1]->Fill(position->X(),position->Y(),deltaY);
       hCartesianForward[2]->Fill(position->X(),position->Y(),deltaZ);
-
-      //do i need these for cartesian coords setup?
-      hCylindricalForward[0]->Fill(position->X(),position->Y(),deltaR);
-      hCylindricalForward[1]->Fill(position->X(),position->Y(),deltaPhi);
 
       // phi,r binning
       hCartesianForwardPhiR[0]->Fill(phi,r,deltaX);
@@ -291,7 +280,6 @@ int CMDistortionReco(int nMaxEvents = -1) {
     }
 
     for(int i = 0; i < 2; i++){
-      hCylindricalForward[i]->Write();
       hCylindricalAveShift[i]->Write();
       hCylindricalCMModel[i]->Write();
 
