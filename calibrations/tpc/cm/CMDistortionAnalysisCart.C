@@ -141,8 +141,7 @@ int CMDistortionAnalysisCart(int nMaxEvents = -1) {
 
     int ndiff = 300;
     int mindiff = -20;
-    int maxdiff = 20;
-    
+    int maxdiff = 20;  
   
     TH1F *hCartesianShiftDifference[3];
     hCartesianShiftDifference[0] = new TH1F("hShiftDifferenceX", "Difference between CM Model X and True (R > 30); #Delta X (#mum)", ndiff, mindiff, maxdiff);
