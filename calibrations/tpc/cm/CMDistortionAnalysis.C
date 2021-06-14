@@ -557,7 +557,7 @@ int CMDistortionAnalysis(int nMaxEvents = -1) {
     //c2->cd(4)->Clear();
     c2->cd(4);
     //hStripesPerBin->Draw("colz");
-    hSamplePerBinXY->Draw("colz");
+    hSamplePerBinPhiR->Draw("colz");
     
     //r cart
     c3->Divide(4,1);
