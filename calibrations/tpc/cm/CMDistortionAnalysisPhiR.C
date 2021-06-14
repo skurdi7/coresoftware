@@ -210,7 +210,10 @@ int CMDistortionAnalysisPhiR(int nMaxEvents = -1) {
 	    //x y and z
 	    shifttrueCart[0] = (shifter->hX->Interpolate(phi,r,z))*(1e4); //convert from cm to micron
 	    shifttrueCart[1] = (shifter->hY->Interpolate(phi,r,z))*(1e4); //convert from cm to micron 
-	    shifttrueCart[2] = (shifter->hZ->Interpolate(phi,r,z))*(1e4); //convert from cm to micron 
+	    shifttrueCart[2] = (shifter->hZ->Interpolate(phi,r,z))*(1e4); //convert from cm to micron
+	    //r and phi
+	    shifttrueCyl[0] = (shifter->hR->Interpolate(phi,r,z))*(1e4); //convert from cm to micron
+	    shifttrueCyl[1] = (shifter->hPhi->Interpolate(phi,r,z))*(1e4);
 	    hRShiftTrue->Fill(shifttrueCyl[0]);
 	    hPhiShiftTrue->Fill(shifttrueCyl[1]);
 	    
