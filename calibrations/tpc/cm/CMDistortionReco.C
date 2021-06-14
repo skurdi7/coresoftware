@@ -247,12 +247,12 @@ int CMDistortionReco(int nMaxEvents = -1) {
 	  hCylindricalCMModel[1]->Fill(phi,r,z,phishiftcart*(1-z/105.5));
 
 	  //phi,r binning
-	  xshiftPhiR=(hCartesianAveShift[0]->Interpolate(phi,r))*(1e-4);//coordinate of your stripe
-	  yshiftPhiR=(hCartesianAveShift[1]->Interpolate(phi,r))*(1e-4);//convert micron to cm
-	  zshiftPhiR=(hCartesianAveShift[2]->Interpolate(phi,r))*(1e-4);
+	  xshiftPhiR=(hCartesianAveShiftPhiR[0]->Interpolate(phi,r))*(1e-4);//coordinate of your stripe
+	  yshiftPhiR=(hCartesianAveShiftPhiR[1]->Interpolate(phi,r))*(1e-4);//convert micron to cm
+	  zshiftPhiR=(hCartesianAveShiftPhiR[2]->Interpolate(phi,r))*(1e-4);
 
-	  rshiftcartPhiR=(hCylindricalAveShift[0]->Interpolate(phi,r))*(1e-4);
-	  phishiftcartPhiR=hCylindricalAveShift[1]->Interpolate(phi,r);
+	  rshiftcartPhiR=(hCylindricalAveShiftPhiR[0]->Interpolate(phi,r))*(1e-4);
+	  phishiftcartPhiR=hCylindricalAveShiftPhiR[1]->Interpolate(phi,r);
 	  
 	  hCartesianCMModelPhiR[0]->Fill(phi,r,z,xshiftPhiR*(1-z/105.5));
 	  hCartesianCMModelPhiR[1]->Fill(phi,r,z,yshiftPhiR*(1-z/105.5));
