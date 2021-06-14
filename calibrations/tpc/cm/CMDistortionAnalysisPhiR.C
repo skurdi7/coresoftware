@@ -299,24 +299,12 @@ int CMDistortionAnalysisPhiR(int nMaxEvents = -1) {
     hTrueStdDevPhi->Fill(hPhiShiftTrue->GetStdDev(1));
 
     for (int m = 0; m < 6; m++){
-      hCartesianAveDiff[m]->SetStats(0);
       hCartesianAveDiffPhiR[m]->SetStats(0);
     }
     for (int m = 0; m < 4; m++){
-      hCylindricalAveDiff[m]->SetStats(0);
       hCylindricalAveDiffPhiR[m]->SetStats(0);
     }
   
-    hCompareRTrue->SetStats(0);
-    hComparePhiTrue->SetStats(0);
-
-    hRDiffvR->SetStats(0);
-    hRDiffvZ->SetStats(0);
-    hRDiffvPhi->SetStats(0);
-  
-    hPhiDiffvR->SetStats(0);
-    hPhiDiffvZ->SetStats(0);
-    hPhiDiffvPhi->SetStats(0);
 
     hCompareRTrue_PhiR->SetStats(0);
     hComparePhiTrue_PhiR->SetStats(0);
