@@ -115,7 +115,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
   //negative
   TH1F *hDifferenceMeanRNeg = new TH1F("hDifferenceMeanR_Neg", "Average Difference between R Model and True of All Events, Negative Side (R > 30); #Delta R (#mum)", nsumbins, minsum, maxsum);
-  TH1F *hDifferenceStdDevRNeg = new TH1F("hDifferenceStdDevR_Pos", "Std Dev of Difference between R Model and True of All Events, Negative Side (R > 30); #Delta R (#mum)", nsumbins, minsum, maxsum);
+  TH1F *hDifferenceStdDevRNeg = new TH1F("hDifferenceStdDevR_Neg", "Std Dev of Difference between R Model and True of All Events, Negative Side (R > 30); #Delta R (#mum)", nsumbins, minsum, maxsum);
     
   TH1F *hTrueMeanRNeg = new TH1F("hTrueMeanR_Neg", "Mean True R Distortion Model of All Events, Negative Side (R > 30); #Delta R (#mum)", nsumbins, minsum, maxsum);
   TH1F *hTrueStdDevRNeg = new TH1F("hTrueStdDevR_Neg", "Std Dev of True R Distortion Model of All Events, Negative Side (R > 30); #Delta R (#mum)", nsumbins, minsum, maxsum);
