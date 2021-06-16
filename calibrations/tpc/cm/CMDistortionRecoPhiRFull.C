@@ -290,7 +290,8 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
     
     //to check histograms
     for (int i = 0; i < 3; i++){
-      hCartesianForwardPhiR[i]->SetStats(0);
+      hCartesianForwardPhiRPos[i]->SetStats(0);
+      hCartesianForwardPhiRNeg[i]->SetStats(0);
     }
 
     canvas1->cd(1);
