@@ -93,7 +93,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   double deltaXNeg, deltaYNeg, deltaZNeg, deltaRNeg, deltaPhiNeg;
   int nEvents; 
   
-  TCanvas *canvas=new TCanvas("canvas","CMDistortionAnalysisPhiRFull",2000,3000);
+  TCanvas *canvas=new TCanvas("canvas","CMDistortionAnalysisPhiRNeg",2000,3000);
 
   int nsumbins = 20;
   int minsum = -10;
@@ -607,24 +607,24 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //x plots
     c1->Divide(4,1);
     c1->cd(1);
-    hCartesianAveDiffPhiRPos[0]->Draw("colz");
+    hCartesianAveDiffPhiRNeg[0]->Draw("colz");
     c1->cd(2);
-    hCartesianAveDiffPhiRPos[1]->Draw("colz");
+    hCartesianAveDiffPhiRNeg[1]->Draw("colz");
     c1->cd(3);
-    hCartesianShiftDifferencePhiRPos[0]->Draw();
+    hCartesianShiftDifferencePhiRNeg[0]->Draw();
     //c1->cd(4)->Clear();  
     c1->cd(4);
     //hCMmodelSliceRvTrue->Draw("colz");
-    hSamplePerBinRZPos->Draw("colz");
+    hSamplePerBinRZNeg->Draw("colz");
     
     //y plots
     c2->Divide(4,1);
     c2->cd(1);
-    hCartesianAveDiffPhiRPos[2]->Draw("colz");
+    hCartesianAveDiffPhiRNeg[2]->Draw("colz");
     c2->cd(2);
-    hCartesianAveDiffPhiRPos[3]->Draw("colz");
+    hCartesianAveDiffPhiRNeg[3]->Draw("colz");
     c2->cd(3);
-    hCartesianShiftDifferencePhiRPos[1]->Draw();
+    hCartesianShiftDifferencePhiRNeg[1]->Draw();
     //c2->cd(4)->Clear();
     c2->cd(4);
     //hStripesPerBin->Draw("colz");
@@ -633,46 +633,46 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //r cart
     c3->Divide(4,1);
     c3->cd(1);
-    hCylindricalAveDiffPhiRPos[0]->Draw("colz");
+    hCylindricalAveDiffPhiRNeg[0]->Draw("colz");
     c3->cd(2);
-    hCylindricalAveDiffPhiRPos[1]->Draw("colz");
+    hCylindricalAveDiffPhiRNeg[1]->Draw("colz");
     c3->cd(3);
-    hCylindricalShiftDifferencePhiRPos[0]->Draw();
+    hCylindricalShiftDifferencePhiRNeg[0]->Draw();
     c3->cd(4);
-    hRShiftTruePos->Draw();
+    hRShiftTrueNeg->Draw();
     
     //phi cart
     c4->Divide(4,1);
     c4->cd(1);
-    hCylindricalAveDiffPhiRPos[2]->Draw("colz");
+    hCylindricalAveDiffPhiRNeg[2]->Draw("colz");
     c4->cd(2);
-    hCylindricalAveDiffPhiRPos[3]->Draw("colz");
+    hCylindricalAveDiffPhiRNeg[3]->Draw("colz");
     c4->cd(3);
-    hCylindricalShiftDifferencePhiRPos[1]->Draw();
+    hCylindricalShiftDifferencePhiRNeg[1]->Draw();
     c4->cd(4);
-    hPhiShiftTruePos->Draw();
+    hPhiShiftTrueNeg->Draw();
 
     //r to true comparison
     c5->Divide(4,1);
     c5->cd(1);
-    hCompareRTrue_PhiRPos->Draw("colz");
+    hCompareRTrue_PhiRNeg->Draw("colz");
     c5->cd(2);
-    hRDiffvR_PhiRPos->Draw("colz");
+    hRDiffvR_PhiRNeg->Draw("colz");
     c5->cd(3);
-    hRDiffvZ_PhiRPos->Draw("colz");
+    hRDiffvZ_PhiRNeg->Draw("colz");
     c5->cd(4);
-    hRDiffvPhi_PhiRPos->Draw("colz");
+    hRDiffvPhi_PhiRNeg->Draw("colz");
 
     //phi to true comparison
     c6->Divide(4,1);
     c6->cd(1);
-    hComparePhiTrue_PhiRPos->Draw("colz");
+    hComparePhiTrue_PhiRNeg->Draw("colz");
     c6->cd(2);
-    hPhiDiffvR_PhiRPos->Draw("colz");
+    hPhiDiffvR_PhiRNeg->Draw("colz");
     c6->cd(3);
-    hPhiDiffvZ_PhiRPos->Draw("colz");
+    hPhiDiffvZ_PhiRNeg->Draw("colz");
     c6->cd(4);
-    hPhiDiffvPhi_PhiRPos->Draw("colz");
+    hPhiDiffvPhi_PhiRNeg->Draw("colz");
 
     titlepad->cd();
     titlepad->Clear();
@@ -711,9 +711,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     if(ifile == 0){ 
       //if(ifile == 1){
-      canvas->Print("CMDistortionAnalysisPhiRFull.pdf(","pdf");
+      canvas->Print("CMDistortionAnalysisPhiRNeg.pdf(","pdf");
     } else if((ifile == 1) || (ifile == nEvents - 1)){
-      canvas->Print("CMDistortionAnalysisPhiRFull.pdf","pdf");
+      canvas->Print("CMDistortionAnalysisPhiRNeg.pdf","pdf");
     }
   }
 
@@ -733,21 +733,21 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
   sumplots->Divide(4,6);
   sumplots->cd(1);
-  hDifferenceMeanRPos->Draw();
+  hDifferenceMeanRNeg->Draw();
   sumplots->cd(2);
-  hDifferenceStdDevRPos->Draw();
+  hDifferenceStdDevRNeg->Draw();
   sumplots->cd(3);
-  hTrueMeanRPos->Draw();
+  hTrueMeanRNeg->Draw();
   sumplots->cd(4);
-  hTrueStdDevRPos->Draw();
+  hTrueStdDevRNeg->Draw();
   sumplots->cd(5);
-  hDifferenceMeanPhiPos->Draw();
+  hDifferenceMeanPhiNeg->Draw();
   sumplots->cd(6);
-  hDifferenceStdDevPhiPos->Draw();
+  hDifferenceStdDevPhiNeg->Draw();
   sumplots->cd(7);
-  hTrueMeanPhiPos->Draw();
+  hTrueMeanPhiNeg->Draw();
   sumplots->cd(8);
-  hTrueStdDevPhiPos->Draw();
+  hTrueStdDevPhiNeg->Draw();
   sumplots->cd(9);
   sumplots->cd(10)->Clear();
   sumplots->cd(11)->Clear();
@@ -768,7 +768,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   sumtitlepad->cd();
   sumtitlepad->Clear();
   sumtitle->DrawLatex(0.4,0.4,"Summary of Events"); 
-  summary->Print("CMDistortionAnalysisPhiRFull.pdf)","pdf");
+  summary->Print("CMDistortionAnalysisPhiRNeg.pdf)","pdf");
 
   return 0;
 }
