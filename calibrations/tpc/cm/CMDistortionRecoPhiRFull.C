@@ -79,23 +79,23 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
 
     //positive
     TH2F *hCartesianForwardPhiRPos[3];
-    hCartesianForwardPhiRPos[0] = new TH2F("hForwardX_PhiR","X Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
-    hCartesianForwardPhiRPos[1] = new TH2F("hForwardY_PhiR","Y Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
-    hCartesianForwardPhiRPos[2] = new TH2F("hForwardZ_PhiR","Z Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCartesianForwardPhiRPos[0] = new TH2F("hForwardX_PhiR_Pos","X Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCartesianForwardPhiRPos[1] = new TH2F("hForwardY_PhiR_Pos","Y Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCartesianForwardPhiRPos[2] = new TH2F("hForwardZ_PhiR_Pos","Z Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
     
      TH2F *hCylindricalForwardPhiRPos[2];
-    hCylindricalForwardPhiRPos[0] = new TH2F("hForwardR_PhiR","Radial Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
-    hCylindricalForwardPhiRPos[1] = new TH2F("hForwardPhi_PhiR","Phi Shift Forward of Stripe Centers, Phi,R binning, Positive Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCylindricalForwardPhiRPos[0] = new TH2F("hForwardR_PhiR_Pos","Radial Shift Forward of Stripe Centers, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCylindricalForwardPhiRPos[1] = new TH2F("hForwardPhi_PhiR_Pos","Phi Shift Forward of Stripe Centers, Phi,R binning, Positive Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
 
     //negative
     TH2F *hCartesianForwardPhiRNeg[3];
-    hCartesianForwardPhiRNeg[0] = new TH2F("hForwardX_PhiR","X Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
-    hCartesianForwardPhiRNeg[1] = new TH2F("hForwardY_PhiR","Y Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
-    hCartesianForwardPhiRNeg[2] = new TH2F("hForwardZ_PhiR","Z Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCartesianForwardPhiRNeg[0] = new TH2F("hForwardX_PhiR_Neg","X Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCartesianForwardPhiRNeg[1] = new TH2F("hForwardY_PhiR_Neg","Y Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCartesianForwardPhiRNeg[2] = new TH2F("hForwardZ_PhiR_Neg","Z Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
     
      TH2F *hCylindricalForwardPhiRNeg[2];
-    hCylindricalForwardPhiRNeg[0] = new TH2F("hForwardR_PhiR","Radial Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
-    hCylindricalForwardPhiRNeg[1] = new TH2F("hForwardPhi_PhiR","Phi Shift Forward of Stripe Centers, Phi,R binning, Negative Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCylindricalForwardPhiRNeg[0] = new TH2F("hForwardR_PhiR_Neg","Radial Shift Forward of Stripe Centers, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+    hCylindricalForwardPhiRNeg[1] = new TH2F("hForwardPhi_PhiR_Neg","Phi Shift Forward of Stripe Centers, Phi,R binning, Negative Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
     
     for (int i=0;i<inTree->GetEntries();i++){
       inTree->GetEntry(i);
@@ -142,23 +142,23 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
 
     //positive
     TH2F *hCartesianAveShiftPhiRPos[3];
-    hCartesianAveShiftPhiRPos[0] = new TH2F("AveShiftX_PhiR","Average of CM Model X over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
-    hCartesianAveShiftPhiRPos[1] = new TH2F("AveShiftY_PhiR","Average of CM Model Y over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
-    hCartesianAveShiftPhiRPos[2] = new TH2F("AveShiftZ_PhiR","Average of CM Model Z over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCartesianAveShiftPhiRPos[0] = new TH2F("AveShiftX_PhiR_Pos","Average of CM Model X over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCartesianAveShiftPhiRPos[1] = new TH2F("AveShiftY_PhiR_Pos","Average of CM Model Y over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCartesianAveShiftPhiRPos[2] = new TH2F("AveShiftZ_PhiR_Pos","Average of CM Model Z over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
 
     TH2F *hCylindricalAveShiftPhiRPos[2];
-     hCylindricalAveShiftPhiRPos[0] = new TH2F("AveShiftR_PhiR","Average of CM Model R over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
-    hCylindricalAveShiftPhiRPos[1] = new TH2F("AveShiftPhi_PhiR","Average of CM Model Phi over Stripes per Bin, Phi,R binning, Positive Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+     hCylindricalAveShiftPhiRPos[0] = new TH2F("AveShiftR_PhiR_Pos","Average of CM Model R over Stripes per Bin, Phi,R binning, Positive Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCylindricalAveShiftPhiRPos[1] = new TH2F("AveShiftPhi_PhiR_Pos","Average of CM Model Phi over Stripes per Bin, Phi,R binning, Positive Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
 
     //negative
     TH2F *hCartesianAveShiftPhiRNeg[3];
-    hCartesianAveShiftPhiRNeg[0] = new TH2F("AveShiftX_PhiR","Average of CM Model X over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
-    hCartesianAveShiftPhiRNeg[1] = new TH2F("AveShiftY_PhiR","Average of CM Model Y over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
-    hCartesianAveShiftPhiRNeg[2] = new TH2F("AveShiftZ_PhiR","Average of CM Model Z over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCartesianAveShiftPhiRNeg[0] = new TH2F("AveShiftX_PhiR_Neg","Average of CM Model X over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCartesianAveShiftPhiRNeg[1] = new TH2F("AveShiftY_PhiR_Neg","Average of CM Model Y over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCartesianAveShiftPhiRNeg[2] = new TH2F("AveShiftZ_PhiR_Neg","Average of CM Model Z over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
 
     TH2F *hCylindricalAveShiftPhiRNeg[2];
-     hCylindricalAveShiftPhiRNeg[0] = new TH2F("AveShiftR_PhiR","Average of CM Model R over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
-    hCylindricalAveShiftPhiRNeg[1] = new TH2F("AveShiftPhi_PhiR","Average of CM Model Phi over Stripes per Bin, Phi,R binning, Negative Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
+     hCylindricalAveShiftPhiRNeg[0] = new TH2F("AveShiftR_PhiR_Neg","Average of CM Model R over Stripes per Bin, Phi,R binning, Negative Side (#mum); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr); 
+    hCylindricalAveShiftPhiRNeg[1] = new TH2F("AveShiftPhi_PhiR_Neg","Average of CM Model Phi over Stripes per Bin, Phi,R binning, Negative Side (rad); phi (rad); r (cm)",nbinsphi,lowphi,highphi,nbinsr,lowr,highr);
     
     for (int i = 0; i < 3; i ++){
       hCartesianAveShiftPhiRPos[i]->Divide(hCartesianForwardPhiRPos[i],hStripesPerBinPhiR);
@@ -191,23 +191,23 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
 
     //positive
     TH3F *hCartesianCMModelPhiRPos[3];
-    hCartesianCMModelPhiRPos[0]=new TH3F("hCMModelX_PhiR", "CM Model: X Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos); //rad, cm, cm
-    hCartesianCMModelPhiRPos[1]=new TH3F("hCMModelY_PhiR", "CM Model: Y Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-    hCartesianCMModelPhiRPos[2]=new TH3F("hCMModelZ_PhiR", "CM Model: Z Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+    hCartesianCMModelPhiRPos[0]=new TH3F("hCMModelX_PhiR_Pos", "CM Model: X Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos); //rad, cm, cm
+    hCartesianCMModelPhiRPos[1]=new TH3F("hCMModelY_PhiR_Pos", "CM Model: Y Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+    hCartesianCMModelPhiRPos[2]=new TH3F("hCMModelZ_PhiR_Pos", "CM Model: Z Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
 
     TH3F *hCylindricalCMModelPhiRPos[2];
-    hCylindricalCMModelPhiRPos[0]=new TH3F("hCMModelR_PhiR", "CM Model: Radial Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-    hCylindricalCMModelPhiRPos[1]=new TH3F("hCMModelPhi_PhiR", "CM Model: Phi Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+    hCylindricalCMModelPhiRPos[0]=new TH3F("hCMModelR_PhiR_Pos", "CM Model: Radial Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+    hCylindricalCMModelPhiRPos[1]=new TH3F("hCMModelPhi_PhiR_Pos", "CM Model: Phi Shift Forward of Stripe Centers, Phi,R binning, Positive Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
 
     //negative
     TH3F *hCartesianCMModelPhiRNeg[3];
-    hCartesianCMModelPhiRNeg[0]=new TH3F("hCMModelX_PhiR", "CM Model: X Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg); //rad, cm, cm
-    hCartesianCMModelPhiRNeg[1]=new TH3F("hCMModelY_PhiR", "CM Model: Y Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
-    hCartesianCMModelPhiRNeg[2]=new TH3F("hCMModelZ_PhiR", "CM Model: Z Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
+    hCartesianCMModelPhiRNeg[0]=new TH3F("hCMModelX_PhiR_Neg", "CM Model: X Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg); //rad, cm, cm
+    hCartesianCMModelPhiRNeg[1]=new TH3F("hCMModelY_PhiR_Neg", "CM Model: Y Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
+    hCartesianCMModelPhiRNeg[2]=new TH3F("hCMModelZ_PhiR_Neg", "CM Model: Z Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
 
     TH3F *hCylindricalCMModelPhiRNeg[2];
-    hCylindricalCMModelPhiRNeg[0]=new TH3F("hCMModelR_PhiR", "CM Model: Radial Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
-    hCylindricalCMModelPhiRNeg[1]=new TH3F("hCMModelPhi_PhiR", "CM Model: Phi Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg); 
+    hCylindricalCMModelPhiRNeg[0]=new TH3F("hCMModelR_PhiR_Neg", "CM Model: Radial Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
+    hCylindricalCMModelPhiRNeg[1]=new TH3F("hCMModelPhi_PhiR_Neg", "CM Model: Phi Shift Forward of Stripe Centers, Phi,R binning, Negative Side", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg); 
       
     double xshiftPhiRPos, yshiftPhiRPos, zshiftPhiRPos, rshiftPhiRPos, phishiftPhiRPos;
     double xshiftPhiRNeg, yshiftPhiRNeg, zshiftPhiRNeg, rshiftPhiRNeg, phishiftPhiRNeg;
