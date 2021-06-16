@@ -34,8 +34,8 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
     nEvents= filelist->GetNFiles();
   }
   
-  //TCanvas *canvas1=new TCanvas("canvas1","CMDistortionReco1",1200,800);
-  //canvas1->Divide(3,2);
+  TCanvas *canvas1=new TCanvas("canvas1","CMDistortionReco1",1200,800);
+  canvas1->Divide(3,2);
 
   //canvas for time plot
   TCanvas *canvas=new TCanvas("canvas","CMDistortionReco2",400,400);
@@ -289,20 +289,22 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
     hTimePerEvent->Fill(after-before);
     
     //to check histograms
-    /*for (int i = 0; i < 3; i++){
+    for (int i = 0; i < 3; i++){
       hCartesianForwardPhiR[i]->SetStats(0);
     }
 
     canvas1->cd(1);
-    hStripesPerBinPhiR->Draw("colz");
-    canvas1->cd(2)->Clear();
-    canvas1->cd(3)->Clear();
-     canvas1->cd(4);
-    hCartesianForwardPhiR[0]->Draw("colz");
+    hCartesianForwardPhiRPos[0]->Draw("colz");
+    canvas1->cd(2);
+    hCartesianForwardPhiRPos[1]->Draw("colz");
+    canvas1->cd(3);
+    hCartesianForwardPhiRPos[2]->Draw("colz");
+    canvas1->cd(4);
+    hCartesianForwardPhiRNeg[0]->Draw("colz");
     canvas1->cd(5);
-    hCartesianForwardPhiR[1]->Draw("colz");
+    hCartesianForwardPhiRNeg[1]->Draw("colz");
     canvas1->cd(6);
-    hCartesianForwardPhiR[2]->Draw("colz");
+    hCartesianForwardPhiRNeg[2]->Draw("colz");
   
     if(ifile == 0){ 
       canvas1->Print("CMDistortionReco1.pdf(","pdf");
@@ -311,7 +313,7 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
     } else {
       canvas1->Print("CMDistortionReco1.pdf","pdf");
     }
-    */
+    
   }
 
   canvas->cd();
