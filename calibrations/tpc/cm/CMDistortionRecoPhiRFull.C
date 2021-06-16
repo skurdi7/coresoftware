@@ -245,12 +245,12 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
 	  rshiftPhiRNeg=(hCylindricalAveShiftPhiRNeg[0]->Interpolate(phi,r))*(1e-4);
 	  phishiftPhiRNeg=hCylindricalAveShiftPhiRNeg[1]->Interpolate(phi,r);
 	  
-	  hCartesianCMModelPhiRNeg[0]->Fill(phi,r,zNeg,xshiftPhiRNeg*(1-zNeg/105.5));
-	  hCartesianCMModelPhiRNeg[1]->Fill(phi,r,zNeg,yshiftPhiRNeg*(1-zNeg/105.5));
-	  hCartesianCMModelPhiRNeg[2]->Fill(phi,r,zNeg,zshiftPhiRNeg*(1-zNeg/105.5));
+	  hCartesianCMModelPhiRNeg[0]->Fill(phi,r,zNeg,xshiftPhiRNeg*(1+zNeg/105.5));
+	  hCartesianCMModelPhiRNeg[1]->Fill(phi,r,zNeg,yshiftPhiRNeg*(1+zNeg/105.5));
+	  hCartesianCMModelPhiRNeg[2]->Fill(phi,r,zNeg,zshiftPhiRNeg*(1+zNeg/105.5));
 
-	  hCylindricalCMModelPhiRNeg[0]->Fill(phi,r,zNeg,rshiftPhiRNeg*(1-zNeg/105.5));
-	  hCylindricalCMModelPhiRNeg[1]->Fill(phi,r,zNeg,phishiftPhiRNeg*(1-zNeg/105.5));
+	  hCylindricalCMModelPhiRNeg[0]->Fill(phi,r,zNeg,rshiftPhiRNeg*(1+zNeg/105.5));
+	  hCylindricalCMModelPhiRNeg[1]->Fill(phi,r,zNeg,phishiftPhiRNeg*(1+zNeg/105.5));
 	}
       }
     }
