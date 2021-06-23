@@ -140,13 +140,12 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   fullchargefilelist->Add(fullchargeinputpattern);
   TString fullchargefilename;
   TFile *fullcharge;
-  TH3F *hFullCharge;
   
   TH3F *hFluctCharge;
 
   //smoothed average
   TFile *smoothedave;
-  smoothedAve=TFile::Open("/gpfs/mnt/gpfs02/sphenix/user/rcorliss/distortion_maps/2021.04/charge/Smoothed_Average_AA_events.root","READ");
+  smoothedave=TFile::Open("/gpfs/mnt/gpfs02/sphenix/user/rcorliss/distortion_maps/2021.04/charge/Smoothed_Average_AA_events.root","READ");
   TH3F *hSmoothedAve;
   hSmoothedAve=(TH3F*)smoothedave->Get("h_Charge_evt_0");
   
@@ -167,10 +166,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     shifter = new Shifter(sourcefilename);
 
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
-    fullcharge=TFile::Open(fullchargefilename."READ");
+    fullcharge=TFile::Open(fullchargefilename,"READ");
 
-    hFullCharge=(TH3F*)fullcharge->Get(Form("h_Charge_%d",ifile)); // only 0-9 available
-    hFluctCharge = hFullCharge->Add(hSmoothedAve,-1); 
+    hFluctCharge=(TH3F*)fullcharge->Get(Form("h_Charge_%d",ifile)); // only 0-9 available
+    hFluctCharge->Add(hSmoothedAve,-1); 
     
     TFile *plots;
 
