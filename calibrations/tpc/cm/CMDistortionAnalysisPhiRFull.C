@@ -126,28 +126,51 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   TH1F *hTrueMeanPhiNeg = new TH1F("hTrueMeanPhi_Neg", "Mean True Phi Distortion Model of All Events, Negative Side (R > 30); #Delta Phi (#mum)", nsumbins, minsum, maxsum);
   TH1F *hTrueStdDevPhiNeg = new TH1F("hTrueStdDevPhi_Neg", "Std Dev of True Phi Distortion Model of All Events, Negative Side (R > 30); #Delta Phi (#mum)", nsumbins, minsum, maxsum);
 
-    const char * inputpattern="/sphenix/user/rcorliss/distortion_maps/2021.04/*h_Charge_*.root"; //updated
+    const char * sourceinputpattern="/sphenix/user/rcorliss/distortion_maps/2021.04/*h_Charge_*.root"; //updated
     
   //find all files that match the input string (includes wildcards)
-  TFileCollection *filelist=new TFileCollection();
-  filelist->Add(inputpattern);
+  TFileCollection *sourcefilelist=new TFileCollection();
+  sourcefilelist->Add(sourceinputpattern);
   TString sourcefilename;
+
+  //full charge
+  const char * fullchargeinputpattern="/sphenix/user/shulga/Work/IBF/DistortionMap/Files/outputFile_75Hz_G4Hits_sHijing_0-12fm_*.root";
+  
+  TFileCollection *fullchargefilelist=new TFileCollection();
+  fullchargefilelist->Add(fullchargeinputpattern);
+  TString fullchargefilename;
+  TFile *fullcharge;
+  TH3F *hFullCharge;
+  
+  TH3F *hFluctCharge;
+
+  //smoothed average
+  TFile *smoothedave;
+  smoothedAve=TFile::Open("/gpfs/mnt/gpfs02/sphenix/user/rcorliss/distortion_maps/2021.04/charge/Smoothed_Average_AA_events.root","READ");
+  TH3F *hSmoothedAve;
+  hSmoothedAve=(TH3F*)smoothedave->Get("h_Charge_evt_0");
   
   //how many events
   if (nMaxEvents<0){
-    nEvents=filelist->GetNFiles();
-  } else if(nMaxEvents<filelist->GetNFiles()){
+    nEvents=sourcefilelist->GetNFiles();
+  } else if(nMaxEvents<sourcefilelist->GetNFiles()){
     nEvents=nMaxEvents;
   } else {
-    nEvents= filelist->GetNFiles();
+    nEvents= sourcefilelist->GetNFiles();
   }
 
   for (int ifile=0;ifile < nEvents;ifile++){
     //for each file, find all histograms in that file.
-    sourcefilename=((TFileInfo*)(filelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
+    sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
 
     //create shifter
     shifter = new Shifter(sourcefilename);
+
+    fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
+    fullcharge=TFile::Open(fullchargefilename."READ");
+
+    hFullCharge=(TH3F*)fullcharge->Get(Form("h_Charge_%d",ifile)); // only 0-9 available
+    hFluctCharge = hFullCharge->Add(hSmoothedAve,-1); 
     
     TFile *plots;
 
@@ -303,6 +326,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hPhiDiffvZ_PhiRNeg = new TH2F("hPhiDiffvZ_PhiR_Neg", "Difference between Phi Model and True vs. z, Phi,R binning, Negative Side (R > 30); z (cm); shift difference (#mum)",nz,minzNeg,maxzNeg,ndiff,mindiff,maxdiff);
     TH2F *hPhiDiffvPhi_PhiRNeg = new TH2F("hPhiDiffvPhi_PhiR_Neg", "Difference between Phi Model and True vs. phi, Phi,R binning, Negative Side (R > 30, 10 < z < 90); phi (rad); shift difference (#mum)",nphi,minphi,maxphi,ndiff,mindiff,maxdiff);
     
+    //compare linear model to space charge
+    TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion and True Fluctuation Charge, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-550,550,nbins,-550,550);
+    TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Fluctuation Charge, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-550,550,nbins,-550,550);
+    
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
       for(int j = 1; j < nr - 1; j++){
@@ -390,14 +417,16 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	  //negative
 	  double shifttrueCartNeg[3];
 	  double shifttrueCylNeg[2];
-
+	  
 	  double shiftrecoCartPhiRNeg[3];
 	  double differenceCartPhiRNeg[3];
 
 	  double shiftrecoCylPhiRNeg[2];
 	  double differenceCylPhiRNeg[2];
 
-	  double differenceR_PhiRNeg, differencePhi_PhiRNeg;	  
+	  double differenceR_PhiRNeg, differencePhi_PhiRNeg;
+
+	  double fluctchargeNeg;
 
 	  int binPhiRNeg = hCartCMModelPhiRNeg[0]->FindBin(phi,r,zNeg);
 
@@ -411,6 +440,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    shifttrueCylNeg[1] = (shifter->hNegPhi->Interpolate(phi,r,zNeg))*(1e4);
 	    hRShiftTrueNeg->Fill(shifttrueCylNeg[0]);
 	    hPhiShiftTrueNeg->Fill(shifttrueCylNeg[1]);
+
+	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r,zNeg))*(1e4);
 	    
 	    for(int l = 0; l < 3; l ++){
 	      shiftrecoCartPhiRNeg[l] =  (hCartCMModelPhiRNeg[l]->GetBinContent(binPhiRNeg))*(1e4);
@@ -463,6 +494,11 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hSamplePerBinRZNeg->Fill(zNeg,r,1);
 	    
 	    hSamplePerBinPhiR->Fill(phi,r,1);
+
+	    //fluct
+	    hCompareRTruevFluctNeg->Fill(fluctchargeNeg,shifttrueCylNeg[0]);
+	    hCompareRDiffvFluctNeg->Fill(fluctchargeNeg,differenceCylPhiRNeg[0]);
+	    
 	  }
 	}
       }
@@ -515,6 +551,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hTrueMeanPhiNeg->Fill(hPhiShiftTrueNeg->GetMean(1));
     hTrueStdDevPhiNeg->Fill(hPhiShiftTrueNeg->GetStdDev(1));
 
+    //remove stat boxes
     for (int m = 0; m < 6; m++){
       hCartesianAveDiffPhiRPos[m]->SetStats(0);
       hCartesianAveDiffPhiRNeg[m]->SetStats(0);
@@ -574,31 +611,6 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       stitle[i]->SetNDC();
       stitle[i]->SetTextSize(0.35);
     }
-
-    /*
-      TLatex * stitle1 = new TLatex(0.0,0.0,""); //array?
-      TLatex * stitle2 = new TLatex(0.0,0.0,"");
-      TLatex * stitle3 = new TLatex(0.0,0.0,"");
-      TLatex * stitle4 = new TLatex(0.0,0.0,"");
-      TLatex * stitle5 = new TLatex(0.0,0.0,"");
-      TLatex * stitle6 = new TLatex(0.0,0.0,"");
-    
-      
-      stitle1->SetNDC();
-      stitle2->SetNDC();
-      stitle3->SetNDC();
-      stitle4->SetNDC();
-      stitle5->SetNDC();
-      stitle6->SetNDC();
-    
-      
-      stitle1->SetTextSize(0.35);
-      stitle2->SetTextSize(0.35);
-      stitle3->SetTextSize(0.35);
-      stitle4->SetTextSize(0.35);
-      stitle5->SetTextSize(0.35);
-      stitle6->SetTextSize(0.35);
-    */
     
     canvas->cd();
     c1->Draw();
@@ -626,7 +638,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //c1->cd(4)->Clear();  
     c1->cd(4);
     //hCMmodelSliceRvTrue->Draw("colz");
-    hSamplePerBinRZNeg->Draw("colz");
+    //hSamplePerBinRZNeg->Draw("colz");
+    hCompareRTruevFluctNeg->Draw("colz");
     
     //y plots
     c2->Divide(4,1);
@@ -639,7 +652,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //c2->cd(4)->Clear();
     c2->cd(4);
     //hStripesPerBin->Draw("colz");
-    hSamplePerBinPhiR->Draw("colz");
+    //hSamplePerBinPhiR->Draw("colz");
+    hCompareRDiffvFluctNeg->Draw("colz");
     
     //r cart
     c3->Divide(4,1);
