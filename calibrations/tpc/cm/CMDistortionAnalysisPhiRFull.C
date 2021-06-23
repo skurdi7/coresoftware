@@ -548,16 +548,16 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hPhiDiffvZ_PhiRNeg->SetStats(0);
     hPhiDiffvPhi_PhiRNeg->SetStats(0);
     
-    TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //can i do an array of pads?
+    TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
     TPad *c2=new TPad("c2","",0.0,0.64,1.0,0.77);
     TPad *c3=new TPad("c3","",0.0,0.48,1.0,0.61);
     TPad *c4=new TPad("c4","",0.0,0.32,1.0,0.45);
     TPad *c5=new TPad("c5","",0.0,0.16,1.0,0.29);
     TPad *c6=new TPad("c6","",0.0,0.0,1.0,0.13);
     
-    TPad *titlepad=new TPad("titlepad","",0.0,0.96,1.0,1.0);
+    TPad *titlepad=new TPad("titlepad","",0.0,0.96,1.0,1.0); //0.04 height
 
-    TPad *stitlepad1=new TPad("stitlepad1","",0.0,0.93,1.0,0.96);
+    TPad *stitlepad1=new TPad("stitlepad1","",0.0,0.93,1.0,0.96); //0.03 height
     TPad *stitlepad2=new TPad("stitlepad2","",0.0,0.77,1.0,0.8);
     TPad *stitlepad3=new TPad("stitlepad3","",0.0,0.61,1.0,0.64);
     TPad *stitlepad4=new TPad("stitlepad4","",0.0,0.45,1.0,0.48);
@@ -565,43 +565,54 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TPad *stitlepad6=new TPad("stitlepad6","",0.0,0.13,1.0,0.16);
     
     TLatex * title = new TLatex(0.0,0.0,"");
-
-    TLatex * stitle1 = new TLatex(0.0,0.0,""); //array?
-    TLatex * stitle2 = new TLatex(0.0,0.0,"");
-    TLatex * stitle3 = new TLatex(0.0,0.0,"");
-    TLatex * stitle4 = new TLatex(0.0,0.0,"");
-    TLatex * stitle5 = new TLatex(0.0,0.0,"");
-    TLatex * stitle6 = new TLatex(0.0,0.0,"");
-    
     title->SetNDC();
-    stitle1->SetNDC();
-    stitle2->SetNDC();
-    stitle3->SetNDC();
-    stitle4->SetNDC();
-    stitle5->SetNDC();
-    stitle6->SetNDC();
-    
     title->SetTextSize(0.32);
-    stitle1->SetTextSize(0.35);
-    stitle2->SetTextSize(0.35);
-    stitle3->SetTextSize(0.35);
-    stitle4->SetTextSize(0.35);
-    stitle5->SetTextSize(0.35);
-    stitle6->SetTextSize(0.35);
+    
+    TLatex *stitle[6];
+    for(int i = 0; i < 6; i++){
+      stitle[i] = newTLatex(0.0,0.0,"");
+      stitle[i]->SetNDC();
+      stitle[i]->SetTextSize(0.35);
+    }
+
+    /*
+      TLatex * stitle1 = new TLatex(0.0,0.0,""); //array?
+      TLatex * stitle2 = new TLatex(0.0,0.0,"");
+      TLatex * stitle3 = new TLatex(0.0,0.0,"");
+      TLatex * stitle4 = new TLatex(0.0,0.0,"");
+      TLatex * stitle5 = new TLatex(0.0,0.0,"");
+      TLatex * stitle6 = new TLatex(0.0,0.0,"");
+    
+      
+      stitle1->SetNDC();
+      stitle2->SetNDC();
+      stitle3->SetNDC();
+      stitle4->SetNDC();
+      stitle5->SetNDC();
+      stitle6->SetNDC();
+    
+      
+      stitle1->SetTextSize(0.35);
+      stitle2->SetTextSize(0.35);
+      stitle3->SetTextSize(0.35);
+      stitle4->SetTextSize(0.35);
+      stitle5->SetTextSize(0.35);
+      stitle6->SetTextSize(0.35);
+    */
     
     canvas->cd();
     c1->Draw();
-    stitlepad1->Draw();
+    stitlepad[0]->Draw();
     c2->Draw();
-    stitlepad2->Draw();
+    stitlepad[1]->Draw();
     c3->Draw();
-    stitlepad3->Draw();
+    stitlepad[2]->Draw();
     c4->Draw();
-    stitlepad4->Draw();
+    stitlepad[3]->Draw();
     c5->Draw();
-    stitlepad5->Draw();
+    stitlepad[4]->Draw();
     c6->Draw();
-    stitlepad6->Draw();
+    stitlepad[5]->Draw();
     titlepad->Draw();
 
     //x plots
@@ -681,33 +692,33 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     stitlepad1->cd();
     stitlepad1->Clear();
-    stitle1->DrawLatex(0.45,0.2,"X Model"); 
-    stitle1->Draw();
+    stitle[0]->DrawLatex(0.45,0.2,"X Model"); 
+    stitle[0]->Draw();
      
     stitlepad2->cd();
     stitlepad2->Clear();
-    stitle2->DrawLatex(0.45,0.2,"Y Model"); 
-    stitle2->Draw();
+    stitle[1]->DrawLatex(0.45,0.2,"Y Model"); 
+    stitle[1]->Draw();
 
     stitlepad3->cd();
     stitlepad3->Clear();
-    stitle3->DrawLatex(0.45,0.2,"R Model"); 
-    stitle3->Draw();
+    stitle[2]->DrawLatex(0.45,0.2,"R Model"); 
+    stitle[2]->Draw();
 
     stitlepad4->cd();
     stitlepad4->Clear();
-    stitle4->DrawLatex(0.45,0.2,"Phi Model"); 
-    stitle4->Draw();
+    stitle[3]->DrawLatex(0.45,0.2,"Phi Model"); 
+    stitle[3]->Draw();
 
     stitlepad5->cd();
     stitlepad5->Clear();
-    stitle5->DrawLatex(0.4,0.2,"Comparing R Model to True"); 
-    stitle5->Draw();
+    stitle[4]->DrawLatex(0.4,0.2,"Comparing R Model to True"); 
+    stitle[4]->Draw();
 
     stitlepad6->cd();
     stitlepad6->Clear();
-    stitle6->DrawLatex(0.4,0.2,"Comparing Phi Model to True"); 
-    stitle6->Draw();
+    stitle[5]->DrawLatex(0.4,0.2,"Comparing Phi Model to True"); 
+    stitle[5]->Draw();
 
     if(ifile == 0){ 
       //if(ifile == 1){
