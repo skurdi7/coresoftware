@@ -570,7 +570,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     TLatex *stitle[6];
     for(int i = 0; i < 6; i++){
-      stitle[i] = newTLatex(0.0,0.0,"");
+      stitle[i] = new TLatex(0.0,0.0,"");
       stitle[i]->SetNDC();
       stitle[i]->SetTextSize(0.35);
     }
@@ -602,17 +602,17 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     canvas->cd();
     c1->Draw();
-    stitlepad[0]->Draw();
+    stitlepad1->Draw();
     c2->Draw();
-    stitlepad[1]->Draw();
+    stitlepad2->Draw();
     c3->Draw();
-    stitlepad[2]->Draw();
+    stitlepad3->Draw();
     c4->Draw();
-    stitlepad[3]->Draw();
+    stitlepad4->Draw();
     c5->Draw();
-    stitlepad[4]->Draw();
+    stitlepad5->Draw();
     c6->Draw();
-    stitlepad[5]->Draw();
+    stitlepad6->Draw();
     titlepad->Draw();
 
     //x plots
