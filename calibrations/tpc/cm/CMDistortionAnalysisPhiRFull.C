@@ -159,16 +159,18 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   }
 
   for (int ifile=0;ifile < nEvents;ifile++){
-    //for each file, find all histograms in that file.
-    sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
+    fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
+    fullcharge=TFile::Open(fullchargefilename,"READ");   
 
+    for(int ihist=0;ihist < 10;ihist++){
+    //for each file, find all histograms in that file.
+    //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
+    sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
+    
     //create shifter
     shifter = new Shifter(sourcefilename);
 
-    fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
-    fullcharge=TFile::Open(fullchargefilename,"READ");
-
-    hFluctCharge=(TH3F*)fullcharge->Get(Form("h_Charge_%d",ifile)); // only 0-9 available
+    hFluctCharge=(TH3F*)fullcharge->Get(Form("h_Charge_%d",ihist)); // only 0-9 available
     hFluctCharge->Add(hSmoothedAve,-1); 
     
     TFile *plots;
@@ -326,8 +328,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hPhiDiffvPhi_PhiRNeg = new TH2F("hPhiDiffvPhi_PhiR_Neg", "Difference between Phi Model and True vs. phi, Phi,R binning, Negative Side (R > 30, 10 < z < 90); phi (rad); shift difference (#mum)",nphi,minphi,maxphi,ndiff,mindiff,maxdiff);
     
     //compare linear model to space charge
-    TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion and True Fluctuation Charge, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-550,550,nbins,-550,550);
-    TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Fluctuation Charge, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-550,550,nbins,-550,550);
+    TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion Fluctuation and True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-550,550,nbins,-550,550);
+    TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-550,550,nbins,-550,550);
     
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
@@ -738,6 +740,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       canvas->Print("CMDistortionAnalysisPhiRNeg.pdf(","pdf");
     } else if((ifile == 1) || (ifile == nEvents - 1)){
       canvas->Print("CMDistortionAnalysisPhiRNeg.pdf","pdf");
+    }
     }
   }
 
