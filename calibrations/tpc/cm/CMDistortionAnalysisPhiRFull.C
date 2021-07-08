@@ -171,6 +171,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     shifter = new Shifter(sourcefilename);
 
     hFluctCharge=(TH3F*)fullcharge->Get(Form("h_Charge_%d",ihist)); // only 0-9 available
+    //nbins: x 360, y 159, z 248
+    //xmin: 0.0000000, 0.20000000, -1.0550000
+    //xmax: 6.2831900, 0.78000000, 1.0550000
     hFluctCharge->Add(hSmoothedAve,-1); 
     
     TFile *plots;
@@ -442,7 +445,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hRShiftTrueNeg->Fill(shifttrueCylNeg[0]);
 	    hPhiShiftTrueNeg->Fill(shifttrueCylNeg[1]);
 
-	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r,zNeg/100))*(1e4);
+	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r/100,zNeg/100))*(1e6);//convert from m to micron
 	    
 	    for(int l = 0; l < 3; l ++){
 	      shiftrecoCartPhiRNeg[l] =  (hCartCMModelPhiRNeg[l]->GetBinContent(binPhiRNeg))*(1e4);
