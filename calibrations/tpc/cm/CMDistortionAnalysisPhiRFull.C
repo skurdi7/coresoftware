@@ -151,11 +151,11 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   
   //how many events
   if (nMaxEvents<0){
-    nEvents=sourcefilelist->GetNFiles();
-  } else if(nMaxEvents<sourcefilelist->GetNFiles()){
+    nEvents=fullchargefilelist->GetNFiles();
+  } else if(nMaxEvents<fullchargefilelist->GetNFiles()){
     nEvents=nMaxEvents;
   } else {
-    nEvents= sourcefilelist->GetNFiles();
+    nEvents= fullchargefilelist->GetNFiles(); 
   }
 
   for (int ifile=0;ifile < nEvents;ifile++){
