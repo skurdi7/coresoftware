@@ -445,7 +445,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hRShiftTrueNeg->Fill(shifttrueCylNeg[0]);
 	    hPhiShiftTrueNeg->Fill(shifttrueCylNeg[1]);
 
-	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r/100,zNeg/100))*(1e6);//convert from m to micron
+	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r/100,zNeg/100))*(1e4);//convert from cm to micron
 	    
 	    for(int l = 0; l < 3; l ++){
 	      shiftrecoCartPhiRNeg[l] =  (hCartCMModelPhiRNeg[l]->GetBinContent(binPhiRNeg))*(1e4);
