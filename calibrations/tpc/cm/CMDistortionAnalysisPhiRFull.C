@@ -331,8 +331,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hPhiDiffvPhi_PhiRNeg = new TH2F("hPhiDiffvPhi_PhiR_Neg", "Difference between Phi Model and True vs. phi, Phi,R binning, Negative Side (R > 30, 10 < z < 90); phi (rad); shift difference (#mum)",nphi,minphi,maxphi,ndiff,mindiff,maxdiff);
     
     //compare linear model to space charge
-    TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion Fluctuation and True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-1e6,1e6,nbins,-550,550);
-    TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-1e6,1e6,nbins,-550,550);
+    TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion Fluctuation and True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-1e6,1e6,nbins,-30,30);
+    TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-1e6,1e6,nbins,-30,30);
 
     TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 1000, 1, 1e7); 
 				  
