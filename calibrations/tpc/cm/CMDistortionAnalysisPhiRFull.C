@@ -334,7 +334,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion Fluctuation and True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-550,550,nbins,-550,550);
     TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-550,550,nbins,-550,550);
 
-    TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 100, 1, 1e10); 
+    TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 1000, 1, 1e7); 
 				  
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
