@@ -333,7 +333,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //compare linear model to space charge
     TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion Fluctuation and True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-550,550,nbins,-550,550);
     TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-550,550,nbins,-550,550);
-    
+
+    TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 100, 1, 1e10); 
+				  
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
       for(int j = 1; j < nr - 1; j++){
@@ -445,7 +447,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hRShiftTrueNeg->Fill(shifttrueCylNeg[0]);
 	    hPhiShiftTrueNeg->Fill(shifttrueCylNeg[1]);
 
-	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r/100,zNeg/100))*(1e4);//convert from cm to micron
+	    
+	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r/100.,zNeg/100.));//convert from cm to micron
+	    hFluc->Fill(fluctchargeNeg);
 	    
 	    for(int l = 0; l < 3; l ++){
 	      shiftrecoCartPhiRNeg[l] =  (hCartCMModelPhiRNeg[l]->GetBinContent(binPhiRNeg))*(1e4);
@@ -647,7 +651,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     c1->cd(4);
     //hCMmodelSliceRvTrue->Draw("colz");
     //hSamplePerBinRZNeg->Draw("colz");
-    hCompareRTruevFluctNeg->Draw("colz");
+    // hCompareRTruevFluctNeg->Draw("colz");
+    hFluc->Draw();
     
     //y plots
     c2->Divide(4,1);
