@@ -588,6 +588,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hPhiDiffvR_PhiRNeg->SetStats(0);
     hPhiDiffvZ_PhiRNeg->SetStats(0);
     hPhiDiffvPhi_PhiRNeg->SetStats(0);
+
+    hCompareRTruevFluctNeg->SetStats(0);
+    hCompareRDiffvFluctNeg->SetStats(0);
+    
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
     TPad *c2=new TPad("c2","",0.0,0.64,1.0,0.77);
