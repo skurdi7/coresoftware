@@ -10,14 +10,14 @@ using namespace std;
 
 class Shifter {
 public:
-Shifter(TString sourcefilename);
+  Shifter(TString sourcefilename, TString averagefilename);
   TFile *forward, *average;
   TH3F *hPosX, *hPosY, *hPosZ, *hPosR, *hPosPhi, *hPosXave, *hPosYave, *hPosZave, *hPosRave, *hPosPhiave;
   TH3F *hNegX, *hNegY, *hNegZ, *hNegR, *hNegPhi, *hNegXave, *hNegYave, *hNegZave, *hNegRave, *hNegPhiave;
   TH3F *hXBack, *hYBack, *hZBack;  
 };
 
-Shifter::Shifter(TString sourcefilename){
+Shifter::Shifter(TString sourcefilename, TString averagefilename){
   //single event distortion file
   forward=TFile::Open(sourcefilename,"READ"); 
 
@@ -52,7 +52,8 @@ Shifter::Shifter(TString sourcefilename){
   hNegPhi=(TH3F*)forward->Get("hIntDistortionNegP");
 
   //average distortion file
-  average=TFile::Open("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root","READ"); 
+  average=TFile::Open("averagefilename","READ"); 
+  //average=TFile::Open("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root","READ"); 
 
   hPosXave=(TH3F*)average->Get("hIntDistortionPosX");
   hPosYave=(TH3F*)average->Get("hIntDistortionPosY");
@@ -132,7 +133,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   TFileCollection *sourcefilelist=new TFileCollection();
   sourcefilelist->Add(sourceinputpattern);
   TString sourcefilename;
-
+  TString averagefilename = "/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root";
+  
   //full charge
   const char * fullchargeinputpattern="/sphenix/user/shulga/Work/IBF/DistortionMap/Files/outputFile_75Hz_G4Hits_sHijing_0-12fm_*.root";
   
@@ -168,7 +170,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
     
     //create shifter
-    shifter = new Shifter(sourcefilename);
+    shifter = new Shifter(sourcefilename, averagefilename);
 
     hFluctCharge=(TH3F*)fullcharge->Get(Form("h_Charge_%d",ihist)); // only 0-9 available
     //nbins: x 360, y 159, z 248
@@ -334,7 +336,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hCompareRTruevFluctNeg = new TH2F("hCompareRTruevFluct", "Compare True R Distortion Fluctuation and True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
     TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
 
-    TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 1000, 1, 1e7); 
+    //TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 1000, 1, 1e7); 
 				  
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
