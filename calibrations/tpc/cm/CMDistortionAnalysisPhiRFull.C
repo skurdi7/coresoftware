@@ -52,7 +52,7 @@ Shifter::Shifter(TString sourcefilename, TString averagefilename){
   hNegPhi=(TH3F*)forward->Get("hIntDistortionNegP");
 
   //average distortion file
-  average=TFile::Open("averagefilename","READ"); 
+  average=TFile::Open(averagefilename,"READ"); 
   //average=TFile::Open("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root","READ"); 
 
   hPosXave=(TH3F*)average->Get("hIntDistortionPosX");
