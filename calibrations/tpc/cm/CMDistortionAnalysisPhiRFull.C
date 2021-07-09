@@ -164,7 +164,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist=0;ihist < 2;ihist++){
+    for(int ihist=0;ihist < 2;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
@@ -715,7 +715,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     titlepad->cd();
     titlepad->Clear();
-    title->DrawLatex(0.01,0.4,Form("Event %d; %s", ifile, sourcefilename.Data())); 
+    title->DrawLatex(0.01,0.4,Form("Event %d; %s", (10*ifile + ihist), sourcefilename.Data())); 
     title->Draw();
     
     stitlepad1->cd();
