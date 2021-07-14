@@ -160,13 +160,11 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     nEvents= sourcefilelist->GetNFiles();
   }
 
-  cout << nEvents << endl;
-
-  for (int ifile=0;ifile < nEvents - 1;ifile++){
+  for (int ifile=0;ifile < nEvents;ifile++){
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist=0;ihist < 2;ihist++){//should be ihist < 10 to run over all
+    for(int ihist=0;ihist < 10;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
@@ -451,7 +449,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hRShiftTrueNeg->Fill(shifttrueCylNeg[0]);
 	    hPhiShiftTrueNeg->Fill(shifttrueCylNeg[1]);
 
-	    
+	    //fluct
 	    fluctchargeNeg = (hFluctCharge->Interpolate(phi,r/100.,zNeg/100.));//convert from cm to micron
 	   	    
 	    for(int l = 0; l < 3; l ++){
