@@ -225,7 +225,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    // WriteIntFluctFile(nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    WriteIntFluctFile(nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+
+    return;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -866,11 +868,11 @@ void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double min
     TH2F *hCompareRDiffvIntFluctLargeRNeg = new TH2F("hCompareRDiffvIntFluct", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Phi,R binning, Negative Side (R > 30); int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);*/
 
     int minbinR = hIntFluctChargeSmallRPos->GetYaxis()->FindBin(minr); 
-    int maxbinZPos = hIntFluctChargeSmallRPos->GetZaxis()->FindBin(minzPos);
+    int maxbinZPos = hIntFluctChargeSmallRPos->GetZaxis()->FindBin(maxzPos);
     int minbinZNeg = hIntFluctChargeSmallRNeg->GetZaxis()->FindBin(minzNeg); 
 
     int maxbinR = hIntFluctChargeSmallRPos->GetYaxis()->FindBin(maxr); 
-    int minbinZPos = hIntFluctChargeSmallRPos->GetZaxis()->FindBin(maxzPos);
+    int minbinZPos = hIntFluctChargeSmallRPos->GetZaxis()->FindBin(minzPos);
     int maxbinZNeg = hIntFluctChargeSmallRNeg->GetZaxis()->FindBin(maxzNeg); 
     
 	  
