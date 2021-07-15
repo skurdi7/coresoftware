@@ -888,7 +888,8 @@ void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double min
 	  int binZNeg = hIntFluctChargeSmallRNeg->GetZaxis()->FindBin(zNeg); 
 	  
 	  
-	  hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos)); //////
+	  hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos));
+	  
 	    //intfluctchargePos =  hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 	    //hCompareRTruevIntFluctSmallRPos->Fill(intfluctchargePos,);
 
@@ -925,6 +926,7 @@ void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double min
 	    }*/
 	}
       }
+      cout << "finished with phi: " << phi << endl;
     }
 
     TFile *integ;
