@@ -533,6 +533,79 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       hCylindricalAveDiffPhiRNeg[m]->Divide(hCylindricalDiffPhiRNeg[m],hSamplePerBinRZNeg);
     }
 
+    //2 hist: int of everything w small r n equal or larger z on same phi ; int of everthing w larger r ...
+    //compare linear model to integrated fluctuation charge
+    
+    TH3F *hIntFluctChargeSmallRPos =new TH3F("hIntFluctChargeSmallRPos", "Integrated Fluctuation Charge, Positive Side, R < 60", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos); 
+    TH3F *hIntFluctChargeSmallRNeg =new TH3F("hIntFluctChargeSmallRNeg", "Integrated Fluctuation Charge, Negative Side, R < 60", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
+
+    TH3F *hIntFluctChargeLargeRPos =new TH3F("hIntFluctChargeLargeRPos", "Integrated Fluctuation Charge, Positive Side, R > 60", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos); 
+    TH3F *hIntFluctChargeLargeRNeg =new TH3F("hIntFluctChargeLargeRNeg", "Integrated Fluctuation Charge, Negative Side, R > 60", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
+
+    TH2F *hCompareRTruevIntFluctSmallRPos = new TH2F("hCompareRTruevIntFluctSmallRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Phi,R binning, Positive Side (R > 30); int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+    TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Phi,R binning, Positive Side (R > 30); int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+    
+    TH2F *hCompareRTruevIntFluctSmallRNeg = new TH2F("hCompareRTruevIntFluct", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Phi,R binning, Negative Side (R > 30); int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+    TH2F *hCompareRDiffvIntFluctLargeRNeg = new TH2F("hCompareRDiffvIntFluct", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Phi,R binning, Negative Side (R > 30); int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+
+    int minbinPhiRPos = hCartCMModelPhiRPos[0]->FindBin(minphi,minr,minzPos);
+    int minbinPhiRNeg = hCartCMModelPhiRNeg[0]->FindBin(minphi,minr,minzNeg);
+	  
+    for(int i = 1; i < nphi - 1; i++){
+      double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
+      for(int j = 1; j < nr - 1; j++){
+	double r = minr + ((maxr - minr)/(1.0*nr))*(j+0.5); 
+	for(int k = 1; k < nz - 1; k++){
+	  double zPos = minzPos + ((maxzPos - minzPos)/(1.0*nz))*(k+0.5); 
+	  double zNeg = minzNeg + ((maxzNeg - minzNeg)/(1.0*nz))*(k+0.5); 
+
+	  double intfluctchargePos, intfluctchargePos;
+	  
+	  int maxbinPhiRPos = hCartCMModelPhiRPos[0]->FindBin(phi,r,zPos);
+	  int maxbinPhiRNeg = hCartCMModelPhiRNeg[0]->FindBin(phi,r,zNeg);
+	  
+	  if(r <= ((maxr - minr)/2.0)){
+	    
+	    hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integrate()); //////
+	    intfluctchargePos =  hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
+	    hCompareRTruevIntFluctSmallRPos->Fill(phi,r,zPos, intfluctchargePos);
+
+	    /* hIntFluctChargeSmallRNeg->Fill(phi,r,zNeg,hFluctCharge->Integrate());
+	    intfluctchargeNeg =  hIntFluctChargeSmallRNeg->Interpolate(phi,r,zNeg);
+	    hCompareRTruevIntFluctSmallRNeg->Fill(phi,r,zNeg, intfluctchargeNeg);*/
+
+	  } else{
+
+	    hIntFluctChargeLargeRPos->Fill(phi,r,zPos,hFluctCharge->Integrate());
+	    intfluctchargePos =  hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
+	    hCompareRTruevIntFluctLargeRPos->Fill(phi,r,zPos, intfluctchargePos);
+	    
+	    /*  hIntFluctChargeLargeRNeg->Fill(phi,r,zNeg,hFluctCharge->Integrate());
+	    intfluctchargeNeg =  hIntFluctChargeLargeRNeg->Interpolate(phi,r,zNeg);
+	    hCompareRTruevIntFluctLargeRNeg->Fill(phi,r,zNeg, intfluctchargeNeg);*/
+	  }
+
+	  
+	  
+	  //loop over r and z to integrate
+
+	  /* for(int l = 1; l < nr - 1; l++){
+	    double intr = minr + ((maxr - minr)/(1.0*nr))*(l+0.5); 
+	    for(int m = 1; m < nz - 1; m++){
+	      double intzPos = minzPos + ((maxzPos - minzPos)/(1.0*nz))*(m+0.5); 
+	      double intzNeg = minzNeg + ((maxzNeg - minzNeg)/(1.0*nz))*(m+0.5);
+
+	      
+	      int binPhiRNeg = hCartCMModelPhiRNeg[0]->FindBin(phi,intr,intzNeg);
+	      // = hFluctCharge->Integrate(minphi, ,minr, intr/100.,minzNeg, intzNeg/100.);
+	  
+	    }
+	    }*/
+	}
+      }
+    }
+    
+    
     //summary plots
     //positive
     hDifferenceMeanRPos->Fill(hCylindricalShiftDifferencePhiRPos[0]->GetMean(1));
@@ -596,7 +669,21 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     hCompareRTruevFluctNeg->SetStats(0);
     hCompareRDiffvFluctNeg->SetStats(0);
-    
+
+    //integrated fluct plots
+    TCanvas *integ=new TCanvas("integ","IntegratedFluctAnalysis",1000,1000);
+
+    integ->cd();
+    integ->Divide(2,2);
+    integ->cd(1);
+    hIntFluctChargeSmallRPos->Draw();
+    integ->cd(2);
+    hIntFluctChargeLargeRPos->Draw();
+    integ->cd(3);
+    hCompareRTruevIntFluctSmallRPos->Draw("colz");
+    integ->cd(4);
+    hCompareRTruevIntFluctLargeRPos->Draw("colz");
+    integ->Print("IntegratedFluctAnalysis.pdf","pdf");
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
     TPad *c2=new TPad("c2","",0.0,0.64,1.0,0.77);
