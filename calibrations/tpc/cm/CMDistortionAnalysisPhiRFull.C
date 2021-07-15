@@ -227,7 +227,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     WriteIntFluctFile(nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    return;
+    return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
