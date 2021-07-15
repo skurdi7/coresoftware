@@ -568,21 +568,21 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    
 	    hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral()); //////
 	    intfluctchargePos =  hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
-	    hCompareRTruevIntFluctSmallRPos->Fill(phi,r,zPos, intfluctchargePos);
+	    //hCompareRTruevIntFluctSmallRPos->Fill(intfluctchargePos,);
 
 	    /* hIntFluctChargeSmallRNeg->Fill(phi,r,zNeg,hFluctCharge->Integral());
 	    intfluctchargeNeg =  hIntFluctChargeSmallRNeg->Interpolate(phi,r,zNeg);
-	    hCompareRTruevIntFluctSmallRNeg->Fill(phi,r,zNeg, intfluctchargeNeg);*/
+	    hCompareRTruevIntFluctSmallRNeg->Fill(intfluctchargeNeg,);*/
 
 	  } else{
 
 	    hIntFluctChargeLargeRPos->Fill(phi,r,zPos,hFluctCharge->Integral());
 	    intfluctchargePos =  hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
-	    hCompareRTruevIntFluctLargeRPos->Fill(phi,r,zPos, intfluctchargePos);
+	    //hCompareRTruevIntFluctLargeRPos->Fill(intfluctchargePos,);
 	    
 	    /*  hIntFluctChargeLargeRNeg->Fill(phi,r,zNeg,hFluctCharge->Integral());
 	    intfluctchargeNeg =  hIntFluctChargeLargeRNeg->Interpolate(phi,r,zNeg);
-	    hCompareRTruevIntFluctLargeRNeg->Fill(phi,r,zNeg, intfluctchargeNeg);*/
+	    hCompareRTruevIntFluctLargeRNeg->Fill(intfluctchargeNeg,);*/
 	  }
 
 	  
@@ -679,10 +679,12 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hIntFluctChargeSmallRPos->Draw();
     integ->cd(2);
     hIntFluctChargeLargeRPos->Draw();
-    integ->cd(3);
+    /*integ->cd(3);
     hCompareRTruevIntFluctSmallRPos->Draw("colz");
     integ->cd(4);
-    hCompareRTruevIntFluctLargeRPos->Draw("colz");
+    hCompareRTruevIntFluctLargeRPos->Draw("colz");*/
+    integ->cd(3)->Clear();
+    integ->cd(4)->Clear();
     integ->Print("IntegratedFluctAnalysis.pdf","pdf");
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
