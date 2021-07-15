@@ -566,21 +566,21 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	  
 	  if(r <= ((maxr - minr)/2.0)){
 	    
-	    hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integrate()); //////
+	    hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral()); //////
 	    intfluctchargePos =  hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 	    hCompareRTruevIntFluctSmallRPos->Fill(phi,r,zPos, intfluctchargePos);
 
-	    /* hIntFluctChargeSmallRNeg->Fill(phi,r,zNeg,hFluctCharge->Integrate());
+	    /* hIntFluctChargeSmallRNeg->Fill(phi,r,zNeg,hFluctCharge->Integral());
 	    intfluctchargeNeg =  hIntFluctChargeSmallRNeg->Interpolate(phi,r,zNeg);
 	    hCompareRTruevIntFluctSmallRNeg->Fill(phi,r,zNeg, intfluctchargeNeg);*/
 
 	  } else{
 
-	    hIntFluctChargeLargeRPos->Fill(phi,r,zPos,hFluctCharge->Integrate());
+	    hIntFluctChargeLargeRPos->Fill(phi,r,zPos,hFluctCharge->Integral());
 	    intfluctchargePos =  hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 	    hCompareRTruevIntFluctLargeRPos->Fill(phi,r,zPos, intfluctchargePos);
 	    
-	    /*  hIntFluctChargeLargeRNeg->Fill(phi,r,zNeg,hFluctCharge->Integrate());
+	    /*  hIntFluctChargeLargeRNeg->Fill(phi,r,zNeg,hFluctCharge->Integral());
 	    intfluctchargeNeg =  hIntFluctChargeLargeRNeg->Interpolate(phi,r,zNeg);
 	    hCompareRTruevIntFluctLargeRNeg->Fill(phi,r,zNeg, intfluctchargeNeg);*/
 	  }
