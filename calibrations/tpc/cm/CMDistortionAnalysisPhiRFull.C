@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double minr,double maxr, int nz, double minzPos,double maxzPos, double minzNeg,double maxzNeg);
+void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double minr,double maxr, int nz, double minzPos,double maxzPos, double minzNeg,double maxzNeg, TH3F *hFluctCharge);
   
 class Shifter {
 public:
@@ -224,7 +224,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    WriteIntFluctFile(nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg);
+    WriteIntFluctFile(nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -847,7 +847,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 }
 
 
-void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double minr,double maxr, int nz, double minzPos,double maxzPos, double minzNeg,double maxzNeg){
+void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double minr,double maxr, int nz, double minzPos,double maxzPos, double minzNeg,double maxzNeg, TH3F *hFluctCharge){
     //2 hist: int of everything w small r n equal or larger z on same phi ; int of everthing w larger r ...
     //compare linear model to integrated fluctuation charge
     
