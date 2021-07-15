@@ -627,7 +627,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hCompareRTruevIntFluctSmallRPos->Draw("colz");
     integ->cd(4);
     hCompareRTruevIntFluctLargeRPos->Draw("colz");*/
-    integ->cd(3)->Clear();
+    integ->cd(3);
+    hFluctCharge->Project3D("yz")->Draw("colz");
     integ->cd(4)->Clear();
     integ->Print("IntegratedFluctAnalysis.pdf","pdf");
 
