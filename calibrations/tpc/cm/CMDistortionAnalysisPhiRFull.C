@@ -225,9 +225,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    // WriteIntFluctFile(nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    WriteIntFluctFile(nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    //return 0;
+    return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -867,15 +867,27 @@ void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double min
     TH2F *hCompareRTruevIntFluctSmallRNeg = new TH2F("hCompareRTruevIntFluct", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Phi,R binning, Negative Side (R > 30); int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
     TH2F *hCompareRDiffvIntFluctLargeRNeg = new TH2F("hCompareRDiffvIntFluct", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Phi,R binning, Negative Side (R > 30); int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);*/
 
-    int minbinR = hIntFluctChargeSmallRPos->GetYaxis()->FindBin(minr); 
-    int maxbinZPos = hIntFluctChargeSmallRPos->GetZaxis()->FindBin(maxzPos);
-    int minbinZNeg = hIntFluctChargeSmallRNeg->GetZaxis()->FindBin(minzNeg); 
-
-    int maxbinR = hIntFluctChargeSmallRPos->GetYaxis()->FindBin(maxr); 
-    int minbinZPos = hIntFluctChargeSmallRPos->GetZaxis()->FindBin(minzPos);
-    int maxbinZNeg = hIntFluctChargeSmallRNeg->GetZaxis()->FindBin(maxzNeg); 
     
-	  
+    int minbinR = hFluctCharge->GetYaxis()->FindBin(minr/100.); 
+    int maxbinZPos = hFluctCharge->GetZaxis()->FindBin(maxzPos/100.);
+    int minbinZNeg = hFluctCharge->GetZaxis()->FindBin(minzNeg/100.); 
+
+    int maxbinR = hFluctCharge->GetYaxis()->FindBin(maxr/100.); 
+    int minbinZPos = hFluctCharge->GetZaxis()->FindBin(minzPos/100.);
+    int maxbinZNeg = hFluctCharge->GetZaxis()->FindBin(maxzNeg/100.); 
+    
+    /*  int nphi = 82;
+    int nr = 54;
+    int nz = 82;
+    
+    double minphi = -0.078539819;
+    double minzPos = -1.3187500;
+    double minzNeg = -106.81875;
+    
+    double maxphi = 6.3617253;
+    double maxr = 79.115387;
+    double maxzPos = 106.81875;*/
+    
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
       for(int j = 1; j < nr - 1; j++){
@@ -886,10 +898,10 @@ void WriteIntFluctFile(int nphi, double minphi, double maxphi, int nr,double min
 
 	  double intfluctchargePos, intfluctchargeNeg;
 
-	  int binPhi = hIntFluctChargeSmallRPos->GetXaxis()->FindBin(phi); 
-	  int binR = hIntFluctChargeSmallRPos->GetYaxis()->FindBin(r); 
-	  int binZPos = hIntFluctChargeSmallRPos->GetZaxis()->FindBin(zPos);
-	  int binZNeg = hIntFluctChargeSmallRNeg->GetZaxis()->FindBin(zNeg); 
+	  int binPhi = hFluctCharge->GetXaxis()->FindBin(phi); 
+	  int binR = hFluctCharge->GetYaxis()->FindBin(r/100.); 
+	  int binZPos = hFluctCharge->GetZaxis()->FindBin(zPos/100.);
+	  int binZNeg = hFluctCharge->GetZaxis()->FindBin(zNeg/100.); 
 	  
 	  
 	  hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos));
