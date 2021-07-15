@@ -262,7 +262,7 @@ int CMDistortionRecoPhiRFull(int nMaxEvents = -1) {
     for(int i = 0; i < 3; i++){
       hCartesianForwardPhiRPos[i]->Write();
       hCartesianAveShiftPhiRPos[i]->Write();
-      hCartesianCMModelPhiRPos[i]->Write();
+      hCartesianCMModelPhiRPos[i]->Write(); //take out
 
       hCartesianForwardPhiRNeg[i]->Write();
       hCartesianAveShiftPhiRNeg[i]->Write();
