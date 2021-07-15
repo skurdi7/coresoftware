@@ -559,7 +559,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	  double zPos = minzPos + ((maxzPos - minzPos)/(1.0*nz))*(k+0.5); 
 	  double zNeg = minzNeg + ((maxzNeg - minzNeg)/(1.0*nz))*(k+0.5); 
 
-	  double intfluctchargePos, intfluctchargePos;
+	  double intfluctchargePos, intfluctchargeNeg;
 	  
 	  int maxbinPhiRPos = hCartCMModelPhiRPos[0]->FindBin(phi,r,zPos);
 	  int maxbinPhiRNeg = hCartCMModelPhiRNeg[0]->FindBin(phi,r,zNeg);
