@@ -348,7 +348,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TFile *intFluct;
     TH3F *hIntFluctChargeSmallRPos, *hIntFluctChargeLargeRPos;
    
-    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (ifile), "READ");
+    intFluct=TFile::Open(Form("IntFluctEvent%d.root", ifile), "READ");
 
     hIntFluctChargeSmallRPos=(TH3F*)intFluct->Get("hIntFluctChargeSmallRPos");
     hIntFluctChargeLargeRPos=(TH3F*)intFluct->Get("hIntFluctChargeLargeRPos");
