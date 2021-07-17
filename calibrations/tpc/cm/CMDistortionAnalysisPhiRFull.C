@@ -647,7 +647,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     integtitlepad->cd();
     integtitlepad->Clear();
-    integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist)); 
+    integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist))); 
 
     if(ifile == 0){
       integ->Print("IntegratedFluctAnalysis.pdf(","pdf");
