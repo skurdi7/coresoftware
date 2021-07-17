@@ -348,7 +348,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TFile *intFluct;
     TH3F *hIntFluctChargeSmallRPos, *hIntFluctChargeLargeRPos;
    
-    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "READ");
+    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (ifile), "READ");
 
     hIntFluctChargeSmallRPos=(TH3F*)intFluct->Get("hIntFluctChargeSmallRPos");
     hIntFluctChargeLargeRPos=(TH3F*)intFluct->Get("hIntFluctChargeLargeRPos");
@@ -618,7 +618,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->SetStats(0);
     
     //integrated fluct plots
-    TCanvas *integ=new TCanvas("integ",Form("IntegratedFluctAnalysisEvent%d",(2*ifile + ihist)),1000,1000);
+    TCanvas *integ=new TCanvas("integ",Form("IntegratedFluctAnalysisEvent%d", ifile),1000,1000);
 
     integ->cd();
     integ->Divide(2,2);
@@ -633,7 +633,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integ->cd(3);
     hFluctCharge->Project3D("yz")->Draw("colz");
     integ->cd(4)->Clear();
-    integ->Print(Form("IntegratedFluctAnalysisEvent%d.pdf",(2*ifile + ihist)),"pdf");
+    integ->Print(Form("IntegratedFluctAnalysisEvent%d.pdf",ifile),"pdf");
 
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
@@ -933,7 +933,7 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 
     TFile *integ;
 
-    integ=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "RECREATE");
+    integ=TFile::Open(Form("IntFluctEvent%d.root", ifile), "RECREATE");
 
     hIntFluctChargeSmallRPos->Write();
     hIntFluctChargeLargeRPos->Write();
