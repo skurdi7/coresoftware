@@ -352,8 +352,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     hIntFluctChargeSmallRPos=(TH3F*)intFluct->Get("hIntFluctChargeSmallRPos");
     hIntFluctChargeLargeRPos=(TH3F*)intFluct->Get("hIntFluctChargeLargeRPos");
-    
-				  
+    				  
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
       for(int j = 1; j < nr - 1; j++){
@@ -549,9 +548,6 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       hCylindricalAveDiffPhiRNeg[m]->Divide(hCylindricalDiffPhiRNeg[m],hSamplePerBinRZNeg);
     }
 
-    
-   
-
       
     //summary plots
     //positive
@@ -617,8 +613,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hCompareRTruevFluctNeg->SetStats(0);
     hCompareRDiffvFluctNeg->SetStats(0);
 
-    hIntFluctChargeSmallRPos->SetStats(0);
-    hIntFluctChargeLargeRPos->SetStats(0);
+    hIntFluctChargeSmallRPos->Project3D("yz")->SetStats(0);
+    hIntFluctChargeLargeRPos->Project3D("yz")->SetStats(0);
+    hFluctCharge->Project3D("yz")->SetStats(0);
     
     //integrated fluct plots
     TCanvas *integ=new TCanvas("integ",Form("IntegratedFluctAnalysisEvent%d",(10*ifile + ihist)),1000,1000);
