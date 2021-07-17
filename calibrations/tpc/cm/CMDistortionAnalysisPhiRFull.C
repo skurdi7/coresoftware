@@ -162,7 +162,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     nEvents= sourcefilelist->GetNFiles();
   }
 
-  for (int ifile=1;ifile < nEvents;ifile++){
+  for (int ifile=0;ifile < nEvents;ifile++){
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
@@ -224,9 +224,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    // WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    //return 0;
+    return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -348,7 +348,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TFile *intFluct;
     TH3F *hIntFluctChargeSmallRPos, *hIntFluctChargeLargeRPos;
    
-    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (10*ifile + ihist)), "READ");
+    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "READ");
 
     hIntFluctChargeSmallRPos=(TH3F*)intFluct->Get("hIntFluctChargeSmallRPos");
     hIntFluctChargeLargeRPos=(TH3F*)intFluct->Get("hIntFluctChargeLargeRPos");
@@ -618,7 +618,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->SetStats(0);
     
     //integrated fluct plots
-    TCanvas *integ=new TCanvas("integ",Form("IntegratedFluctAnalysisEvent%d",(10*ifile + ihist)),1000,1000);
+    TCanvas *integ=new TCanvas("integ",Form("IntegratedFluctAnalysisEvent%d",(2*ifile + ihist)),1000,1000);
 
     integ->cd();
     integ->Divide(2,2);
@@ -633,7 +633,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integ->cd(3);
     hFluctCharge->Project3D("yz")->Draw("colz");
     integ->cd(4)->Clear();
-    integ->Print(Form("IntegratedFluctAnalysisEvent%d.pdf",(10*ifile + ihist)),"pdf");
+    integ->Print(Form("IntegratedFluctAnalysisEvent%d.pdf",(2*ifile + ihist)),"pdf");
 
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
@@ -753,7 +753,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     titlepad->cd();
     titlepad->Clear();
-    title->DrawLatex(0.01,0.4,Form("Event %d; %s", (10*ifile + ihist), sourcefilename.Data())); 
+    title->DrawLatex(0.01,0.4,Form("Event %d; %s", (2*ifile + ihist), sourcefilename.Data())); 
     title->Draw();
     
     stitlepad1->cd();
@@ -933,7 +933,7 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 
     TFile *integ;
 
-    integ=TFile::Open(Form("IntFluctEvent%d.root", (10*ifile + ihist)), "RECREATE");
+    integ=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "RECREATE");
 
     hIntFluctChargeSmallRPos->Write();
     hIntFluctChargeLargeRPos->Write();
