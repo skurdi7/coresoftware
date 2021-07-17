@@ -97,7 +97,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   int nEvents; 
   
   TCanvas *canvas=new TCanvas("canvas","CMDistortionAnalysisPhiRNeg",2000,3000);
-
+  TCanvas *integ=new TCanvas("integ","IntegratedFluctAnalysis",1000,1000);
+  
   int nsumbins = 20;
   int minsum = -10;
   int maxsum = 10;
@@ -618,9 +619,19 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->SetStats(0);
     
     //integrated fluct plots
-    TCanvas *integ=new TCanvas("integ",Form("IntegratedFluctAnalysisEvent%d", (2*ifile + ihist)),1000,1000);
+    TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
+    TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
+
+    TLatex *integtitle = new TLatex(0.0,0.0,"");
+
+    integtitle->SetNDC();
+    integtitle->SetTextSize(0.4);
 
     integ->cd();
+    
+    integplots->Draw();
+    integtitlepad->Draw();
+    
     integ->Divide(2,2);
     integ->cd(1);
     hIntFluctChargeSmallRPos->Project3D("yz")->Draw("colz");
@@ -633,8 +644,18 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integ->cd(3);
     hFluctCharge->Project3D("yz")->Draw("colz");
     integ->cd(4)->Clear();
-    integ->Print(Form("IntegratedFluctAnalysisEvent%d.pdf",(2*ifile + ihist)),"pdf");
 
+    integtitlepad->cd();
+    integtitlepad->Clear();
+    integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist)); 
+
+    if(ifile == 0){
+      integ->Print("IntegratedFluctAnalysis.pdf(","pdf");
+    } else if((ifile == 1) || (ifile == nEvents - 1)){
+      integ->Print("IntegratedFluctAnalysis.pdf","pdf");
+    } else{
+      integ->Print("IntegratedFluctAnalysis.pdf)","pdf");
+    }
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
     TPad *c2=new TPad("c2","",0.0,0.64,1.0,0.77);
