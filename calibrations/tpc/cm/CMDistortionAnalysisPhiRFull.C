@@ -449,7 +449,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hSamplePerBinRZPos->Fill(zPos,r,1);
 
 	    //fluct
-	    double intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
+	    double intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r/100.,zPos/100.);
 	    double intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 	    double intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
@@ -750,30 +750,35 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     c1->cd(1);
     hCartesianAveDiffPhiRNeg[0]->Draw("colz");
     c1->cd(2);
-    hCartesianAveDiffPhiRNeg[1]->Draw("colz");
+    // hCartesianAveDiffPhiRNeg[1]->Draw("colz");
+    hCompareRTruevIntFluctSmallRPos->Draw("colz");
     c1->cd(3);
-    hCartesianShiftDifferencePhiRNeg[0]->Draw();
+    //hCartesianShiftDifferencePhiRNeg[0]->Draw();
+    hCompareRTruevIntFluctLargeRPos->Draw("colz");
     //c1->cd(4)->Clear();  
     c1->cd(4);
     //hCMmodelSliceRvTrue->Draw("colz");
     //hSamplePerBinRZNeg->Draw("colz");
     //hCompareRTruevFluctNeg->Draw("colz");
     //hFluc->Draw();
-    hCompareRTruevIntFluctSmallRPos->Draw("colz");
+    hCompareRTruevIntFluctDiffRPos->Draw("colz");
     
     //y plots
     c2->Divide(4,1);
     c2->cd(1);
     hCartesianAveDiffPhiRNeg[2]->Draw("colz");
     c2->cd(2);
-    hCartesianAveDiffPhiRNeg[3]->Draw("colz");
+    //hCartesianAveDiffPhiRNeg[3]->Draw("colz");
+    hCompareRDiffvIntFluctSmallRPos->Draw("colz");
     c2->cd(3);
-    hCartesianShiftDifferencePhiRNeg[1]->Draw();
+    //hCartesianShiftDifferencePhiRNeg[1]->Draw();
     //c2->cd(4)->Clear();
+    hCompareRDiffvIntFluctLargeRPos->Draw("colz");
     c2->cd(4);
     //hStripesPerBin->Draw("colz");
     //hSamplePerBinPhiR->Draw("colz");
-    hCompareRDiffvFluctNeg->Draw("colz");
+    //hCompareRDiffvFluctNeg->Draw("colz");
+    hCompareRDiffvIntFluctDiffRPos->Draw("colz");
     
     //r cart
     c3->Divide(4,1);
@@ -929,12 +934,6 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 
     TH3F *hIntFluctChargeLargeRPos =new TH3F("hIntFluctChargeLargeRPos", "Integrated Fluctuation Charge, Positive Side, R Outside; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos); 
     TH3F *hIntFluctChargeLargeRNeg =new TH3F("hIntFluctChargeLargeRNeg", "Integrated Fluctuation Charge, Negative Side, R Outside; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzNeg,maxzNeg);
-
-    /*TH2F *hCompareRTruevIntFluctSmallRPos = new TH2F("hCompareRTruevIntFluctSmallRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
-    TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
-    
-    TH2F *hCompareRTruevIntFluctSmallRNeg = new TH2F("hCompareRTruevIntFluct", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Negative Side, R Inside; int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
-    TH2F *hCompareRDiffvIntFluctLargeRNeg = new TH2F("hCompareRDiffvIntFluct", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Negative Side, R Outside; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);*/
 
     
     int minbinR = hFluctCharge->GetYaxis()->FindBin(minr/100.); 
