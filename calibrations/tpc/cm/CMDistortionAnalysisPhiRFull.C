@@ -386,9 +386,6 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
 	  int binPhiRPos = hCartCMModelPhiRPos[0]->FindBin(phi,r,zPos);
 
-	  double intfluctchargeSmallRPos =  hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
-	  double intfluctchargeLargeRPos =  hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
-	  double intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 	  
 	  if((r > 30.0) && (r < 76.0)){
 	    //x y and z
@@ -452,8 +449,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hSamplePerBinRZPos->Fill(zPos,r,1);
 
 	    //fluct
-	    //hCompareRTruevFluctNeg->Fill(fluctchargeNeg,shifttrueCylNeg[0]);
-	    //hCompareRDiffvFluctNeg->Fill(fluctchargeNeg,differenceCylPhiRNeg[0]);
+	    double intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
+	    double intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
+	    double intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
+
 	    hCompareRTruevIntFluctSmallRPos->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
 	    hCompareRTruevIntFluctLargeRPos->Fill(intfluctchargeLargeRPos,shifttrueCylPos[0]);
 	    hCompareRTruevIntFluctDiffRPos->Fill(intfluctchargeDiffRPos,shifttrueCylPos[0]);
@@ -658,9 +657,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integcomp->cd(6);
     hCompareRDiffvIntFluctDiffRPos->Draw("colz");
 
-    if(ifile == 0){ 
+    if((2*ifile + ihist) == 0){ 
       integcomp->Print("integcomp.pdf(","pdf");
-    } else if (ifile == nEvents - 1){
+    } else if ((2*ifile + ihist) == nEvents - 1){
       integcomp->Print("integcomp.pdf)","pdf");
     } else {
       integcomp->Print("integcomp.pdf","pdf");
