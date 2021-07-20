@@ -345,13 +345,13 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hCompareRDiffvFluctNeg = new TH2F("hCompareRDiffvFluct", "Compare Difference between R Model and True R vs True Charge Fluctuation, Phi,R binning, Negative Side (R > 30); fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
 
     //compare linear model to integrated charge
-    TH2F *hCompareRTruevIntFluctSmallRPos = new TH2F("hCompareRTruevIntFluctSmallRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge (#mum); true shift (#mum)",nbins,-2e3,2e3,nbins,-20,20);
-    TH2F *hCompareRTruevIntFluctLargeRPos = new TH2F("hCompareRTruevIntFluctLargeRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge (#mum); true shift (#mum)",nbins,-2e4,2e4,nbins,-20,20);
-    TH2F *hCompareRTruevIntFluctDiffRPos = new TH2F("hCompareRTruevIntFluctDiffRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; int fluct charge (#mum); true shift (#mum)",nbins,-2e4,2e4,nbins,-20,20);
+    TH2F *hCompareRTruevIntFluctSmallRPos = new TH2F("hCompareRTruevIntFluctSmallRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+    TH2F *hCompareRTruevIntFluctLargeRPos = new TH2F("hCompareRTruevIntFluctLargeRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+    TH2F *hCompareRTruevIntFluctDiffRPos = new TH2F("hCompareRTruevIntFluctDiffRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-30,30);
 
-    TH2F *hCompareRDiffvIntFluctSmallRPos = new TH2F("hCompareRDiffvIntFluctSmallRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge (#mum); shift difference (#mum)",nbins,-2e3,2e3,nbins,-20,20);
-    TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge (#mum); shift difference (#mum)",nbins,-2e4,2e4,nbins,-20,20);
-    TH2F *hCompareRDiffvIntFluctDiffRPos = new TH2F("hCompareRDiffvIntFluctDiffRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; int fluct charge (#mum); shift difference (#mum)",nbins,-2e4,2e4,nbins,-20,20);
+    TH2F *hCompareRDiffvIntFluctSmallRPos = new TH2F("hCompareRDiffvIntFluctSmallRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+    TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
+    TH2F *hCompareRDiffvIntFluctDiffRPos = new TH2F("hCompareRDiffvIntFluctDiffRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-30,30);
 
   
     //TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 1000, 1, 1e7); 
