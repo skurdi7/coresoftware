@@ -449,7 +449,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hSamplePerBinRZPos->Fill(zPos,r,1);
 
 	    //fluct
-	    double intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r/100.,zPos/100.);
+	    double intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 	    double intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 	    double intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
