@@ -757,8 +757,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     c1->cd(4);
     //hCMmodelSliceRvTrue->Draw("colz");
     //hSamplePerBinRZNeg->Draw("colz");
-    hCompareRTruevFluctNeg->Draw("colz");
+    //hCompareRTruevFluctNeg->Draw("colz");
     //hFluc->Draw();
+    hCompareRTruevIntFluctSmallRPos->Draw("colz");
     
     //y plots
     c2->Divide(4,1);
