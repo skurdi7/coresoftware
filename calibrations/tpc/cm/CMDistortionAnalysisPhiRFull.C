@@ -659,7 +659,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     
     //integrated fluct plots
-    /* integcomp->Divide(3,2);
+    /integcomp->Divide(3,2);
     integcomp->cd(1);
     hCompareRTruevIntFluctSmallRPos->Draw("colz");
     integcomp->cd(2);
@@ -679,7 +679,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       integcomp->Print("integcomp.pdf)","pdf");
     } else {
       integcomp->Print("integcomp.pdf","pdf");
-      }*/
+      }
     
     /*TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
     TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
@@ -693,6 +693,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //integ->Draw();
     //integplots->Draw();
     //integtitlepad->Draw();
+
+    
     
     integ->Divide(2,2);
     integ->cd(1);
@@ -707,6 +709,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->Draw("colz");
     integ->cd(4);
     hCartesianAveDiffPhiRNeg[0]->Draw("colz");
+
+
+
+    
     /* integtitlepad->cd();
     integtitlepad->Clear();
     integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist))); 
