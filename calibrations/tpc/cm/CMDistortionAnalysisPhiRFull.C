@@ -709,10 +709,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integtitlepad->Clear();
     integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist))); 
 
-    if(ifile == 0){
+    if((2*ifile + ihist) == 0){
       integ->Print("IntegratedFluctAnalysis.pdf(","pdf");
-    } else if((ifile == 1) || (ifile == nEvents - 1)){
-      integ->Print("IntegratedFluctAnalysis.pdf","pdf");
+      //} else if ((2*ifile + ihist) == nEvents - 1){
+      //integ->Print("IntegratedFluctAnalysis.pdf","pdf");
     } else{
       integ->Print("IntegratedFluctAnalysis.pdf)","pdf");
     }
