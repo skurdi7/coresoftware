@@ -643,8 +643,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->SetStats(0);
 
     hCompareRTruevIntFluctSmallRPos->SetStats(0);
-    hCompareRTruevIntFluctLargeRPos->SetStats(110111);
-    hCompareRTruevIntFluctDiffRPos->SetStats(0);
+    hCompareRTruevIntFluctLargeRPos->SetOptStat(110111);
+    hCompareRTruevIntFluctDiffRPos->SetOptStat("oue");
 
     hCompareRDiffvIntFluctSmallRPos->SetStats(0);
     hCompareRDiffvIntFluctLargeRPos->SetStats(0);
