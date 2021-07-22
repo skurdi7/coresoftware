@@ -170,7 +170,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist=1;ihist < 2;ihist++){//should be ihist < 10 to run over all
+    for(int ihist=0;ihist < 2;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
@@ -228,9 +228,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    // WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    return 0;
+    //return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -657,7 +657,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     
     //integrated fluct plots
-    integcomp->Divide(3,2);
+    /* integcomp->Divide(3,2);
     integcomp->cd(1);
     hCompareRTruevIntFluctSmallRPos->Draw("colz");
     integcomp->cd(2);
@@ -677,9 +677,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       integcomp->Print("integcomp.pdf)","pdf");
     } else {
       integcomp->Print("integcomp.pdf","pdf");
-    }
+      }*/
     
-    /* TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
+    TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
     TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
 
     TLatex *integtitle = new TLatex(0.0,0.0,"");
@@ -715,7 +715,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       integ->Print("IntegratedFluctAnalysis.pdf","pdf");
     } else{
       integ->Print("IntegratedFluctAnalysis.pdf)","pdf");
-    }*/
+    }
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
     TPad *c2=new TPad("c2","",0.0,0.64,1.0,0.77);
