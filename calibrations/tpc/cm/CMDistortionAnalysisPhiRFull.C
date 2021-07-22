@@ -100,6 +100,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   
   TCanvas *canvas=new TCanvas("canvas","CMDistortionAnalysisPhiRNeg",2000,3000);
   TCanvas *integ=new TCanvas("integ","IntegratedFluctAnalysis",1000,1000);
+  
   TCanvas *integcomp=new TCanvas("integcomp","CompareRvIntFluct",1500,1000);
   
   int nsumbins = 20;
@@ -688,8 +689,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integtitle->SetNDC();
     integtitle->SetTextSize(0.4);*/
 
-    integ->cd();
-    
+    //integ->cd();
+    //integ->Draw();
     //integplots->Draw();
     //integtitlepad->Draw();
     
@@ -704,7 +705,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //hCompareRTruevIntFluctLargeRPos->Draw("colz");
     integ->cd(3);
     hFluctCharge->Project3D("yz")->Draw("colz");
-    integ->cd(4)->Clear();
+    //integ->cd(4)->Clear();
 
     /* integtitlepad->cd();
     integtitlepad->Clear();
