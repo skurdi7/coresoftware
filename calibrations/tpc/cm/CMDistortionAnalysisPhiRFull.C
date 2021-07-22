@@ -659,7 +659,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     
     //integrated fluct plots
-    /integcomp->Divide(3,2);
+    integcomp->Divide(3,2);
     integcomp->cd(1);
     hCompareRTruevIntFluctSmallRPos->Draw("colz");
     integcomp->cd(2);
