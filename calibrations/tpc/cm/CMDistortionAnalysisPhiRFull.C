@@ -8,6 +8,8 @@
 
 using namespace std;
 
+//void CMModels{int nphi, double minphi, double maxphi, int nr,double minr,double maxr, int nz, double minzPos,double maxzPos, double minzNeg,double maxzNeg, TH2F *hCartesianAveShiftPhiRPos[3], TH2F *hCylindricalAveShiftPhiRPos[2], TH2F *hCartesianAveShiftPhiRNeg[3], TH2F *hCylindricalAveShiftPhiRNeg[2]};
+
 void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double maxphi, int nr,double minr,double maxr, int nz, double minzPos,double maxzPos, double minzNeg,double maxzNeg, TH3F *hFluctCharge);
 
 class Shifter {
@@ -168,7 +170,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist=0;ihist < 2;ihist++){//should be ihist < 10 to run over all
+    for(int ihist=1;ihist < 2;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
@@ -226,9 +228,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    //WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    //return 0;
+    return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -359,7 +361,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TFile *intFluct;
     TH3F *hIntFluctChargeSmallRPos, *hIntFluctChargeLargeRPos;
    
-    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "READ");
+    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "READ");//change 2 to 10 when looping over all ihist
 
     hIntFluctChargeSmallRPos=(TH3F*)intFluct->Get("hIntFluctChargeSmallRPos");
     hIntFluctChargeLargeRPos=(TH3F*)intFluct->Get("hIntFluctChargeLargeRPos");
@@ -838,7 +840,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     titlepad->cd();
     titlepad->Clear();
-    title->DrawLatex(0.01,0.4,Form("Event %d; %s", (10*ifile + ihist), sourcefilename.Data())); 
+    title->DrawLatex(0.01,0.4,Form("Event %d; %s", (2*ifile + ihist), sourcefilename.Data())); 
     title->Draw();
     
     stitlepad1->cd();
@@ -1012,7 +1014,7 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 
     TFile *integ;
 
-    integ=TFile::Open(Form("IntFluctEvent%d.root", ifile), "RECREATE");
+    integ=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile+ihist)), "RECREATE");
 
     hIntFluctChargeSmallRPos->Write();
     hIntFluctChargeLargeRPos->Write();
