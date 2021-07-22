@@ -350,7 +350,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hCompareRTruevIntFluctDiffRPos = new TH2F("hCompareRTruevIntFluctDiffRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; int fluct charge (#mum); true shift (#mum)",nbins,-1e4,1e4,nbins,-25,25);
 
     TH2F *hCompareRDiffvIntFluctSmallRPos = new TH2F("hCompareRDiffvIntFluctSmallRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-25,25);
-    TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-25,25);
+    TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge (#mum); shift difference (#mum)",nbins,-1e5,1e5,nbins,-250,250);
     TH2F *hCompareRDiffvIntFluctDiffRPos = new TH2F("hCompareRDiffvIntFluctDiffRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; int fluct charge (#mum); shift difference (#mum)",nbins,-1e4,1e4,nbins,-25,25);
 
   
@@ -643,7 +643,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->SetStats(0);
 
     hCompareRTruevIntFluctSmallRPos->SetStats(0);
-    hCompareRTruevIntFluctLargeRPos->SetStats(0);
+    hCompareRTruevIntFluctLargeRPos->SetStats("oue");
     hCompareRTruevIntFluctDiffRPos->SetStats(0);
 
     hCompareRDiffvIntFluctSmallRPos->SetStats(0);
