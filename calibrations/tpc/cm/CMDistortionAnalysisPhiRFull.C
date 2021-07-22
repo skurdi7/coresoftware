@@ -718,7 +718,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       integ->Print("IntegratedFluctAnalysis.pdf","pdf");
     } else{
       integ->Print("IntegratedFluctAnalysis.pdf)","pdf");
-      }*/
+      }
     
     TPad *c1=new TPad("c1","",0.0,0.8,1.0,0.93); //.13 height each
     TPad *c2=new TPad("c2","",0.0,0.64,1.0,0.77);
