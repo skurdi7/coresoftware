@@ -680,18 +680,18 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       integcomp->Print("integcomp.pdf","pdf");
       }*/
     
-    TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
+    /*TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
     TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
 
     TLatex *integtitle = new TLatex(0.0,0.0,"");
 
     integtitle->SetNDC();
-    integtitle->SetTextSize(0.4);
+    integtitle->SetTextSize(0.4);*/
 
     integ->cd();
     
-    integplots->Draw();
-    integtitlepad->Draw();
+    //integplots->Draw();
+    //integtitlepad->Draw();
     
     integ->Divide(2,2);
     integ->cd(1);
@@ -706,10 +706,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->Draw("colz");
     integ->cd(4)->Clear();
 
-    integtitlepad->cd();
+    /* integtitlepad->cd();
     integtitlepad->Clear();
     integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist))); 
-    integtitle->Draw();
+    integtitle->Draw();*/
 
     //integ->Print("IntegratedFluctAnalysis.pdf","pdf");
     /* if((2*ifile + ihist) == 0){
