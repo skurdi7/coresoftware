@@ -689,7 +689,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integtitle->SetNDC();
     integtitle->SetTextSize(0.4);*/
 
-    //integ->cd();
+    integ->cd();
+    integ->Clear();
     //integ->Draw();
     //integplots->Draw();
     //integtitlepad->Draw();
