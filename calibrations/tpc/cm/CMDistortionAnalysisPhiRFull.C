@@ -643,12 +643,14 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->SetStats(0);
 
     hCompareRTruevIntFluctSmallRPos->SetStats(0);
-    hCompareRTruevIntFluctLargeRPos->SetOptStat(110111);
-    hCompareRTruevIntFluctDiffRPos->SetOptStat("oue");
+    hCompareRTruevIntFluctLargeRPos->SetStats(0);
+    hCompareRTruevIntFluctDiffRPos->SetStats(0);
 
     hCompareRDiffvIntFluctSmallRPos->SetStats(0);
     hCompareRDiffvIntFluctLargeRPos->SetStats(0);
     hCompareRDiffvIntFluctDiffRPos->SetStats(0);
+
+    gStyle->SetOptStat("oue");
     
     //integrated fluct plots
     integcomp->Divide(3,2);
