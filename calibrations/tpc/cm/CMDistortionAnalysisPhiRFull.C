@@ -705,8 +705,8 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //hCompareRTruevIntFluctLargeRPos->Draw("colz");
     integ->cd(3);
     hFluctCharge->Project3D("yz")->Draw("colz");
-    //integ->cd(4)->Clear();
-
+    integ->cd(4);
+    hCartesianAveDiffPhiRNeg[0]->Draw("colz");
     /* integtitlepad->cd();
     integtitlepad->Clear();
     integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist))); 
