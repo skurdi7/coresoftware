@@ -724,7 +724,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     //hCompareRTruevIntFluctLargeRPos->Draw("colz");
     integplots->cd(3);
     hFluctCharge->Project3D("yz")->Draw("colz");
-    inteplots->cd(4)->Clear();
+    integplots->cd(4)->Clear();
     //hCartesianAveDiffPhiRNeg[0]->Draw("colz");
 
 
