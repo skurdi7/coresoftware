@@ -103,6 +103,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   
   TCanvas *integcomp=new TCanvas("integcomp","CompareRvIntFluct",1500,1000);
   integcomp->Divide(3,2);
+  
   int nsumbins = 20;
   int minsum = -10;
   int maxsum = 10;
@@ -675,12 +676,11 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     if((2*ifile + ihist) == 0){ 
       integcomp->Print("integcomp.pdf(","pdf");
-    } else if ((2*ifile + ihist) == nEvents - 1){
-      integcomp->Print("integcomp.pdf)","pdf");
-    } else {
+    } else if (ifile == nEvents - 1){
       integcomp->Print("integcomp.pdf","pdf");
-      }
-    
+      
+    }
+    integcomp->Print("integcomp.pdf)","pdf");
     /*TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
     TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
 
