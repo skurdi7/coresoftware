@@ -692,13 +692,13 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     integtitle->DrawLatex(0.01,0.4,Form("Event %d; %s", (2*ifile + ihist), sourcefilename.Data())); 
     integtitle->Draw();
     
-    if((2*ifile + ihist) == 0){ 
-      integcomp->Print("integcomp.pdf(","pdf");
-    } else if ((ifile == 1) || (ifile == nEvents - 1)){
-      integcomp->Print("integcomp.pdf","pdf");
+    /* if((2*ifile + ihist) == 0){ 
       
-    }
-    integcomp->Print("integcomp.pdf)","pdf");
+    } else if ((ifile == 1) || (ifile == nEvents - 1)){
+      
+      
+      }*/
+    
     /*TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
     TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
 
@@ -906,9 +906,11 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       //if(ifile == 1){
       canvas->Print("CMDistortionAnalysisPhiRNeg.pdf(","pdf");
       integ->Print("IntegratedFluctAnalysis.pdf(","pdf");
+      integcomp->Print("integcomp.pdf(","pdf");
     } else if((ifile == 1) || (ifile == nEvents - 1)){
       canvas->Print("CMDistortionAnalysisPhiRNeg.pdf","pdf");
       integ->Print("IntegratedFluctAnalysis.pdf","pdf");
+      integcomp->Print("integcomp.pdf","pdf");
     }
     }
   }
@@ -966,6 +968,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   sumtitle->DrawLatex(0.4,0.4,"Summary of Events"); 
   summary->Print("CMDistortionAnalysisPhiRNeg.pdf)","pdf");
   integ->Print("IntegratedFluctAnalysis.pdf)","pdf");
+  integcomp->Print("integcomp.pdf)","pdf");
 
   return 0;
 }
