@@ -102,7 +102,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
   TCanvas *integ=new TCanvas("integ","IntegratedFluctAnalysis",1000,1000);
   
   TCanvas *integcomp=new TCanvas("integcomp","CompareRvIntFluct",1500,1000);
-  
+  integcomp->Divide(3,2);
   int nsumbins = 20;
   int minsum = -10;
   int maxsum = 10;
@@ -659,7 +659,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     
     //integrated fluct plots
-    integcomp->Divide(3,2);
+    
     integcomp->cd(1);
     hCompareRTruevIntFluctSmallRPos->Draw("colz");
     integcomp->cd(2);
