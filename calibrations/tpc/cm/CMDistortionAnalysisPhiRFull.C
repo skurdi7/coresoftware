@@ -694,7 +694,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     if((2*ifile + ihist) == 0){ 
       integcomp->Print("integcomp.pdf(","pdf");
-    } else if (ifile == nEvents - 1){
+    } else if ((ifile == 1) || (ifile == nEvents - 1)){
       integcomp->Print("integcomp.pdf","pdf");
       
     }
