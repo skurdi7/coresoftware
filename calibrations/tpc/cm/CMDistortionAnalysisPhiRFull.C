@@ -884,7 +884,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     stitle[5]->DrawLatex(0.4,0.2,"Comparing Phi Model to True"); 
     stitle[5]->Draw();
 
-    if(ifile == 0){ 
+    if((2*ifile+ihist) == 0){ 
       //if(ifile == 1){
       canvas->Print("CMDistortionAnalysisPhiRNeg.pdf(","pdf");
       integ->Print("IntegratedFluctAnalysis.pdf(","pdf");
