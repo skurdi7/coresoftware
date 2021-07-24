@@ -660,37 +660,37 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     
     //integrated fluct plots
-    TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
-    TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
+    TPad *integcomptitlepad = new TPad("integcomptitlepad","",0.0,0.96,1.0,1.0);
+    TPad *integcompplots = new TPad("integcompplotspad","",0.0,0.0,1.0,0.96);
 
-    TLatex *integtitle = new TLatex(0.0,0.0,"");
+    TLatex *integcomptitle = new TLatex(0.0,0.0,"");
 
-    integtitle->SetNDC();
-    integtitle->SetTextSize(0.4);
+    integcomptitle->SetNDC();
+    integcomptitle->SetTextSize(0.4);
 
     integcomp->cd();
-    integplots->Draw();
-    integtitlepad->Draw();
+    integcompplots->Draw();
+    integcomptitlepad->Draw();
 
-    integplots->Divide(3,2);
+    integcompplots->Divide(3,2);
     
-    integplots->cd(1);
+    integcompplots->cd(1);
     hCompareRTruevIntFluctSmallRPos->Draw("colz");
-    integplots->cd(2);
+    integcompplots->cd(2);
     hCompareRTruevIntFluctLargeRPos->Draw("colz");
-    integplots->cd(3);
+    integcompplots->cd(3);
     hCompareRTruevIntFluctDiffRPos->Draw("colz");
-    integplots->cd(4);
+    integcompplots->cd(4);
     hCompareRDiffvIntFluctSmallRPos->Draw("colz");
-    integplots->cd(5);
+    integcompplots->cd(5);
     hCompareRDiffvIntFluctLargeRPos->Draw("colz");
-    integplots->cd(6);
+    integcompplots->cd(6);
     hCompareRDiffvIntFluctDiffRPos->Draw("colz");
 
-    integtitlepad->cd();
-    integtitlepad->Clear();
-    integtitle->DrawLatex(0.01,0.4,Form("Event %d; %s", (2*ifile + ihist), sourcefilename.Data())); 
-    integtitle->Draw();
+    integcomptitlepad->cd();
+    integcomptitlepad->Clear();
+    integcomptitle->DrawLatex(0.01,0.4,Form("Event %d; %s", (2*ifile + ihist), sourcefilename.Data())); 
+    integcomptitle->Draw();
     
     /* if((2*ifile + ihist) == 0){ 
       
@@ -699,43 +699,41 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       
       }*/
     
-    /*TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
+    TPad *integtitlepad = new TPad("integtitlepad","",0.0,0.96,1.0,1.0);
     TPad *integplots = new TPad("integplotspad","",0.0,0.0,1.0,0.96);
 
     TLatex *integtitle = new TLatex(0.0,0.0,"");
 
     integtitle->SetNDC();
-    integtitle->SetTextSize(0.4);*/
+    integtitle->SetTextSize(0.4);
 
     integ->cd();
-    integ->Clear();
+    //integ->Clear();
     //integ->Draw();
-    //integplots->Draw();
-    //integtitlepad->Draw();
+    integplots->Draw();
+    integtitlepad->Draw();
 
-    
-    
-    integ->Divide(2,2);
-    integ->cd(1);
+    integplots->Divide(2,2);
+    integplots->cd(1);
     hIntFluctChargeSmallRPos->Project3D("yz")->Draw("colz");
-    integ->cd(2);
+    integplots->cd(2);
     hIntFluctChargeLargeRPos->Project3D("yz")->Draw("colz");
     
     //hCompareRTruevIntFluctSmallRPos->Draw("colz");
     
     //hCompareRTruevIntFluctLargeRPos->Draw("colz");
-    integ->cd(3);
+    integplots->cd(3);
     hFluctCharge->Project3D("yz")->Draw("colz");
-    integ->cd(4);
-    hCartesianAveDiffPhiRNeg[0]->Draw("colz");
+    inteplots->cd(4)->Clear();
+    //hCartesianAveDiffPhiRNeg[0]->Draw("colz");
 
 
 
     
-    /* integtitlepad->cd();
+    integtitlepad->cd();
     integtitlepad->Clear();
     integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist))); 
-    integtitle->Draw();*/
+    integtitle->Draw();
 
     //integ->Print("IntegratedFluctAnalysis.pdf","pdf");
     /* if((2*ifile + ihist) == 0){
