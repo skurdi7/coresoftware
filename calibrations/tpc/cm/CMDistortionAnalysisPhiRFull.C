@@ -353,11 +353,22 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hCompareRTruevIntFluctSmallRPos = new TH2F("hCompareRTruevIntFluctSmallRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
     TH2F *hCompareRTruevIntFluctLargeRPos = new TH2F("hCompareRTruevIntFluctLargeRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge outside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
     TH2F *hCompareRTruevIntFluctDiffRPos = new TH2F("hCompareRTruevIntFluctDiffRPos", "Compare True R Distortion Fluctuation and True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; net int fluct charge (#mum); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-20,20);
-
     TH2F *hCompareRDiffvIntFluctSmallRPos = new TH2F("hCompareRDiffvIntFluctSmallRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Inside; int fluct charge inside (#mum); shift difference (#mum)",nbinsint,-15e7,1e7,nbinsint,-10,10);
     TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge outside (#mum); shift difference (#mum)",nbinsint,-15e7,1e7,nbinsint,-10,10);
     TH2F *hCompareRDiffvIntFluctDiffRPos = new TH2F("hCompareRDiffvIntFluctDiffRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; net int fluct charge (#mum); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,10);
 
+    //looking at each region separately
+    /* TH2F *hCompareRTruevIntFluctSmallRPosRegion[9];
+    hCompareRTruevIntFluctSmallRPosRegion[0] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 0, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[1] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 1, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[2] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 2, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[3] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 3, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[4] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 4, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[5] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 5, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[6] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 6, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[7] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 7, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
+    hCompareRTruevIntFluctSmallRPosRegion[8] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 8, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);*/
+    
   
     //TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 1000, 1, 1e7); 
 
@@ -454,10 +465,11 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hSamplePerBinRZPos->Fill(zPos,r,1);
 
 	    //fluct
-	    double intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
-	    double intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
-	    double intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
-
+	    double intfluctchargeSmallRPos, intfluctchargeLargeRPos, intfluctchargeDiffRPos;
+	    intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
+	    intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
+	    intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
+		  
 	    hCompareRTruevIntFluctSmallRPos->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
 	    hCompareRTruevIntFluctLargeRPos->Fill(intfluctchargeLargeRPos,shifttrueCylPos[0]);
 	    hCompareRTruevIntFluctDiffRPos->Fill(intfluctchargeDiffRPos,shifttrueCylPos[0]);
@@ -465,6 +477,34 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hCompareRDiffvIntFluctSmallRPos->Fill(intfluctchargeSmallRPos,differenceCylPhiRPos[0]);
 	    hCompareRDiffvIntFluctLargeRPos->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 	    hCompareRDiffvIntFluctDiffRPos->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
+	    /*if(r >= 70.0){
+	      if(z <= 15.0){
+		//0
+
+	      }else if((z > 15.0) && (z < 90.0)){
+		//1
+	      }else if(z >= 90.0){
+		//2
+	      }
+	    } else if((r > 30.0) && (r < 70.0)) {
+	      if(z <= 15.0){
+		//3
+	      }else if((z > 15.0) && (z < 90.0)){
+		//4
+	      }else if(z >= 90.0){
+		//5
+	      }
+	    }else if(r <= 30.0) {
+	      if(z <= 15.0){
+		//6
+	      }else if((z > 15.0) && (z < 90.0)){
+		//7
+	      }else if(z >= 90.0){
+		//8
+	      }
+	      }*/
+	    
+	    
 	  }
 	    
 	  //negative
@@ -689,7 +729,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     integcomptitlepad->cd();
     integcomptitlepad->Clear();
-    integcomptitle->DrawLatex(0.01,0.4,Form("Event %d; %s", (2*ifile + ihist), sourcefilename.Data())); 
+    integcomptitle->DrawLatex(0.01,0.4,Form("Event %d", (2*ifile + ihist))); 
     integcomptitle->Draw();
     
     /* if((2*ifile + ihist) == 0){ 
@@ -726,9 +766,6 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     hFluctCharge->Project3D("yz")->Draw("colz");
     integplots->cd(4)->Clear();
     //hCartesianAveDiffPhiRNeg[0]->Draw("colz");
-
-
-
     
     integtitlepad->cd();
     integtitlepad->Clear();
