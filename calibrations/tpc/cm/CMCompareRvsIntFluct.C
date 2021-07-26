@@ -269,12 +269,12 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    double shiftrecoCylPhiRPos[2];
 	    double differenceCylPhiRPos[2];
 
-	    int binPhiRPos = hCartCMModelPhiRPos[0]->FindBin(phi,r,zPos);
+	    int binPhiRPos = hCylCMModelPhiRPos[0]->FindBin(phi,r,zPos);
 
 	    double intfluctchargeSmallRPos, intfluctchargeLargeRPos, intfluctchargeDiffRPos;
 
 	    if(r >= 70.0){
-	      if(z <= 15.0){ //0
+	      if(zPos <= 15.0){ //0
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -301,7 +301,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctLargeRPosRegion[0]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[0]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 			
-	      }else if((z > 15.0) && (z < 90.0)){ //1
+	      }else if((zPos > 15.0) && (zPos < 90.0)){ //1
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -328,7 +328,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctLargeRPosRegion[1]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[1]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 		
-	      }else if(z >= 90.0){ //2
+	      }else if(zPos >= 90.0){ //2
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -357,7 +357,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		
 	      }
 	    } else if((r > 30.0) && (r < 70.0)) {
-	      if(z <= 15.0){ //3
+	      if(zPos <= 15.0){ //3
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -384,7 +384,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctLargeRPosRegion[3]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[3]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 		
-	      }else if((z > 15.0) && (z < 90.0)){//4
+	      }else if((zPos > 15.0) && (zPos < 90.0)){//4
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -411,7 +411,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctLargeRPosRegion[4]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[4]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 		
-	      }else if(z >= 90.0){//5
+	      }else if(zPos >= 90.0){//5
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -440,7 +440,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		
 	      }
 	    }else if(r <= 30.0) {
-	      if(z <= 15.0){ //6
+	      if(zPos <= 15.0){ //6
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -467,7 +467,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctLargeRPosRegion[6]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[6]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 		
-	      }else if((z > 15.0) && (z < 90.0)){ //7
+	      }else if((zPos > 15.0) && (zPos < 90.0)){ //7
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
@@ -494,7 +494,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctLargeRPosRegion[7]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[7]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 		
-	      }else if(z >= 90.0){ //8
+	      }else if(zPos >= 90.0){ //8
 		//int fluct
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
