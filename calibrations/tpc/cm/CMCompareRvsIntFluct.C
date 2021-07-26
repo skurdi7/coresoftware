@@ -187,7 +187,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       TH2F *hCompareRTruevIntFluctSmallRPosRegion[9];
       hCompareRTruevIntFluctSmallRPosRegion[0] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 0, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-14e7,-4e7,nbinsint,-10,10);
       hCompareRTruevIntFluctSmallRPosRegion[1] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion1", "True vs Int Fluct Region 1, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-13e7,-2e7,nbinsint,-35,15);
-      hCompareRTruevIntFluctSmallRPosRegion[2] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion2", "True vs Int Fluct Region 2, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-12e7,1e7,nbinsint,-15,15);
+      hCompareRTruevIntFluctSmallRPosRegion[2] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion2", "True vs Int Fluct Region 2, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-12e7,1e7,nbinsint,-2,2);
       hCompareRTruevIntFluctSmallRPosRegion[3] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion3", "True vs Int Fluct Region 3, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-1e8,1e7,nbinsint,-20,20);
       hCompareRTruevIntFluctSmallRPosRegion[4] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion4", "True vs Int Fluct Region 4, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-1e8,1e7,nbinsint,-25,20);
       hCompareRTruevIntFluctSmallRPosRegion[5] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion5", "True vs Int Fluct Region 5, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-1e8,1e7,nbinsint,-6,6);
