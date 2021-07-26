@@ -84,7 +84,7 @@ Shifter::Shifter(TString sourcefilename, TString averagefilename){
   hNegPhi->Add(hNegPhiave,-1);
 }
 
-int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
+int CMCompareRvsIntFluct(int nMaxEvents = -1) {
   Shifter *shifter;
   int nEvents;
 
