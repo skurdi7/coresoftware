@@ -168,7 +168,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     nEvents= sourcefilelist->GetNFiles();
   }
 
-  for (int ifile=0;ifile < nEvents;ifile++){
+  for (int ifile=1;ifile < nEvents;ifile++){
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
@@ -188,7 +188,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     TFile *plots;
 
-    plots=TFile::Open(Form("CMModelsPhiRFull_Event%d.root",(2*ifile+ihist)),"READ");
+    plots=TFile::Open(Form("CMModelsPhiRFull_Event%d.root",(10*ifile+ihist)),"READ");
 
     TH3F *hCartCMModelPhiRPos[3];
     hCartCMModelPhiRPos[0]=(TH3F*)plots->Get("hCMModelX_PhiR_Pos");
@@ -375,7 +375,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TFile *intFluct;
     TH3F *hIntFluctChargeSmallRPos, *hIntFluctChargeLargeRPos;
    
-    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "READ");//change 2 to 10 when looping over all ihist
+    intFluct=TFile::Open(Form("IntFluctEvent%d.root", (10*ifile + ihist)), "READ");//change 2 to 10 when looping over all ihist
 
     hIntFluctChargeSmallRPos=(TH3F*)intFluct->Get("hIntFluctChargeSmallRPos");
     hIntFluctChargeLargeRPos=(TH3F*)intFluct->Get("hIntFluctChargeLargeRPos");
@@ -729,10 +729,10 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     integcomptitlepad->cd();
     integcomptitlepad->Clear();
-    integcomptitle->DrawLatex(0.01,0.4,Form("Event %d", (2*ifile + ihist))); 
+    integcomptitle->DrawLatex(0.01,0.4,Form("Event %d", (10*ifile + ihist))); 
     integcomptitle->Draw();
     
-    /* if((2*ifile + ihist) == 0){ 
+    /* if((10*ifile + ihist) == 0){ 
       
     } else if ((ifile == 1) || (ifile == nEvents - 1)){
       
@@ -769,13 +769,13 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     
     integtitlepad->cd();
     integtitlepad->Clear();
-    integtitle->DrawLatex(0.4,0.4,Form("Event %d", (2*ifile + ihist))); 
+    integtitle->DrawLatex(0.4,0.4,Form("Event %d", (10*ifile + ihist))); 
     integtitle->Draw();
 
     //integ->Print("IntegratedFluctAnalysis.pdf","pdf");
-    /* if((2*ifile + ihist) == 0){
+    /* if((10*ifile + ihist) == 0){
       
-      } else if ((2*ifile + ihist) == nEvents - 1){
+      } else if ((10*ifile + ihist) == nEvents - 1){
       
     } else{
       integ->Print("IntegratedFluctAnalysis.pdf","pdf");
@@ -904,7 +904,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     titlepad->cd();
     titlepad->Clear();
-    title->DrawLatex(0.01,0.4,Form("Event %d; %s", (2*ifile + ihist), sourcefilename.Data())); 
+    title->DrawLatex(0.01,0.4,Form("Event %d; %s", (10*ifile + ihist), sourcefilename.Data())); 
     title->Draw();
     
     stitlepad1->cd();
@@ -937,7 +937,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     stitle[5]->DrawLatex(0.4,0.2,"Comparing Phi Model to True"); 
     stitle[5]->Draw();
 
-    if((2*ifile+ihist) == 0){ 
+    if((10*ifile+ihist) == 0){ 
       //if(ifile == 1){
       canvas->Print("CMDistortionAnalysisPhiRNeg.pdf(","pdf");
       integ->Print("IntegratedFluctAnalysis.pdf(","pdf");
@@ -1084,7 +1084,7 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 
     TFile *integ;
 
-    integ=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile+ihist)), "RECREATE");
+    integ=TFile::Open(Form("IntFluctEvent%d.root", (10*ifile+ihist)), "RECREATE");
 
     hIntFluctChargeSmallRPos->Write();
     hIntFluctChargeLargeRPos->Write();
