@@ -168,7 +168,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     nEvents= sourcefilelist->GetNFiles();
   }
 
-  for (int ifile=0;ifile < nEvents;ifile++){
+  for (int ifile=1;ifile < nEvents;ifile++){
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
@@ -230,9 +230,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    // WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    //return 0;
+    return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
