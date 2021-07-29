@@ -168,7 +168,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     nEvents= sourcefilelist->GetNFiles();
   }
 
-  for (int ifile=1;ifile < nEvents;ifile++){
+  for (int ifile=0;ifile < nEvents;ifile++){
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
