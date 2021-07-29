@@ -142,7 +142,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
     
       TFile *plots;
 
-      plots=TFile::Open(Form("CMModelsPhiRFull_Event%d.root",(2*ifile+ihist)),"READ");
+      plots=TFile::Open(Form("CMModelsPhiRFull_Event%d.root",(10*ifile+ihist)),"READ");
 
       TH3F *hCylCMModelPhiRPos[2];
       hCylCMModelPhiRPos[0]=(TH3F*)plots->Get("hCMModelR_PhiR_Pos");
@@ -176,7 +176,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       TFile *intFluct;
       TH3F *hIntFluctChargeSmallRPos, *hIntFluctChargeLargeRPos;
    
-      intFluct=TFile::Open(Form("IntFluctEvent%d.root", (2*ifile + ihist)), "READ");//change 2 to 10 when looping over all ihist
+      intFluct=TFile::Open(Form("IntFluctEvent%d.root", (10*ifile + ihist)), "READ");//change 2 to 10 when looping over all ihist
     
       hIntFluctChargeSmallRPos=(TH3F*)intFluct->Get("hIntFluctChargeSmallRPos");
       hIntFluctChargeLargeRPos=(TH3F*)intFluct->Get("hIntFluctChargeLargeRPos");
@@ -565,9 +565,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       integcomptitlepad->cd();
       integcomptitlepad->Clear();
-      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Inner R", (2*ifile + ihist))); 
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Inner R", (10*ifile + ihist))); 
       integcomptitle->Draw();
-      integcomp->Print(Form("integcompEvent%d.pdf(",(2*ifile + ihist)),"pdf");
+      integcomp->Print(Form("integcompEvent%d.pdf(",(10*ifile + ihist)),"pdf");
 
       //true, outer
       integcompplots->cd(1);
@@ -591,9 +591,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       integcomptitlepad->cd();
       integcomptitlepad->Clear();
-      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Outer R", (2*ifile + ihist))); 
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Outer R", (10*ifile + ihist))); 
       integcomptitle->Draw();
-      integcomp->Print(Form("integcompEvent%d.pdf",(2*ifile + ihist)),"pdf");
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
 
       //true, net
       integcompplots->cd(1);
@@ -617,9 +617,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       integcomptitlepad->cd();
       integcomptitlepad->Clear();
-      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Net", (2*ifile + ihist))); 
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Net", (10*ifile + ihist))); 
       integcomptitle->Draw();
-      integcomp->Print(Form("integcompEvent%d.pdf",(2*ifile + ihist)),"pdf");
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
 
       //model-true, inner
       integcompplots->cd(1);
@@ -643,9 +643,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       integcomptitlepad->cd();
       integcomptitlepad->Clear();
-      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Inner R", (2*ifile + ihist))); 
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Inner R", (10*ifile + ihist))); 
       integcomptitle->Draw();
-      integcomp->Print(Form("integcompEvent%d.pdf",(2*ifile + ihist)),"pdf");
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
 
       //model-true, outer
       integcompplots->cd(1);
@@ -669,9 +669,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       integcomptitlepad->cd();
       integcomptitlepad->Clear();
-      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Outer R", (2*ifile + ihist))); 
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Outer R", (10*ifile + ihist))); 
       integcomptitle->Draw();
-      integcomp->Print(Form("integcompEvent%d.pdf",(2*ifile + ihist)),"pdf");
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
 
       //model-true, net
       integcompplots->cd(1);
@@ -695,9 +695,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       integcomptitlepad->cd();
       integcomptitlepad->Clear();
-      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Net", (2*ifile + ihist))); 
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Net", (10*ifile + ihist))); 
       integcomptitle->Draw();
-      integcomp->Print(Form("integcompEvent%d.pdf)",(2*ifile + ihist)),"pdf");
+      integcomp->Print(Form("integcompEvent%d.pdf)",(10*ifile + ihist)),"pdf");
     }
   }
   
