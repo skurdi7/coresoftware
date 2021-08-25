@@ -259,14 +259,14 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       //int fluct by region
       TH3F *hIntFluctSmallRPosRegion[9];
       hIntFluctSmallRPosRegion[0] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 0; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-      hIntFluctSmallRPosRegion[1] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 1; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-      hIntFluctSmallRPosRegion[2] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 2; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-      hIntFluctSmallRPosRegion[3] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 3; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-      hIntFluctSmallRPosRegion[4] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 4; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-      hIntFluctSmallRPosRegion[5] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 5; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-      hIntFluctSmallRPosRegion[6] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 6; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
-      hIntFluctSmallRPosRegion[7] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 7; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
-      hIntFluctSmallRPosRegion[8] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 8; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
+      hIntFluctSmallRPosRegion[1] = new TH3F("hIntFluctSmallRPosRegion1","Int Fluct Charge (ions), Pos Side, R Inside, Region 1; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[2] = new TH3F("hIntFluctSmallRPosRegion2","Int Fluct Charge (ions), Pos Side, R Inside, Region 2; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[3] = new TH3F("hIntFluctSmallRPosRegion3","Int Fluct Charge (ions), Pos Side, R Inside, Region 3; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[4] = new TH3F("hIntFluctSmallRPosRegion4","Int Fluct Charge (ions), Pos Side, R Inside, Region 4; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[5] = new TH3F("hIntFluctSmallRPosRegion5","Int Fluct Charge (ions), Pos Side, R Inside, Region 5; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[6] = new TH3F("hIntFluctSmallRPosRegion6","Int Fluct Charge (ions), Pos Side, R Inside, Region 6; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[7] = new TH3F("hIntFluctSmallRPosRegion7","Int Fluct Charge (ions), Pos Side, R Inside, Region 7; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
+      hIntFluctSmallRPosRegion[8] = new TH3F("hIntFluctSmallRPosRegion8","Int Fluct Charge (ions), Pos Side, R Inside, Region 8; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
 
       for(int i = 1; i < nphi - 1; i++){
 	double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
