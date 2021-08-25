@@ -89,7 +89,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
   int nEvents;
 
   TCanvas *integcomp=new TCanvas("integcompbyregion","CompareRvIntFluctbyRegion",1500,1500);
-
+  TCanvas *intfluctproj=new TCanvas("intfluctproj","influctproj",1500,1500);
+  
   const char * sourceinputpattern="/sphenix/user/rcorliss/distortion_maps/2021.04/*h_Charge_*.root"; //updated
     
   //find all files that match the input string (includes wildcards)
@@ -255,6 +256,18 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hCompareRDiffvIntFluctDiffRPosRegion[7] = new TH2F("hCompareRDiffvIntFluctDiffRPosRegion7", "Model-True vs Net Int Fluct Region 7, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,1e7,15e7,nbinsint,-10,20);
       hCompareRDiffvIntFluctDiffRPosRegion[8] = new TH2F("hCompareRDiffvIntFluctDiffRPosRegion8", "Model-True vs Net Int Fluct Region 8, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-1e7,12e7,nbinsint,-6,6);
 
+      //int fluct by region
+      TH3F *hIntFluctSmallRPosRegion[9];
+      hIntFluctSmallRPosRegion[0] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 0; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[1] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 1; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[2] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 2; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[3] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 3; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[4] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 4; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[5] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 5; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[6] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 6; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);
+      hIntFluctSmallRPosRegion[7] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 7; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
+      hIntFluctSmallRPosRegion[8] = new TH3F("hIntFluctSmallRPosRegion0","Int Fluct Charge (ions), Pos Side, R Inside, Region 8; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
+
       for(int i = 1; i < nphi - 1; i++){
 	double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
 	for(int j = 1; j < nr - 1; j++){
@@ -280,6 +293,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[0]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+		  
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -307,6 +322,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[1]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+		
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -333,6 +350,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeSmallRPos = hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
+		
+		hIntFluctSmallRPosRegion[2]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
 
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
@@ -363,6 +382,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[3]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+		
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -390,6 +411,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[4]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+		
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -417,6 +440,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[5]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+		
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -446,6 +471,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[6]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -473,6 +500,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[7]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+		
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -500,6 +529,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		intfluctchargeLargeRPos = hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 		intfluctchargeDiffRPos = intfluctchargeSmallRPos - intfluctchargeLargeRPos;
 
+		hIntFluctSmallRPosRegion[8]->Fill(phi,r,zPos,intfluctchargeSmallRPos);
+		
 		//true
 		shifttrueCylPos[0] = (shifter->hPosR->Interpolate(phi,r,zPos))*(1e4); //convert from cm to micron
 		shifttrueCylPos[1] = (shifter->hPosPhi->Interpolate(phi,r,zPos))*(1e4);
@@ -529,6 +560,41 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       gStyle->SetOptStat("oue");
 
       //set up canvas
+      //int fluct inner R xz proj for each region
+      hIntFluctSmallRPosRegion[0]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[1]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[2]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[3]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[4]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[5]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[6]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[7]->Project3D("yz")->SetStats(0);
+      hIntFluctSmallRPosRegion[8]->Project3D("yz")->SetStats(0);
+     
+      intfluctproj->cd();
+      intfluctproj->Divide(3,3);
+      
+      intfluctproj->cd(1);
+      hIntFluctSmallRPosRegion[0]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(2);
+      hIntFluctSmallRPosRegion[1]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(3);
+      hIntFluctSmallRPosRegion[2]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(4);
+      hIntFluctSmallRPosRegion[3]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(5);
+      hIntFluctSmallRPosRegion[4]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(6);
+      hIntFluctSmallRPosRegion[5]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(7);
+      hIntFluctSmallRPosRegion[6]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(8);
+      hIntFluctSmallRPosRegion[7]->Project3D("xz")->Draw("colz");
+      intfluctproj->cd(9);
+      hIntFluctSmallRPosRegion[8]->Project3D("xz")->Draw("colz");
+
+      intfluctproj->Print("intfluctproj.pdf","pdf");
+      
       TPad *integcomptitlepad = new TPad("integcomptitlepad","",0.0,0.96,1.0,1.0);
       TPad *integcompplots = new TPad("integcompplotspad","",0.0,0.0,1.0,0.96);
 
