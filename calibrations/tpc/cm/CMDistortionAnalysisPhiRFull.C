@@ -174,6 +174,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 
     for(int ihist=0;ihist < 10;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
+      cout << "event #:" << (10*ifile + ihist) << endl;
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
     
