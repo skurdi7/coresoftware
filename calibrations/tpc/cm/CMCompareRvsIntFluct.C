@@ -593,8 +593,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       intfluctproj->cd(9);
       hIntFluctSmallRPosRegion[8]->Project3D("xz")->Draw("colz");
 
-      intfluctproj->Print("intfluctproj.pdf","pdf");
-      
+      intfluctproj->Print(Form("intfluctprojEvent%d.pdf(",(10*ifile + ihist)),"pdf");
+
+      Form("integcompEvent%d.pdf(",(10*ifile + ihist)),"pdf"
       TPad *integcomptitlepad = new TPad("integcomptitlepad","",0.0,0.96,1.0,1.0);
       TPad *integcompplots = new TPad("integcompplotspad","",0.0,0.0,1.0,0.96);
 
