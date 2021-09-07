@@ -909,9 +909,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
       integ->Print("IntegratedFluctAnalysis.pdf","pdf");
       integcomp->Print("integcomp.pdf","pdf");
     }
-
     
     }
+
     fullcharge->Close();
   }
 
