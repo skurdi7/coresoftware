@@ -172,7 +172,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist=0;ihist < 2;ihist++){//should be ihist < 10 to run over all
+    for(int ihist=0;ihist < 10;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     sourcefilename=Form("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.file%d.h_Charge_%d.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root",ifile,ihist);
@@ -357,18 +357,6 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     TH2F *hCompareRDiffvIntFluctLargeRPos = new TH2F("hCompareRDiffvIntFluctLargeRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, R Outside; int fluct charge outside (#mum); shift difference (#mum)",nbinsint,-15e7,1e7,nbinsint,-10,10);
     TH2F *hCompareRDiffvIntFluctDiffRPos = new TH2F("hCompareRDiffvIntFluctDiffRPos", "Compare Difference between R Model and True R vs True Integrated Charge Fluctuation, Positive Side, Difference of R In and Out; net int fluct charge (#mum); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,10);
 
-    //looking at each region separately
-    /* TH2F *hCompareRTruevIntFluctSmallRPosRegion[9];
-    hCompareRTruevIntFluctSmallRPosRegion[0] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 0, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[1] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 1, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[2] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 2, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[3] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 3, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[4] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 4, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[5] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 5, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[6] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 6, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[7] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 7, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);
-    hCompareRTruevIntFluctSmallRPosRegion[8] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 8, Pos Side, R Inside; int fluct charge inside (#mum); true shift (#mum)",nbinsint,-15e7,1e7,nbinsint,-20,20);*/
-    
   
     //TH1F *hFluc = new TH1F("hFluc", "Fluctuation Charge", 1000, 1, 1e7); 
 
@@ -477,34 +465,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
 	    hCompareRDiffvIntFluctSmallRPos->Fill(intfluctchargeSmallRPos,differenceCylPhiRPos[0]);
 	    hCompareRDiffvIntFluctLargeRPos->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 	    hCompareRDiffvIntFluctDiffRPos->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
-	    /*if(r >= 70.0){
-	      if(z <= 15.0){
-		//0
-
-	      }else if((z > 15.0) && (z < 90.0)){
-		//1
-	      }else if(z >= 90.0){
-		//2
-	      }
-	    } else if((r > 30.0) && (r < 70.0)) {
-	      if(z <= 15.0){
-		//3
-	      }else if((z > 15.0) && (z < 90.0)){
-		//4
-	      }else if(z >= 90.0){
-		//5
-	      }
-	    }else if(r <= 30.0) {
-	      if(z <= 15.0){
-		//6
-	      }else if((z > 15.0) && (z < 90.0)){
-		//7
-	      }else if(z >= 90.0){
-		//8
-	      }
-	      }*/
-	    
-	    
+ 	    
 	  }
 	    
 	  //negative
