@@ -90,6 +90,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
   TCanvas *integcomp=new TCanvas("integcompbyregion","CompareRvIntFluctbyRegion",1500,1500);
   TCanvas *intfluctproj=new TCanvas("intfluctproj","influctproj",1500,1500);
+  intfluctproj->Divide(3,3);
   
   const char * sourceinputpattern="/sphenix/user/rcorliss/distortion_maps/2021.04/*h_Charge_*.root"; //updated
     
@@ -572,7 +573,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hIntFluctSmallRPosRegion[8]->Project3D("yz")->SetStats(0);
      
       intfluctproj->cd();
-      intfluctproj->Divide(3,3);
+      
       
       intfluctproj->cd(1);
       hIntFluctSmallRPosRegion[0]->Project3D("xz")->Draw("colz");
@@ -595,7 +596,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       intfluctproj->Print(Form("intfluctprojEvent%d.pdf(",(10*ifile + ihist)),"pdf");
 
-      Form("integcompEvent%d.pdf(",(10*ifile + ihist)),"pdf"
+      
       TPad *integcomptitlepad = new TPad("integcomptitlepad","",0.0,0.96,1.0,1.0);
       TPad *integcompplots = new TPad("integcompplotspad","",0.0,0.0,1.0,0.96);
 
