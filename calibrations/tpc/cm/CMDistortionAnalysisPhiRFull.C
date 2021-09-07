@@ -172,7 +172,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist=0;ihist < 10;ihist++){//should be ihist < 10 to run over all
+    for(int ihist=0;ihist < 2;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
       cout << "event #:" << (10*ifile + ihist) << endl;
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
