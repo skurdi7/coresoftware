@@ -172,7 +172,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist=9;ihist < 10;ihist++){//should be ihist < 10 to run over all
+    for(int ihist=0;ihist < 10;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
       cout << "event #:" << (10*ifile + ihist) << endl;
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
@@ -231,9 +231,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    //WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    return 0;
+    //return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
