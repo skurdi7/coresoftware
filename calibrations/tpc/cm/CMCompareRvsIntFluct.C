@@ -308,7 +308,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       // outer R, region 4, r,z
       TH2F *hLocalRTruevIntFluctLargeRPosRegion4 = new TH2F("hLocalRTruevIntFluctLargeRPosRegion4","R,Z Close-up of True vs Int Fluct, Pos Side, R Outside, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
       // net, region 4, r,z
-      TH2F *hLocalRTruevIntFluctLargeRPosRegion4 = new TH2F("hLocalRTruevIntFluctDiffRPosRegion4","R,Z Close-up of True vs Net Int Fluct, Pos Side, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      TH2F *hLocalRTruevIntFluctDiffRPosRegion4 = new TH2F("hLocalRTruevIntFluctDiffRPosRegion4","R,Z Close-up of True vs Net Int Fluct, Pos Side, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
       
       for(int i = 1; i < nphi - 1; i++){
 	double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
