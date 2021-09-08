@@ -294,6 +294,22 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hIntFluctDiffRPosRegion[7] = new TH3F("hIntFluctDiffRPosRegion7","Net Int Fluct Charge (ions), Pos Side, Region 7; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
       hIntFluctDiffRPosRegion[8] = new TH3F("hIntFluctDiffRPosRegion8","Net Int Fluct Charge (ions), Pos Side, Region 8; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos); 
 
+      // true vs int fluct localized plots
+      // inner R, region 4, r,z plot
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_RZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_RZ","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      // inner R, region 4, phi,z plot
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_PhiZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_PhiZ","Phi,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nphi,minphi,maxphi, nz,minzPos,maxzPos);
+      // inner R, region 6, lower peak, r,z
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion6_Lower = new TH2F("hLocalRTruevIntFluctSmallRPosRegion6_Lower","R,Z Lower Close-up of True vs Int Fluct, Pos Side, R Inside, Region 6; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      // inner R, region 6, upper peak, r,z
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion6_Upper = new TH2F("hLocalRTruevIntFluctSmallRPosRegion6_Upper","R,Z Upper Close-up of True vs Int Fluct, Pos Side, R Inside, Region 6; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      // inner R, region 8, r,z
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion8 = new TH2F("hLocalRTruevIntFluctSmallRPosRegion8","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 8; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      // outer R, region 4, r,z
+      TH2F *hLocalRTruevIntFluctLargeRPosRegion4 = new TH2F("hLocalRTruevIntFluctLargeRPosRegion4","R,Z Close-up of True vs Int Fluct, Pos Side, R Outside, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      // net, region 4, r,z
+      TH2F *hLocalRTruevIntFluctLargeRPosRegion4 = new TH2F("hLocalRTruevIntFluctDiffRPosRegion4","R,Z Close-up of True vs Net Int Fluct, Pos Side, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      
       for(int i = 1; i < nphi - 1; i++){
 	double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
 	for(int j = 1; j < nr - 1; j++){
@@ -469,6 +485,16 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctSmallRPosRegion[4]->Fill(intfluctchargeSmallRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctLargeRPosRegion[4]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[4]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
+
+		//localized plots
+		if((-1.0 < shifttrueCylPos[0] < 1.0) && (-82.0e6 < intfluctchargeSmallRPos < -78.0e6)){
+		  hLocalRTruevIntFluctSmallRPosRegion4_RZ->Fill(r,zPos,1);
+		  hLocalRTruevIntFluctSmallRPosRegion4_PhiZ->Fill(phi,zPos,1);
+		}else if((-1.0 < shifttrueCylPos[0] < 1.0) && (-30.0e6 < intfluctchargeLargeRPos < -5.0e6)){
+		  hLocalRTruevIntFluctLargeRPosRegion4->Fill(r,zPos,1);
+		}else if((-1.0 < shifttrueCylPos[0] < 1.0) && (-80.0e6 < intfluctchargeDiffRPos < -40.0e6)){
+		  hLocalRTruevIntFluctDiffRPosRegion4->Fill(r,zPos,1);
+		}
 		
 	      }else if(zPos >= 90.0){//5
 		//int fluct
@@ -533,6 +559,13 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctSmallRPosRegion[6]->Fill(intfluctchargeSmallRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctLargeRPosRegion[6]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[6]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
+
+		//localized plots
+		if((6.0 < shifttrueCylPos[0] < 8.0) && (-1.0e6 < intfluctchargeSmallRPos < -1.0e6)){
+		  hLocalRTruevIntFluctSmallRPosRegion6_Lower->Fill(r,zPos,1);
+		}else if((-8.0 < shifttrueCylPos[0] < -5.0) && (-1.0e6 < intfluctchargeSmallRPos < -1.0e6)){
+		  hLocalRTruevIntFluctSmallRPosRegion6_Upper->Fill(r,zPos,1);
+		}
 		
 	      }else if((zPos > 15.0) && (zPos < 90.0)){ //7
 		//int fluct
@@ -595,6 +628,12 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctSmallRPosRegion[8]->Fill(intfluctchargeSmallRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctLargeRPosRegion[8]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[8]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
+
+			//localized plots
+		if((1.0 < shifttrueCylPos[0] < 2.0) && (-1.0e6 < intfluctchargeSmallRPos < -1.0e6)){
+		  hLocalRTruevIntFluctSmallRPosRegion8->Fill(r,zPos,1);
+		}
+		
 	      }
 	    }
 	  }
@@ -743,7 +782,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Inner R", (10*ifile + ihist))); 
       integcomptitle->Draw();
       integcomp->Print(Form("integcompEvent%d.pdf(",(10*ifile + ihist)),"pdf");
-
+      
       //true, outer
       integcompplots->cd(1);
       hCompareRTruevIntFluctLargeRPosRegion[0]->Draw("colz");
@@ -872,6 +911,34 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       integcomptitlepad->Clear();
       integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Net", (10*ifile + ihist))); 
       integcomptitle->Draw();
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+
+      // localizations
+      integcompplots->cd(1);
+      hLocalRTruevIntFluctSmallRPosRegion4_RZ->Draw("colz");
+      integcompplots->cd(2);
+      hLocalRTruevIntFluctSmallRPosRegion4_PhiZ->Draw("colz");
+      integcompplots->cd(3);
+      hLocalRTruevIntFluctSmallRPosRegion6_Lower->Draw("colz");
+      integcompplots->cd(4);
+      hLocalRTruevIntFluctSmallRPosRegion6_Upper->Draw("colz");
+      integcompplots->cd(5);
+      hLocalRTruevIntFluctSmallRPosRegion8->Draw("colz");
+      integcompplots->cd(6);
+      hLocalRTruevIntFluctLargeRPosRegion4->Draw("colz");
+      integcompplots->cd(7);
+      hLocalRTruevIntFluctDiffRPosRegion4->Draw("colz");
+      integcompplots->cd(8)->Clear();
+      integcompplots->cd(9)->Clear();
+
+      integcomptitlepad->cd();
+      integcomptitlepad->Clear();
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge Localized on Peaks", (10*ifile + ihist))); 
+      integcomptitle->Draw();
+      //integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+
+      //
+      
       integcomp->Print(Form("integcompEvent%d.pdf)",(10*ifile + ihist)),"pdf");
     }
   }
