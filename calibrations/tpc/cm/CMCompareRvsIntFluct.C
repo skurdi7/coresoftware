@@ -486,10 +486,12 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctLargeRPosRegion[4]->Fill(intfluctchargeLargeRPos,differenceCylPhiRPos[0]);
 		hCompareRDiffvIntFluctDiffRPosRegion[4]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 
+		cout << intfluctchargeSmallRPos << endl;
 		//localized plots
 		///	if((-1.0 < shifttrueCylPos[0] < 1.0) && (-82.0e6 < intfluctchargeSmallRPos < -78.0e6)){
-		if((-1e7 < intfluctchargeSmallRPos < 0.0)){
+		if((-1.0 < shifttrueCylPos[0] < 1.0) && (-1e7 < intfluctchargeSmallRPos < 0.0)){
 		  hLocalRTruevIntFluctSmallRPosRegion4_RZ->Fill(r,zPos,1);
+		}else if((-1.0 < shifttrueCylPos[0] < 1.0) && (0.0 < intfluctchargeSmallRPos < 1e7)){ //just to check that this is the only area we find int fluct values
 		  hLocalRTruevIntFluctSmallRPosRegion4_PhiZ->Fill(phi,zPos,1);
 		}else if((-1.0 < shifttrueCylPos[0] < 1.0) && (-30e6 < intfluctchargeLargeRPos < -5e6)){
 		  hLocalRTruevIntFluctLargeRPosRegion4->Fill(r,zPos,1);
