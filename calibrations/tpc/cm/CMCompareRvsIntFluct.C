@@ -296,7 +296,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       // true vs int fluct localized plots
       // inner R, region 4, r,z plot
-      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_RZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_RZ","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nr,30,80, nz,minzPos,maxzPos);
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_RZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_RZ","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",20,30,80, nz,minzPos,maxzPos);
       // inner R, region 4, phi,z plot
       TH2F *hLocalRTruevIntFluctSmallRPosRegion4_PhiZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_PhiZ","Phi,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nphi,minphi,maxphi, nz,minzPos,maxzPos);
       // inner R, region 6, lower peak, r,z
