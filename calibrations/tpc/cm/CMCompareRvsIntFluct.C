@@ -562,7 +562,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
 		//localized plots
 		//	if((4.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 10.0) && (-2e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < -2e6)){
-		if((4.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 10.0) && (-2e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < 2e6){
+		if((4.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 10.0) && (-2e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < 2e6)){
 		  hLocalRTruevIntFluctSmallRPosRegion6_Lower->Fill(r,zPos,1);
 		}else if((-10.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < -4.0) && (-2e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < 2e6)){
 		  hLocalRTruevIntFluctSmallRPosRegion6_Upper->Fill(r,zPos,1);
