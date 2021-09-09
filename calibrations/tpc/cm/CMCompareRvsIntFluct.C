@@ -185,7 +185,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       //looking at each region separately
       
-      //true vs int fluct inside
+      //pg 1: true vs int fluct inside
       TH2F *hCompareRTruevIntFluctSmallRPosRegion[9];
       hCompareRTruevIntFluctSmallRPosRegion[0] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion0", "True vs Int Fluct Region 0, Pos Side, R Inside; int fluct charge inside (ions); true shift (#mum)",nbinsint,-14e7,-4e7,nbinsint,-10,10);
       hCompareRTruevIntFluctSmallRPosRegion[1] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion1", "True vs Int Fluct Region 1, Pos Side, R Inside; int fluct charge inside (ions); true shift (#mum)",nbinsint,-13e7,-2e7,nbinsint,-35,15);
@@ -197,7 +197,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hCompareRTruevIntFluctSmallRPosRegion[7] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion7", "True vs Int Fluct Region 7, Pos Side, R Inside; int fluct charge inside (ions); true shift (#mum)",nbinsint,-3e7,5e6,nbinsint,-30,25);
       hCompareRTruevIntFluctSmallRPosRegion[8] = new TH2F("hCompareRTruevIntFluctSmallRPosRegion8", "True vs Int Fluct Region 8, Pos Side, R Inside; int fluct charge inside (ions); true shift (#mum)",nbinsint,-3e7,5e6,nbinsint,-5,5);
 
-      //true vs int fluct outside
+      //pg 2: true vs int fluct outside
       TH2F *hCompareRTruevIntFluctLargeRPosRegion[9];
       hCompareRTruevIntFluctLargeRPosRegion[0] = new TH2F("hCompareRTruevIntFluctLargeRPosRegion0", "True vs Int Fluct Region 0, Pos Side, R Outside; int fluct charge outside (ions); true shift (#mum)",nbinsint,-13e6,3e6,nbinsint,-10,10);
       hCompareRTruevIntFluctLargeRPosRegion[1] = new TH2F("hCompareRTruevIntFluctLargeRPosRegion1", "True vs Int Fluct Region 1, Pos Side, R Outside; int fluct charge outside (ions); true shift (#mum)",nbinsint,-13e6,3e6,nbinsint,-35,15);
@@ -209,7 +209,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hCompareRTruevIntFluctLargeRPosRegion[7] = new TH2F("hCompareRTruevIntFluctLargeRPosRegion7", "True vs Int Fluct Region 7, Pos Side, R Outside; int fluct charge outside (ions); true shift (#mum)",nbinsint,-13e7,-3e7,nbinsint,-30,30);
       hCompareRTruevIntFluctLargeRPosRegion[8] = new TH2F("hCompareRTruevIntFluctLargeRPosRegion8", "True vs Int Fluct Region 8, Pos Side, R Outside; int fluct charge outside (ions); true shift (#mum)",nbinsint,-11e7,1e7,nbinsint,-5,5);
       
-      //true vs net int fluct
+      //pg 3: true vs net int fluct
       TH2F *hCompareRTruevIntFluctDiffRPosRegion[9];
       hCompareRTruevIntFluctDiffRPosRegion[0] = new TH2F("hCompareRTruevIntFluctDiffRPosRegion0", "True vs Net Int Fluct Region 0, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-14e7,-2e7,nbinsint,-8,10);
       hCompareRTruevIntFluctDiffRPosRegion[1] = new TH2F("hCompareRTruevIntFluctDiffRPosRegion1", "True vs Net Int Fluct Region 1, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-14e7,-2e7,nbinsint,-5,15);
@@ -221,7 +221,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hCompareRTruevIntFluctDiffRPosRegion[7] = new TH2F("hCompareRTruevIntFluctDiffRPosRegion7", "True vs Net Int Fluct Region 7, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,2e7,15e7,nbinsint,-30,25);
       hCompareRTruevIntFluctDiffRPosRegion[8] = new TH2F("hCompareRTruevIntFluctDiffRPosRegion8", "True vs Net Int Fluct Region 8, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-1e7,12e7,nbinsint,-4,4);
       
-      //model-true vs int fluct inside
+      //pg 4: model-true vs int fluct inside
        TH2F *hCompareRDiffvIntFluctSmallRPosRegion[9];
       hCompareRDiffvIntFluctSmallRPosRegion[0] = new TH2F("hCompareRDiffvIntFluctSmallRPosRegion0", "Model-True vs Int Fluct Region 0, Pos Side, R Inside; int fluct charge inside (ions); shift difference (#mum)",nbinsint,-13e7,-3e7,nbinsint,-10,5);
       hCompareRDiffvIntFluctSmallRPosRegion[1] = new TH2F("hCompareRDiffvIntFluctSmallRPosRegion1", "Model-True vs Int Fluct Region 1, Pos Side, R Inside; int fluct charge inside (ions); shift difference (#mum)",nbinsint,-13e7,-3e7,nbinsint,-10,10);
@@ -233,7 +233,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hCompareRDiffvIntFluctSmallRPosRegion[7] = new TH2F("hCompareRDiffvIntFluctSmallRPosRegion7", "Model-True vs Int Fluct Region 7, Pos Side, R Inside; int fluct charge inside (ions); shift difference (#mum)",nbinsint,-4e7,5e6,nbinsint,-10,20);
       hCompareRDiffvIntFluctSmallRPosRegion[8] = new TH2F("hCompareRDiffvIntFluctSmallRPosRegion8", "Model-True vs Int Fluct Region 8, Pos Side, R Inside; int fluct charge inside (ions); shift difference (#mum)",nbinsint,-3e7,5e6,nbinsint,-5,5);
       
-      //model-true vs int fluct outside
+      //pg 5: model-true vs int fluct outside
       TH2F *hCompareRDiffvIntFluctLargeRPosRegion[9];
       hCompareRDiffvIntFluctLargeRPosRegion[0] = new TH2F("hCompareRDiffvIntFluctLargeRPosRegion0", "Model-True vs Int Fluct Region 0, Pos Side, R Outside; int fluct charge outside (ions); shift difference (#mum)",nbinsint,-12e6,2e6,nbinsint,-10,4);
       hCompareRDiffvIntFluctLargeRPosRegion[1] = new TH2F("hCompareRDiffvIntFluctLargeRPosRegion1", "Model-True vs Int Fluct Region 1, Pos Side, R Outside; int fluct charge outside (ions); shift difference (#mum)",nbinsint,-12e6,2e6,nbinsint,-12,4);
@@ -245,7 +245,7 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hCompareRDiffvIntFluctLargeRPosRegion[7] = new TH2F("hCompareRDiffvIntFluctLargeRPosRegion7", "Model-True vs Int Fluct Region 7, Pos Side, R Outside; int fluct charge outside (ions); shift difference (#mum)",nbinsint,-13e7,-3e7,nbinsint,-10,25);
       hCompareRDiffvIntFluctLargeRPosRegion[8] = new TH2F("hCompareRDiffvIntFluctLargeRPosRegion8", "Model-True vs Int Fluct Region 8, Pos Side, R Outside; int fluct charge outside (ions); shift difference (#mum)",nbinsint,-12e7,1e7,nbinsint,-6,6);
       
-      //model-true vs net int fluct
+      //pg 6: model-true vs net int fluct
       TH2F *hCompareRDiffvIntFluctDiffRPosRegion[9];
       hCompareRDiffvIntFluctDiffRPosRegion[0] = new TH2F("hCompareRDiffvIntFluctDiffRPosRegion0", "Model-True vs Net Int Fluct Region 0, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-14e7,-3e7,nbinsint,-10,5);
       hCompareRDiffvIntFluctDiffRPosRegion[1] = new TH2F("hCompareRDiffvIntFluctDiffRPosRegion1", "Model-True vs Net Int Fluct Region 1, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-14e7,-3e7,nbinsint,-10,10);
@@ -294,9 +294,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       hIntFluctDiffRPosRegion[7] = new TH3F("hIntFluctDiffRPosRegion7","Net Int Fluct Charge (ions), Pos Side, Region 7; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos);   
       hIntFluctDiffRPosRegion[8] = new TH3F("hIntFluctDiffRPosRegion8","Net Int Fluct Charge (ions), Pos Side, Region 8; phi (rad); r (cm); z (cm)", nphi,minphi,maxphi, nr,minr,maxr, nz,minzPos,maxzPos); 
 
-      // true vs int fluct localized plots
+      //pg 7: true vs int fluct localized plots
       // inner R, region 4, r,z plot
-      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_RZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_RZ","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nr,30,80, nz,minzPos,maxzPos);
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_RZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_RZ","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nr,30,75, nz,minzPos,maxzPos);
       // inner R, region 4, phi,z plot
       TH2F *hLocalRTruevIntFluctSmallRPosRegion4_PhiZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_PhiZ","Phi,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nphi,minphi,maxphi, nz,minzPos,maxzPos);
       // inner R, region 6, lower peak, r,z
@@ -309,6 +309,78 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       TH2F *hLocalRTruevIntFluctLargeRPosRegion4 = new TH2F("hLocalRTruevIntFluctLargeRPosRegion4","R,Z Close-up of True vs Int Fluct, Pos Side, R Outside, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
       // net, region 4, r,z
       TH2F *hLocalRTruevIntFluctDiffRPosRegion4 = new TH2F("hLocalRTruevIntFluctDiffRPosRegion4","R,Z Close-up of True vs Net Int Fluct, Pos Side, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+
+      //dividing true vs net int fluct, region4 into 9 sub-regions in r
+      TH2F *hCompareRTruevIntFluctDiffRPosReg4SubregR[9];
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[0] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR0", "True vs Net Int Fluct Region 4, R Sub-Region 0, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[1] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR1", "True vs Net Int Fluct Region 4, R Sub-Region 1, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[2] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR2", "True vs Net Int Fluct Region 4, R Sub-Region 2, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[3] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR3", "True vs Net Int Fluct Region 4, R Sub-Region 3, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[4] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR4", "True vs Net Int Fluct Region 4, R Sub-Region 4, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[5] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR5", "True vs Net Int Fluct Region 4, R Sub-Region 5, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[6] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR6", "True vs Net Int Fluct Region 4, R Sub-Region 6, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[7] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR7", "True vs Net Int Fluct Region 4, R Sub-Region 7, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[8] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregR8", "True vs Net Int Fluct Region 4, R Sub-Region 8, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+
+      //dividing true vs net int fluct, region4 into 9 sub-regions in phi
+      TH2F *hCompareRTruevIntFluctDiffRPosReg4SubregPhi[9];
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[0] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi0", "True vs Net Int Fluct Region 4, Phi Sub-Region 0, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[1] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi1", "True vs Net Int Fluct Region 4, Phi Sub-Region 1, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[2] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi2", "True vs Net Int Fluct Region 4, Phi Sub-Region 2, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[3] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi3", "True vs Net Int Fluct Region 4, Phi Sub-Region 3, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[4] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi4", "True vs Net Int Fluct Region 4, Phi Sub-Region 4, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[5] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi5", "True vs Net Int Fluct Region 4, Phi Sub-Region 5, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[6] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi6", "True vs Net Int Fluct Region 4, Phi Sub-Region 6, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[7] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi7", "True vs Net Int Fluct Region 4, Phi Sub-Region 7, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[8] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregPhi8", "True vs Net Int Fluct Region 4, Phi Sub-Region 8, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+
+       //dividing true vs net int fluct, region4 into 9 sub-regions in z
+      TH2F *hCompareRTruevIntFluctDiffRPosReg4SubregZ[9];
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[0] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ0", "True vs Net Int Fluct Region 4, Z Sub-Region 0, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[1] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ1", "True vs Net Int Fluct Region 4, Z Sub-Region 1, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[2] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ2", "True vs Net Int Fluct Region 4, Z Sub-Region 2, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[3] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ3", "True vs Net Int Fluct Region 4, Z Sub-Region 3, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[4] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ4", "True vs Net Int Fluct Region 4, Z Sub-Region 4, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[5] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ5", "True vs Net Int Fluct Region 4, Z Sub-Region 5, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[6] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ6", "True vs Net Int Fluct Region 4, Z Sub-Region 6, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[7] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ7", "True vs Net Int Fluct Region 4, Z Sub-Region 7, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[8] = new TH2F("hCompareRTruevIntFluctDiffRPosReg4SubregZ8", "True vs Net Int Fluct Region 4, Z Sub-Region 8, Pos Side; net int fluct charge (ions); true shift (#mum)",nbinsint,-15e7,1e8,nbinsint,-25,20);
+
+      //dividing model-true vs net int fluct, region4 into 9 sub-regions in r 
+      TH2F *hCompareRDiffvIntFluctDiffRPosReg4SubregR[9];
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[0] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR0", "Model-True vs Net Int Fluct Region 4, R Sub-Region 0, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[1] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR1", "Model-True vs Net Int Fluct Region 4, R Sub-Region 1, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[2] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR2", "Model-True vs Net Int Fluct Region 4, R Sub-Region 2, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[3] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR3", "Model-True vs Net Int Fluct Region 4, R Sub-Region 3, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[4] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR4", "Model-True vs Net Int Fluct Region 4, R Sub-Region 4, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[5] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR5", "Model-True vs Net Int Fluct Region 4, R Sub-Region 5, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[6] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR6", "Model-True vs Net Int Fluct Region 4, R Sub-Region 6, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[7] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR7", "Model-True vs Net Int Fluct Region 4, R Sub-Region 7, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[8] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregR8", "Model-True vs Net Int Fluct Region 4, R Sub-Region 8, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+
+      //dividing model-true vs net int fluct, region4 into 9 sub-regions in phi
+      TH2F *hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[9];
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[0] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi0", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 0, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[1] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi1", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 1, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[2] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi2", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 2, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[3] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi3", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 3, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[4] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi4", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 4, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[5] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi5", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 5, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[6] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi6", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 6, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[7] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi7", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 7, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[8] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregPhi8", "Model-True vs Net Int Fluct Region 4, Phi Sub-Region 8, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+
+       //dividing model-true vs net int fluct, region4 into 9 sub-regions in z
+      TH2F *hCompareRDiffvIntFluctDiffRPosReg4SubregZ[9];
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[0] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ0", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 0, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[1] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ1", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 1, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ2", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 2, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[3] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ3", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 3, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[4] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ4", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 4, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[5] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ5", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 5, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[6] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ6", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 6, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[7] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ7", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 7, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[8] = new TH2F("hCompareRDiffvIntFluctDiffRPosReg4SubregZ8", "Model-True vs Net Int Fluct Region 4, Z Sub-Region 8, Pos Side; net int fluct charge (ions); shift difference (#mum)",nbinsint,-15e7,1e8,nbinsint,-10,12);
       
       for(int i = 1; i < nphi - 1; i++){
 	double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
@@ -495,6 +567,102 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0) && (-9e7 < intfluctchargeDiffRPos) && (intfluctchargeDiffRPos < -2e7)){
 		  hLocalRTruevIntFluctDiffRPosRegion4->Fill(r,zPos,1);
 		}
+
+		//subregions
+		//r
+		double srwidth = (70.0 - 30.0)/9.0; //width of r subreg
+		if(r < (30.0 + srwidth)){
+		  //true
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[0]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[0]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + srwidth)) && (r < (30.0 + 2.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[1]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[1]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + 2.0*srwidth)) && (r < (30.0 + 3.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + 3.0*srwidth)) && (r < (30.0 + 4.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[3]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[3]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + 4.0*srwidth)) && (r < (30.0 + 5.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[4]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[4]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + 5.0*srwidth)) && (r < (30.0 + 6.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[5]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[5]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + 6.0*srwidth)) && (r < (30.0 + 7.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[6]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[6]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + 7.0*srwidth)) && (r < (30.0 + 8.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[7]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[7]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((r >= (30.0 + 8.0*srwidth))){
+		  hCompareRTruevIntFluctDiffRPosReg4SubregR[8]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[8]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}
+		
+		//phi
+		double sphiwidth = (maxphi - minphi)/9.0; //width of phi subreg
+		if (phi < (minphi + sphiwidth)){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[0]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[0]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + sphiwidth)) && (phi < (minphi + 2.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[1]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[1]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + 2.0*sphiwidth)) && (phi < (minphi + 3.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + 3.0*sphiwidth)) && (phi < (minphi + 4.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[3]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[3]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + 4.0*sphiwidth)) && (phi < (minphi + 5.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[4]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[4]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + 5.0*sphiwidth)) && (phi < (minphi + 6.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[5]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[5]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + 6.0*sphiwidth)) && (phi < (minphi + 7.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[6]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[6]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + 7.0*sphiwidth)) && (phi < (minphi + 8.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[7]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[7]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((phi >= (minphi + 8.0*sphiwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[8]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[8]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}
+
+		//z
+		double szwidth = (90.0 - 15.0)/9.0; //width of phi subreg
+		if (z < (15.0 + szwidth)){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[0]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[0]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + szwidth)) && (z < (15.0 + 2.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[1]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[1]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + 2.0*szwidth)) && (z < (15.0 + 3.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + 3.0*szwidth)) && (z < (15.0 + 4.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + 4.0*szwidth)) && (z < (15.0 + 5.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[4]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[4]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + 5.0*szwidth)) && (z < (15.0 + 6.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[5]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[5]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + 6.0*szwidth)) && (z < (15.0 + 7.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[6]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[6]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + 7.0*szwidth)) && (z < (15.0 + 8.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[7]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[7]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}else if((z >= (15.0 + 8.0*szwidth))){
+		hCompareRTruevIntFluctDiffRPosReg4SubregZ[8]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[8]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		}
+
 		
 	      }else if(zPos >= 90.0){//5
 		//int fluct
@@ -936,9 +1104,163 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
       integcomptitlepad->Clear();
       integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge Localized on Peaks", (10*ifile + ihist))); 
       integcomptitle->Draw();
-      //integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
 
-      //
+      // pg 3 subregions in r
+      integcompplots->cd(1);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[0]->Draw("colz");
+      integcompplots->cd(2);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[1]->Draw("colz");
+      integcompplots->cd(3);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[2]->Draw("colz");
+      integcompplots->cd(4);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[3]->Draw("colz");
+      integcompplots->cd(5);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[4]->Draw("colz");
+      integcompplots->cd(6);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[5]->Draw("colz");
+      integcompplots->cd(7);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[6]->Draw("colz");
+      integcompplots->cd(8);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[7]->Draw("colz");
+      integcompplots->cd(9);
+      hCompareRTruevIntFluctDiffRPosReg4SubregR[8]->Draw("colz");
+
+      integcomptitlepad->cd();
+      integcomptitlepad->Clear();
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Region 4 subregions in R", (10*ifile + ihist))); 
+      integcomptitle->Draw();
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+      
+      // pg 3 subregions in phi
+      integcompplots->cd(1);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[0]->Draw("colz");
+      integcompplots->cd(2);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[1]->Draw("colz");
+      integcompplots->cd(3);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[2]->Draw("colz");
+      integcompplots->cd(4);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[3]->Draw("colz");
+      integcompplots->cd(5);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[4]->Draw("colz");
+      integcompplots->cd(6);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[5]->Draw("colz");
+      integcompplots->cd(7);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[6]->Draw("colz");
+      integcompplots->cd(8);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[7]->Draw("colz");
+      integcompplots->cd(9);
+      hCompareRTruevIntFluctDiffRPosReg4SubregPhi[8]->Draw("colz");
+      
+      integcomptitlepad->cd();
+      integcomptitlepad->Clear();
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Region 4 subregions in Phi", (10*ifile + ihist))); 
+      integcomptitle->Draw();
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+      
+      // pg 3 subregions in z
+      integcompplots->cd(1);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[0]->Draw("colz");
+      integcompplots->cd(2);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[1]->Draw("colz");
+      integcompplots->cd(3);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[2]->Draw("colz");
+      integcompplots->cd(4);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[3]->Draw("colz");
+      integcompplots->cd(5);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[4]->Draw("colz");
+      integcompplots->cd(6);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[5]->Draw("colz");
+      integcompplots->cd(7);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[6]->Draw("colz");
+      integcompplots->cd(8);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[7]->Draw("colz");
+      integcompplots->cd(9);
+      hCompareRTruevIntFluctDiffRPosReg4SubregZ[8]->Draw("colz");
+      
+      integcomptitlepad->cd();
+      integcomptitlepad->Clear();
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: True vs Int Fluct Charge, Region 4 subregions in Z", (10*ifile + ihist))); 
+      integcomptitle->Draw();
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+      
+      // pg 6 subregions in r
+      integcompplots->cd(1);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[0]->Draw("colz");
+      integcompplots->cd(2);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[1]->Draw("colz");
+      integcompplots->cd(3);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[2]->Draw("colz");
+      integcompplots->cd(4);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[3]->Draw("colz");
+      integcompplots->cd(5);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[4]->Draw("colz");
+      integcompplots->cd(6);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[5]->Draw("colz");
+      integcompplots->cd(7);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[6]->Draw("colz");
+      integcompplots->cd(8);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[7]->Draw("colz");
+      integcompplots->cd(9);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregR[8]->Draw("colz");
+      
+      integcomptitlepad->cd();
+      integcomptitlepad->Clear();
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Region 4 subregions in R", (10*ifile + ihist))); 
+      integcomptitle->Draw();
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+
+      // pg 6 subregions in phi
+      integcompplots->cd(1);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[0]->Draw("colz");
+      integcompplots->cd(2);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[1]->Draw("colz");
+      integcompplots->cd(3);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[2]->Draw("colz");
+      integcompplots->cd(4);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[3]->Draw("colz");
+      integcompplots->cd(5);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[4]->Draw("colz");
+      integcompplots->cd(6);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[5]->Draw("colz");
+      integcompplots->cd(7);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[6]->Draw("colz");
+      integcompplots->cd(8);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[7]->Draw("colz");
+      integcompplots->cd(9);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[8]->Draw("colz");
+
+      integcomptitlepad->cd();
+      integcomptitlepad->Clear();
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Region 4 subregions in Phi", (10*ifile + ihist))); 
+      integcomptitle->Draw();
+      integcomp->Print(Form("integcompEvent%d.pdf",(10*ifile + ihist)),"pdf");
+      
+      // pg 6 subregions in z
+      integcompplots->cd(1);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[0]->Draw("colz");
+      integcompplots->cd(2);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[1]->Draw("colz");
+      integcompplots->cd(3);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2]->Draw("colz");
+      integcompplots->cd(4);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[3]->Draw("colz");
+      integcompplots->cd(5);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[4]->Draw("colz");
+      integcompplots->cd(6);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[5]->Draw("colz");
+      integcompplots->cd(7);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[6]->Draw("colz");
+      integcompplots->cd(8);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[7]->Draw("colz");
+      integcompplots->cd(9);
+      hCompareRDiffvIntFluctDiffRPosReg4SubregZ[8]->Draw("colz");
+
+      integcomptitlepad->cd();
+      integcomptitlepad->Clear();
+      integcomptitle->DrawLatex(0.01,0.4,Form("Event %d: Model-True vs Int Fluct Charge, Region 4 subregions in Z", (10*ifile + ihist))); 
+      integcomptitle->Draw();
+
       
       integcomp->Print(Form("integcompEvent%d.pdf)",(10*ifile + ihist)),"pdf");
     }
