@@ -574,93 +574,93 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		if(r < (30.0 + srwidth)){
 		  //true
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[0]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[0]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[0]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + srwidth)) && (r < (30.0 + 2.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[1]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[1]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[1]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + 2.0*srwidth)) && (r < (30.0 + 3.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[2]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + 3.0*srwidth)) && (r < (30.0 + 4.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[3]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[3]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[3]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + 4.0*srwidth)) && (r < (30.0 + 5.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[4]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[4]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[4]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + 5.0*srwidth)) && (r < (30.0 + 6.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[5]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[5]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[5]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + 6.0*srwidth)) && (r < (30.0 + 7.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[6]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[6]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[6]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + 7.0*srwidth)) && (r < (30.0 + 8.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[7]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[7]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[7]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((r >= (30.0 + 8.0*srwidth))){
 		  hCompareRTruevIntFluctDiffRPosReg4SubregR[8]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[8]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		  hCompareRDiffvIntFluctDiffRPosReg4SubregR[8]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}
 		
 		//phi
 		double sphiwidth = (maxphi - minphi)/9.0; //width of phi subreg
 		if (phi < (minphi + sphiwidth)){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[0]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[0]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[0]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + sphiwidth)) && (phi < (minphi + 2.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[1]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[1]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[1]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + 2.0*sphiwidth)) && (phi < (minphi + 3.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[2]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + 3.0*sphiwidth)) && (phi < (minphi + 4.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[3]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[3]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[3]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + 4.0*sphiwidth)) && (phi < (minphi + 5.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[4]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[4]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[4]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + 5.0*sphiwidth)) && (phi < (minphi + 6.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[5]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[5]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[5]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + 6.0*sphiwidth)) && (phi < (minphi + 7.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[6]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[6]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[6]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + 7.0*sphiwidth)) && (phi < (minphi + 8.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[7]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[7]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[7]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((phi >= (minphi + 8.0*sphiwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregPhi[8]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[8]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregPhi[8]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}
 
 		//z
 		double szwidth = (90.0 - 15.0)/9.0; //width of phi subreg
 		if (z < (15.0 + szwidth)){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[0]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[0]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[0]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + szwidth)) && (z < (15.0 + 2.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[1]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[1]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[1]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + 2.0*szwidth)) && (z < (15.0 + 3.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + 3.0*szwidth)) && (z < (15.0 + 4.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[2]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + 4.0*szwidth)) && (z < (15.0 + 5.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[4]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[4]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[4]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + 5.0*szwidth)) && (z < (15.0 + 6.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[5]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[5]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[5]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + 6.0*szwidth)) && (z < (15.0 + 7.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[6]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[6]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[6]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + 7.0*szwidth)) && (z < (15.0 + 8.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[7]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[7]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[7]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}else if((z >= (15.0 + 8.0*szwidth))){
 		hCompareRTruevIntFluctDiffRPosReg4SubregZ[8]->Fill(intfluctchargeSmallRPos,shifttrueCylPos[0]);
-		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[8]->Fill(intfluctchargeSmallRPos,shiftdifferenceCylPos[0]);
+		hCompareRDiffvIntFluctDiffRPosReg4SubregZ[8]->Fill(intfluctchargeSmallRPos,differenceCylPos[0]);
 		}
 
 		
