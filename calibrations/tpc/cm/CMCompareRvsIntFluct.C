@@ -492,7 +492,6 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		  hLocalRTruevIntFluctSmallRPosRegion4_PhiZ->Fill(phi,zPos,1);
 		}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0) && (-3e7 < intfluctchargeLargeRPos) && (intfluctchargeLargeRPos < 0.0)){
 		  hLocalRTruevIntFluctLargeRPosRegion4->Fill(r,zPos,1);
-		  //	}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0) && (-9e7 < intfluctchargeDiffRPos) && (intfluctchargeDiffRPos < -3e7)){
 		}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0) && (-9e7 < intfluctchargeDiffRPos) && (intfluctchargeDiffRPos < -2e7)){
 		  hLocalRTruevIntFluctDiffRPosRegion4->Fill(r,zPos,1);
 		}
@@ -562,9 +561,9 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		hCompareRDiffvIntFluctDiffRPosRegion[6]->Fill(intfluctchargeDiffRPos,differenceCylPhiRPos[0]);
 
 		//localized plots
-		if((6.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 8.0) && (-1e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < -1e6)){
+		if((4.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 10.0) && (-2e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < -2e6)){
 		  hLocalRTruevIntFluctSmallRPosRegion6_Lower->Fill(r,zPos,1);
-		}else if((-8.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < -5.0) && (-1e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < -1e6)){
+		}else if((-10.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < -4.0) && (-2e6 < intfluctchargeSmallRPos) && (intfluctchargeSmallRPos < -2e6)){
 		  hLocalRTruevIntFluctSmallRPosRegion6_Upper->Fill(r,zPos,1);
 		}
 		
