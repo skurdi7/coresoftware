@@ -492,7 +492,8 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 		  hLocalRTruevIntFluctSmallRPosRegion4_PhiZ->Fill(phi,zPos,1);
 		}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0) && (-3e7 < intfluctchargeLargeRPos) && (intfluctchargeLargeRPos < 0.0)){
 		  hLocalRTruevIntFluctLargeRPosRegion4->Fill(r,zPos,1);
-		}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0) && (-9e7 < intfluctchargeDiffRPos) && (intfluctchargeDiffRPos < -3e7)){
+		  //	}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0) && (-9e7 < intfluctchargeDiffRPos) && (intfluctchargeDiffRPos < -3e7)){
+		}else if((-1.0 < shifttrueCylPos[0]) && (shifttrueCylPos[0] < 1.0)){
 		  hLocalRTruevIntFluctDiffRPosRegion4->Fill(r,zPos,1);
 		}
 		
