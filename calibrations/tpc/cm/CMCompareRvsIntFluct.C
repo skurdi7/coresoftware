@@ -296,15 +296,15 @@ int CMCompareRvsIntFluct(int nMaxEvents = -1) {
 
       // true vs int fluct localized plots
       // inner R, region 4, r,z plot
-      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_RZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_RZ","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion4_RZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_RZ","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nr,30,80, nz,minzPos,maxzPos);
       // inner R, region 4, phi,z plot
       TH2F *hLocalRTruevIntFluctSmallRPosRegion4_PhiZ = new TH2F("hLocalRTruevIntFluctSmallRPosRegion4_PhiZ","Phi,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 4; r (cm); z (cm)",nphi,minphi,maxphi, nz,minzPos,maxzPos);
       // inner R, region 6, lower peak, r,z
-      TH2F *hLocalRTruevIntFluctSmallRPosRegion6_Lower = new TH2F("hLocalRTruevIntFluctSmallRPosRegion6_Lower","R,Z Lower Close-up of True vs Int Fluct, Pos Side, R Inside, Region 6; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion6_Lower = new TH2F("hLocalRTruevIntFluctSmallRPosRegion6_Lower","R,Z Lower Close-up of True vs Int Fluct, Pos Side, R Inside, Region 6; r (cm); z (cm)",nr,minr,26, nz,minzPos,20);
       // inner R, region 6, upper peak, r,z
-      TH2F *hLocalRTruevIntFluctSmallRPosRegion6_Upper = new TH2F("hLocalRTruevIntFluctSmallRPosRegion6_Upper","R,Z Upper Close-up of True vs Int Fluct, Pos Side, R Inside, Region 6; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion6_Upper = new TH2F("hLocalRTruevIntFluctSmallRPosRegion6_Upper","R,Z Upper Close-up of True vs Int Fluct, Pos Side, R Inside, Region 6; r (cm); z (cm)",nr,minr,26, nz,minzPos,20);
       // inner R, region 8, r,z
-      TH2F *hLocalRTruevIntFluctSmallRPosRegion8 = new TH2F("hLocalRTruevIntFluctSmallRPosRegion8","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 8; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
+      TH2F *hLocalRTruevIntFluctSmallRPosRegion8 = new TH2F("hLocalRTruevIntFluctSmallRPosRegion8","R,Z Close-up of True vs Int Fluct, Pos Side, R Inside, Region 8; r (cm); z (cm)",nr,minr,30, nz,80,maxzPos);
       // outer R, region 4, r,z
       TH2F *hLocalRTruevIntFluctLargeRPosRegion4 = new TH2F("hLocalRTruevIntFluctLargeRPosRegion4","R,Z Close-up of True vs Int Fluct, Pos Side, R Outside, Region 4; r (cm); z (cm)",nr,minr,maxr, nz,minzPos,maxzPos);
       // net, region 4, r,z
