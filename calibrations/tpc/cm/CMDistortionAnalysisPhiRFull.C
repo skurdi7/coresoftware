@@ -172,7 +172,7 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     fullchargefilename=((TFileInfo*)(fullchargefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
     fullcharge=TFile::Open(fullchargefilename,"READ");   
 
-    for(int ihist= 1;ihist < 10;ihist++){//should be ihist < 10 to run over all
+    for(int ihist=0;ihist < 10;ihist++){//should be ihist < 10 to run over all
     //for each file, find all histograms in that file.
       cout << "event #:" << (10*ifile + ihist) << endl;
     //sourcefilename=((TFileInfo*)(sourcefilelist->GetList()->At(ifile)))->GetCurrentUrl()->GetFile();
@@ -231,9 +231,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    //WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    return 0;
+    //return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -1026,16 +1026,16 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 	  int binZPos = hFluctCharge->GetZaxis()->FindBin(zPos/100.);
 	  int binZNeg = hFluctCharge->GetZaxis()->FindBin(zNeg/100.); 
 	  
-	  // double integSmallR = (hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiB, binPhiB, minbinR, binR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiA, binPhiA, minbinR, binR, binZPos, maxbinZPos));
+	  double integSmallR = (hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiB, binPhiB, minbinR, binR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiA, binPhiA, minbinR, binR, binZPos, maxbinZPos));
 
-	  // hIntFluctChargeSmallRPos->Fill(phi,r,zPos,integSmallR);
+	  hIntFluctChargeSmallRPos->Fill(phi,r,zPos,integSmallR);
 	  
-	   hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos));
+	  // hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos));
 
-	  // double integLargeR = (hFluctCharge->Integral(binPhi, binPhi, binR, maxbinR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiB, binPhiB, binR, maxbinR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiA, binPhiA, binR, maxbinR, binZPos, maxbinZPos));
+	  double integLargeR = (hFluctCharge->Integral(binPhi, binPhi, binR, maxbinR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiB, binPhiB, binR, maxbinR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiA, binPhiA, binR, maxbinR, binZPos, maxbinZPos));
 
-	  // hIntFluctChargeLargeRPos->Fill(phi,r,zPos,integLargeR);
-	  hIntFluctChargeLargeRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, binR, maxbinR, binZPos, maxbinZPos));
+	  hIntFluctChargeLargeRPos->Fill(phi,r,zPos,integLargeR);
+	   //  hIntFluctChargeLargeRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, binR, maxbinR, binZPos, maxbinZPos));
 
 	}
       }
