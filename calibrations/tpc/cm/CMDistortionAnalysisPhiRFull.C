@@ -231,9 +231,9 @@ int CMDistortionAnalysisPhiRFull(int nMaxEvents = -1) {
     int mindiff = -20;
     int maxdiff = 20;
 
-    //WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
+    WriteIntFluctFile(ifile, ihist, nphi,   minphi,   maxphi,   nr,  minr,  maxr,   nz,   minzPos,  maxzPos,   minzNeg,  maxzNeg, hFluctCharge);
 
-    //return 0;
+    return 0;
     
     //positive
     TH1F *hCartesianShiftDifferencePhiRPos[3];
@@ -1009,6 +1009,8 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
     
     for(int i = 1; i < nphi - 1; i++){
       double phi = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+0.5); //center of bin
+      double phiA = minphi + ((maxphi - minphi)/(1.0*nphi))*(i+1.5); // bin above
+      double phiB = minphi + ((maxphi - minphi)/(1.0*nphi))*(i-0.5); // bin below
       for(int j = 1; j < nr - 1; j++){
 	double r = minr + ((maxr - minr)/(1.0*nr))*(j+0.5); 
 	for(int k = 1; k < nz - 1; k++){
@@ -1017,13 +1019,16 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 
 	  double intfluctchargePos, intfluctchargeNeg;
 
-	  int binPhi = hFluctCharge->GetXaxis()->FindBin(phi); 
+	  int binPhi = hFluctCharge->GetXaxis()->FindBin(phi);
+	  int binPhiA = hFluctCharge->GetXaxis()->FindBin(phiA);
+	  int binPhiB = hFluctCharge->GetXaxis()->FindBin(phiB); 
 	  int binR = hFluctCharge->GetYaxis()->FindBin(r/100.); 
 	  int binZPos = hFluctCharge->GetZaxis()->FindBin(zPos/100.);
 	  int binZNeg = hFluctCharge->GetZaxis()->FindBin(zNeg/100.); 
 	  
-	  
-	  hIntFluctChargeSmallRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos));
+	  double integSmallR = (hFluctCharge->Integral(binPhi, binPhi, minbinR, binR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiB, binPhiB, minbinR, binR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiA, binPhiA, minbinR, binR, binZPos, maxbinZPos));
+
+	  hIntFluctChargeSmallRPos->Fill(phi,r,zPos,integSmallR);
 	  
 	    //intfluctchargePos =  hIntFluctChargeSmallRPos->Interpolate(phi,r,zPos);
 	    //hCompareRTruevIntFluctSmallRPos->Fill(intfluctchargePos,);
@@ -1032,9 +1037,9 @@ void WriteIntFluctFile(int ifile, int ihist, int nphi, double minphi, double max
 	    intfluctchargeNeg =  hIntFluctChargeSmallRNeg->Interpolate(phi,r,zNeg);
 	    hCompareRTruevIntFluctSmallRNeg->Fill(intfluctchargeNeg,);*/
 
+	  double integLargeR = (hFluctCharge->Integral(binPhi, binPhi, binR, maxbinR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiB, binPhiB, binR, maxbinR, binZPos, maxbinZPos)) + (hFluctCharge->Integral(binPhiA, binPhiA, binR, maxbinR, binZPos, maxbinZPos));
 
-
-	  hIntFluctChargeLargeRPos->Fill(phi,r,zPos,hFluctCharge->Integral(binPhi, binPhi, binR, maxbinR, binZPos, maxbinZPos));
+	  hIntFluctChargeLargeRPos->Fill(phi,r,zPos,integLargeR);
 	    //intfluctchargePos =  hIntFluctChargeLargeRPos->Interpolate(phi,r,zPos);
 	    //hCompareRTruevIntFluctLargeRPos->Fill(intfluctchargePos,);
 	    
